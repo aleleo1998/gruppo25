@@ -6,7 +6,7 @@ public Utente() {
 		
 	}
 public Utente(String id, String nome, String cognome, String matricola, String sesso, String email, String telefono,
-			String stato, String attività, String codice_fiscale, String durata) {
+			String stato, String attivita, String codice_fiscale, String durata) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -16,7 +16,7 @@ public Utente(String id, String nome, String cognome, String matricola, String s
 		this.email = email;
 		this.telefono = telefono;
 		this.stato = stato;
-		this.attività = attività;
+		this.attivita = attivita;
 		this.codice_fiscale = codice_fiscale;
 		this.durata = durata;
 	}
@@ -68,12 +68,8 @@ public String getId() {
 	public void setStato(String stato) {
 		this.stato = stato;
 	}
-	public String getAttività() {
-		return attività;
-	}
-	public void setAttività(String attività) {
-		this.attività = attività;
-	}
+	
+	
 	public String getCodice_fiscale() {
 		return codice_fiscale;
 	}
@@ -86,6 +82,12 @@ public String getId() {
 	public void setDurata(String durata) {
 		this.durata = durata;
 	}
+	public String getAttivita() {
+		return attivita;
+	}
+	public void setAttivita(String attivita) {
+		this.attivita = attivita;
+	}
 private String id;
 private String nome;
 private String cognome;
@@ -94,7 +96,8 @@ private String sesso;
 private String email;
 private String telefono;
 private String stato;
-private String attività;
+
+private String attivita;
 private String codice_fiscale;
 private String durata;
 

@@ -27,7 +27,7 @@ public class DriverManagerConnectionPool {
 	//crea una nuova connessione, cambiare questo per farlo funzionare su un altro db!
 	public static Connection createDBConnection() throws SQLException{
 		
-		String db = "acagreen_db";
+		String db="acagreen_db";
 		String username="root";
 		String passwd="";
 		
