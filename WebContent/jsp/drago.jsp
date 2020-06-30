@@ -24,8 +24,105 @@
 
 <div id="container">
  	<%@include file="../html/slideshow.html"%>
+ 	
+ 	
  	<br><br><br><br>
  	<p class="myButton">button</p>
+ 	
+ 	
+ 	
+ 	
+ 	<!--  ALERT DIALOG -->
+ 	<!-- Button trigger modal-->
+<button type="button" class="myButton" data-toggle="modal" data-target="#modalRelatedContent">Alert button
+  modal</button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Riepilogo selezione</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>Prodotto</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        <hr>
+        
+        <!-- INIZIO SECONDA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>Robot</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE SECONDA RIGA -->
+        
+        <hr>
+        
+        <!-- INIZIO TERZA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>Campo</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE TERZA RIGA -->
+        
+        <hr>
+        
+        	<button type="button" class="myButton" style="margin-right: 2em">Conferma</button>
+            <button type="button" class="myButton">Annulla</button>
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalRelatedContent-->
+
+
  	<br>
 </div>
 
