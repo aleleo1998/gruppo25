@@ -62,7 +62,7 @@
         
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="#">Profilo</a>
-          <a class="dropdown-item" href="#">Log out</a>
+          <a class="dropdown-item" href="#">Esci</a>
         </div>
       </li>
     </ul>
