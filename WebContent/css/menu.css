@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+#menubar{
+	color: #3F565A;
+}
+
+#instagram{
+	color: whitesmoke;
+	margin-left: 5em;
+	cursor: pointer;
+}
+
+#twitter{
+	color: whitesmoke;
+	margin-left:-10em;
+	cursor: pointer;
+}
+
+#facebook{
+	color: whitesmoke;
+	margin-left:-10em;
+	cursor: pointer;
+}
+
+#profilo{
+	color: whitesmoke;
+	margin-left: -6em;
+	cursor: pointer;
+}
+
+.nav-link{
+	width: 10em;
+	margin-left: 3em;
+}
+
+@media(max-width: 1100px) {
+	
+	#instagram{
+		display: none;
+	}
+
+	#twitter{
+		display: none;
+	}
+
+	#facebook{
+		display: none;
+	}
+	
+	#profilo{
+	display: none;
+	}
+
+	.nav-link{
+		width: 10em;
+		margin-left: 0em;
+	}
+	
+	#profilotext{
+		color: whitesmoke;
+		display: block !important;
+	}
+	
+}
+
