@@ -124,6 +124,9 @@
 
 
  	<br>
+ 	<br><br><br><br><br>
+ 	
+ 	<iframe src="https://giphy.com/embed/tqLmOziFnB5nO" width="480" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/drone-tqLmOziFnB5nO">via GIPHY</a></p>
 </div>
 
 <div id="footer">
