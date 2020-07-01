@@ -195,4 +195,51 @@ public class UtenteModel {
 		return utente;
 		}
 	
+	/**cerca utente con email e password (verifica login) **/
+	
+	public synchronized Utente searchUser(String email, String password) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Utente utente = new Utente();
+		
+		String selectSQL = "SELECT * FROM "+UtenteModel.TABLE_NAME+" WHERE email = ? AND password = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				
+				utente.setId(rs.getString("id"));
+				utente.setMatricola(rs.getString("matricola"));
+				utente.setNome(rs.getString("nome"));
+				utente.setCognome(rs.getString("cognome"));
+				utente.setSesso(rs.getString("sesso"));
+				utente.setEmail(rs.getString("email"));
+				utente.setTelefono(rs.getString("telefono"));
+				utente.setStato(rs.getString("stato"));
+				utente.setAttivita(rs.getString("attivita"));
+				utente.setCodice_fiscale(rs.getString("codice_fiscale"));
+				utente.setDurata(rs.getString("durata"));
+				utente.setTipo(rs.getString("tipo"));
+				utente.setPassword(rs.getString("password"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		System.out.println(utente.toString());
+		return utente;
+		}
+	
 }

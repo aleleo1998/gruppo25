@@ -12,6 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<script src="../javascript/registrazione.js"></script>
 
 </head>
 <body>
@@ -41,7 +42,7 @@
           <!--Grid column-->
           <div class="col-md-6 col-xl-5 mb-4">
             <!--Form-->
-            <form action="../registrazioneServlet" method="post">
+            <form action="../registrazioneServlet" method="post" id="form">
             <div class="card wow fadeInRight" data-wow-delay="0.3s" style="background:transparent">
               <div class="card-body">
                 <!--Header-->
@@ -56,12 +57,12 @@
                 <!-- Nome -->
                 <div class="md-form" style="margin-bottom: 1em"> 
                   <i class="fa fa-user prefix white-text active"></i> Nome:
-                  <input type="text" name="nome" id="form3" class="white-text form-control" placeholder="Nome" style="background: transparent; color: white">
+                  <input type="text" name="nome" id="nome" class="white-text form-control" placeholder="Nome" style="background: transparent; color: white">
                 </div>
                 <!--  Cognome -->
                 <div class="md-form" style="margin-bottom: 1em">
                   <i class="fa fa-user prefix white-text active"></i> Cognome:
-                  <input type="text" name="cognome" id="form3" class="white-text form-control" placeholder="Cognome" style="background: transparent; color: white">
+                  <input type="text" name="cognome" id="cognome" class="white-text form-control" placeholder="Cognome" style="background: transparent; color: white">
                 </div>
                  <!--  Sesso -->
                  <div class="md-form" style="margin-bottom: 1em">
@@ -98,15 +99,15 @@
                 <!-- Password -->
                 <div class="md-form" style="margin-bottom: 1em">
                   <i class="fa fa-lock prefix white-text active"></i> Password:
-                  <input type="password" name="password" id="form4" class="white-text form-control" placeholder="******" style="background: transparent; color: white">
+                  <input type="password" name="password" id="password" class="white-text form-control" placeholder="******" style="background: transparent; color: white">
                 </div>
                 <!-- Conferma Password -->
                 <div class="md-form" style="margin-bottom: 1em">
                   <i class="fa fa-lock prefix white-text active"></i> Conferma Password:
-                  <input type="password" name="confermaPassword" id="form4" class="white-text form-control" placeholder="******" style="background: transparent; color: white">
+                  <input type="password" name="confermaPassword" id="confermaPassword" class="white-text form-control" placeholder="******" style="background: transparent; color: white">
                 </div>
                 <div class="text-center mt-4" style="margin-bottom: 2em">
-                  <button class="myButton">Registrati</button>
+                  <a class="myButton" onclick="checkSubmit()" style="color: black">Registrati</a>
                   <hr class="hr-light mb-3 mt-4">
                   <div class="inline-ul text-center d-flex justify-content-center">
                     <a class="p-2 m-2 tw-ic">
