@@ -14,10 +14,10 @@
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body style="overflow-x:hidden">
 
 <div>
-	<%@include file="menu.jsp"%>
+	<%@include file="menuVoid.jsp"%>
 </div>
 
 <div id="container">
@@ -28,17 +28,22 @@
   <section class="team-section text-center dark-grey-text">
 
     <!-- Section heading -->
-    <h3 class="font-weight-bold mb-4 pb-2">????</h3>
+    <h3 class="font-weight-bold mb-4 pb-2">Che agricoltore sei?</h3>
     <!-- Section description -->
-    <p class="text-center w-responsive mx-auto mb-5">?????</p>
+    <!--  <p class="text-center w-responsive mx-auto mb-5"></p> -->
 
   	<!--Grid row-->
     <div class="row text-center">
     
     <!-- inizio div primo utente -->
+    
+    
 
       <!--Grid column-->
       <div class="col-md-4 mb-4">
+      
+      <form action="../redirectLogin" method="post">
+      <input type="text" name="tipo" value="Agricoltore privato" style="display:none"></input>
 
         <div class="testimonial" id="first">
           <!--Avatar-->
@@ -46,7 +51,7 @@
             <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" class="rounded-circle z-depth-1 img-fluid">
           </div>
           <!--Content-->
-          <h4 class="font-weight-bold dark-grey-text mt-4">Agricoltore Privato</h4>
+          <h4 class="font-weight-bold dark-grey-text mt-4">Agricoltore privato</h4>
           <h6 class="font-weight-bold blue-text my-3">????????????</h6>
           <p class="font-weight-normal dark-grey-text">
             <i class="fas fa-quote-left pr-2"></i>????????????????????????????</p>
@@ -55,14 +60,21 @@
             <button class="myButton">Accedi</button>
           </div>
         </div>
+        
+        </form>
 
       </div>
       <!--Grid column-->
+      
+      
       
       <!--  fine div primo utente -->
 
       <!--Grid column-->
       <div class="col-md-4 mb-4">
+      
+      <form action="../redirectLogin" method="post">
+      <input type="text" name="tipo" value="Agricoltore aziendale" style="display:none"></input>
 
         <div class="testimonial" id="second">
           <!--Avatar-->
@@ -79,12 +91,17 @@
             <button class="myButton">Accedi</button>
           </div>
         </div>
+        
+      </form>
 
       </div>
       <!--Grid column-->
 
       <!--Grid column-->
       <div class="col-md-4 mb-4">
+      
+      <form action="../redirectLogin" method="post">
+      <input type="text" name="tipo" value="Dirigente aziendale" style="display:none"></input>
 
         <div class="testimonial" id="third">
           <!--Avatar-->
@@ -101,6 +118,8 @@
             <button class="myButton">Accedi</button>
           </div>
         </div>
+            
+       	</form>
 
       </div>
       <!--Grid column-->

@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+html, body, #container{
+	height: auto;
+	color: whitesmoke !important;
+}
+
+#container{
+	margin-top: -2em;	
+}
+
+#footer{
+	margin-top: -2.5em;
+	overflow-x: hidden;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+.myButton {
+	background-color:#ebd700;
+	border-radius:8px;
+	border:2px solid #030200;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	
+}
+.myButton:hover {
+	background-color:#dec804;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+<!-- -->
+
+ html,
+  body,
+  header,
+  .view {
+    height: 100%;
+  }
+
+  @media (max-width: 740px) {
+    html,
+    body,
+    header,
+    .view {
+      height: 1000px;
+    }
+  }
+  @media (min-width: 800px) and (max-width: 850px) {
+    html,
+    body,
+    header,
+    .view {
+      height: 650px;
+    }
+  }
+
+  
+  .rgba-gradient {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+  }
+
+  .card {
+    background-color: rgba(126, 123, 215, 0.2);
+  }
+
+  .md-form label {
+    color: #ffffff;
+  }
+
+  h6 {
+    line-height: 1.7;
+  }
