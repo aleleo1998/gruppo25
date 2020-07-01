@@ -73,6 +73,13 @@ img{
 	text-decoration:none;
 }
 
+.myButton:hover {
+	background-color:#dec804;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
 
 #btnAnalizza {
 	background-color:#DEDED6;
@@ -88,13 +95,7 @@ img{
 	text-decoration:none;
 }
 
-.myButton:hover {
-	background-color:#dec804;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
+
 
 #divButtonAnalizza{
 	margin-top:2em;
