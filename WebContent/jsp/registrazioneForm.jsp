@@ -41,7 +41,7 @@
           <!--Grid column-->
           <div class="col-md-6 col-xl-5 mb-4">
             <!--Form-->
-            <form action="../loginServlet" method="post">
+            <form action="../registrazioneServlet" method="post">
             <div class="card wow fadeInRight" data-wow-delay="0.3s" style="background:transparent">
               <div class="card-body">
                 <!--Header-->
@@ -76,6 +76,11 @@
                   <i class="fa fa-user prefix white-text active"></i> Email:
                   <input type="email" name="email" id="form3" class="white-text form-control" placeholder="Email" style="background: transparent; color: white">
                 </div>
+                <!-- Telefono  -->
+                <div class="md-form" style="margin-bottom: 1em">
+                  <i class="fa fa-user prefix white-text active"></i> Telefono:
+                  <input type="input" name="telefono" id="form3" class="white-text form-control" placeholder="Telefono" style="background: transparent; color: white">
+                </div>
                 <!-- Codice fiscale -->
                 <div class="md-form" style="margin-bottom: 1em">
                   <i class="fa fa-user prefix white-text active"></i> Codice fiscale:
@@ -84,7 +89,7 @@
                 <!--  Ruolo-->
                  <div class="md-form" style="margin-bottom: 1em">
                   <i class="fa fa-user prefix white-text active"></i> Ruolo:
-                  <select name="agricoltore" id="form3" class="white-text form-control" style="background: transparent; margin-bottom:2em; color: white;">
+                  <select name="tipo" id="form3" class="white-text form-control" style="background: transparent; margin-bottom:2em; color: white;">
                   	<option value="Agricoltore privato">Agricoltore privato</option>
                   	<option value="Agricoltore aziendale">Agricoltore aziendale</option>
                   	<option value="Dirigente aziendale">Dirigente aziendale</option>

@@ -5,8 +5,9 @@ public class Utente {
 public Utente() {
 		
 	}
-public Utente(String id, String nome, String cognome, String matricola, String sesso, String email, String telefono,
-			String stato, String attivita, String codice_fiscale, String durata) {
+
+public Utente(String id, String nome, String cognome, String matricola, String sesso, String email, String tipo, String telefono,
+			String stato, String attivita, String codice_fiscale, String durata, String password) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -14,12 +15,16 @@ public Utente(String id, String nome, String cognome, String matricola, String s
 		this.matricola = matricola;
 		this.sesso = sesso;
 		this.email = email;
+		this.tipo = tipo;
 		this.telefono = telefono;
 		this.stato = stato;
 		this.attivita = attivita;
 		this.codice_fiscale = codice_fiscale;
 		this.durata = durata;
+		this.password = password;
 	}
+
+
 public String getId() {
 		return id;
 	}
@@ -69,6 +74,12 @@ public String getId() {
 		this.stato = stato;
 	}
 	
+	public String getTipo() {
+		return this.tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	
 	public String getCodice_fiscale() {
 		return codice_fiscale;
@@ -88,6 +99,14 @@ public String getId() {
 	public void setAttivita(String attivita) {
 		this.attivita = attivita;
 	}
+	public String getPassword() {
+		return this.password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 private String id;
 private String nome;
 private String cognome;
@@ -96,9 +115,10 @@ private String sesso;
 private String email;
 private String telefono;
 private String stato;
-
+private String tipo;
 private String attivita;
 private String codice_fiscale;
 private String durata;
+private String password;
 
 }
