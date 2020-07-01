@@ -49,3 +49,10 @@ html, body, #container{
 	height: 100px;
 	width: 180px;
 }
+
+
+
+#form-box{
+	margin-left: 2em;
+	margin-right: 2em;
+}

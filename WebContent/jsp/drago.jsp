@@ -129,9 +129,26 @@
  	<iframe src="https://giphy.com/embed/tqLmOziFnB5nO" width="480" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/drone-tqLmOziFnB5nO">via GIPHY</a></p>
 </div>
 
+<!-- PANEL BOX PAGINA -->
+<div id="form-box" class="card">
+	  <div class="card-header">
+	    Seleziona la coltura da seminare
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Special title treatment</h5> <hr>
+	    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	    <a href="#!" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	</div>
+
+<!--  FINE PANEL BOX PAGINA -->
+
+
 <div id="footer">
 	<%@include file="../html/footer.html"%>
 </div>
+
+
 
 </body>
 </html>
