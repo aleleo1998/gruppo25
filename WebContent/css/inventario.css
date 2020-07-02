@@ -67,3 +67,7 @@ html, body, #container{
 	margin-bottom:2em;
 	width:auto;
 }
+
+#btnAddNo{
+	display:none;
+}

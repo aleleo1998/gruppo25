@@ -36,7 +36,7 @@ public class inserisciItemServlet extends HttpServlet {
 		java.io.PrintWriter out = response.getWriter();  //Andrà a costruire la responseText
 		int rs=0; //conterrà il risultato ritornato dalla query che verrà effettuata (inizializzata a 0 perchè se la query ritorna 0 è fallita);
 
-		String nomeItem = request.getParameter("nomeitem");
+		String nomeItem = request.getParameter("nome");
 		String tipo = request.getParameter("tipo");
 		String quantita = request.getParameter("quantita");
 	
