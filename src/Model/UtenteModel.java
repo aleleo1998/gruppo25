@@ -14,6 +14,11 @@ public class UtenteModel {
 	
 	private static final String TABLE_NAME = "utente";
 	
+	/**
+	 * Genera ID
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized String generateID() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -21,6 +26,7 @@ public class UtenteModel {
 
 		String selectSQL = "SELECT * FROM "+UtenteModel.TABLE_NAME;
 		
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -30,6 +36,7 @@ public class UtenteModel {
 			while (rs.next()) {
 				id = rs.getString("id");
 				System.out.println("ID: "+id);
+				idList.add(Integer.parseInt(id));
 			}
 
 		} finally {
@@ -42,21 +49,26 @@ public class UtenteModel {
 		}
 		
 		int index = 0;
+		int max=0;
 		
-		if(id=="")
-			index = 1;
-		else {
-			index = Integer.parseInt(id.toString());
-			index++;
+		for(int i=0; i<idList.size();i++) {
+			index=idList.get(i);
+			if(index>max) {
+				max=index;
+			}
 		}
+		max= max+1;
 		
-		id = Integer.toString(index);
-		
-		System.out.println("\n\n\n\nid restituito da generateID(): "+id+"\n\n\n");
-		return id;
-		}
+		String idNew = Integer.toString(max);
+		System.out.println("\n\n\n\nid restituito da generateID(): "+idNew+"\n\n\n");
+		return idNew;
+	}
 	
-	
+	/**
+	 * Genera Matricola
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized String generateMatricola() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -64,6 +76,7 @@ public class UtenteModel {
 
 		String selectSQL = "SELECT * FROM "+UtenteModel.TABLE_NAME;
 		
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -73,6 +86,7 @@ public class UtenteModel {
 			while (rs.next()) {
 				matricola = rs.getString("matricola");
 				System.out.println("Matricola: "+matricola);
+				idList.add(Integer.parseInt(matricola));
 			}
 
 		} finally {
@@ -85,18 +99,19 @@ public class UtenteModel {
 		}
 		
 		int index = 0;
+		int max=0;
 		
-		if(matricola=="")
-			index = 11011;
-		else {
-			index = Integer.parseInt(matricola.toString());
-			index++;
+		for(int i=0; i<idList.size();i++) {
+			index=idList.get(i);
+			if(index>max) {
+				max=index;
+			}
 		}
+		max= max+1;
 		
-		matricola = Integer.toString(index);
-		
-		System.out.println("\n\n\n\nid restituito da generateMatricola(): "+matricola+"\n\n\n");
-		return matricola;
+		String matricolaNew = Integer.toString(max);
+		System.out.println("\n\n\n\nid restituito da generateID(): "+matricolaNew+"\n\n\n");
+		return matricolaNew;
 	}
 	
 	
