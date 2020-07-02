@@ -113,6 +113,53 @@ public class InventarioModel {
 		return i;
 			
 	}
+	
+	
+	/**
+	 * Rimuove item dall'inventario dell'utente.
+	 * @param idUtente
+	 * @param idItem
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int remove(String idUtente, String idItem) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		
+		String insertSQL = "DELETE FROM " + InventarioModel.TABLE_NAME + " WHERE id_utente = ? AND id_item = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, idUtente);
+			preparedStatement.setString(2, idItem);
+		
+			
+			
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
 }
 	
 

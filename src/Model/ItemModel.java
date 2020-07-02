@@ -169,4 +169,49 @@ private static final String TABLE_NAME = "item";
 		return item;
 		}
 	
+	
+	/**
+	 * Rimuove item cercandolo per ID
+	 * @param idItem
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int removeItemByID(String idItem) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		
+		String insertSQL = "DELETE FROM " + ItemModel.TABLE_NAME + " WHERE id = ? ";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(2, idItem);
+		
+			
+			
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
+	
 }

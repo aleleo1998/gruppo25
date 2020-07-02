@@ -64,8 +64,9 @@
         <td><center><%=inv.getNome() %></center></td>
         <td><center><%=inv.getTipo() %></center></td>
         <td><center><%=inv.getQuantita() %></center></td>
-        <td><center><i class="fa fa-plus-circle" aria-hidden="true"></i> </center></td>
-        <td><center><i class="fa fa-minus-circle" aria-hidden="true"></i></center></td>
+        <td><center><button id="<%=inv.getIdItem() %>" class="myButton"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center></td>
+        <td><center><button id="<%=inv.getIdItem() %>" class="myButton"><i id="<%=inv.getIdItem() %>" class="fa fa-minus-circle" aria-hidden="true"></i></button></center></td>
+      	<%System.out.println(""+inv.getIdItem()); %>
       </tr>
       <% } %> 
     </tbody>
