@@ -54,7 +54,28 @@
 
 <br><br><br>
 
-<h5 style="margin-left: 2em;"> Statistiche e previsioni </h2>
+<h5 style="margin-left: 2em;"> Statistiche e previsioni </h5>
+
+<div class="list-group-flush">
+<table style="margin-left: 2em; border: solid black 2px;">
+
+	<tr>
+		<th style="margin-right:2em;">
+			<p style="margin-left:1em">Campo 1</p>
+    		<p class="mb-0"><img src="../img/campo1.jpg" style="height:120px; width:200px; margin: 0em 2em 1em 1em;"></p>
+    	</th>
+    	<th>
+    		<p style="margin-top:1.5em; margin-bottom:0.5em;">Temperatura: </p>
+    		<p style="margin-bottom:0.5em;">Umidità: </p>
+    		<p style="margin-bottom:0.5em;">Tipo di terreno: </p>
+    		<p >Robot sul campo: </p>
+    	<th>
+	</tr>
+
+</table>
+</div>
+
+
 
 
 </div>

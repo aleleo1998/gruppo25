@@ -45,7 +45,7 @@
           <!--Grid column-->
           <div class="col-md-6 col-xl-5 mb-4">
             <!--Form-->
-            <form method="post" action="../loginServlet" id="form">
+            <form method="post" id="form">
             <div class="card wow fadeInRight" data-wow-delay="0.3s" style="background:transparent">
               <div class="card-body">
                 <!--Header-->
@@ -71,7 +71,7 @@
                   
                 </div>
                 <div class="text-center mt-4" style="margin-bottom: 2em">
-                  <button class="myButton" id="accedi" style="color:black">Accedi</button>
+                  <p class="myButton" id="accedi" style="color:black">Accedi</p>
                   <hr class="hr-light mb-3 mt-4">
                   <div class="inline-ul text-center d-flex justify-content-center">
                     <a class="p-2 m-2 tw-ic">

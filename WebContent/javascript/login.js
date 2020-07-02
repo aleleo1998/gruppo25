@@ -9,14 +9,10 @@ $(document).ready(function(){
 	var email = $("#email").val();
 	var password = $("#password").val();
 	
-	//alert("oo");
+	alert("oo");
 	
-	$.ajax({            //AJAX CON JQUERY
-			type : 'Post',   //TIPO DI CHIAMATA
-			data : {email : email, password : password},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
-			async: false,
-			url : 'loginServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
-			success : function(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+	$.post("../loginServlet",{email : email, password : password}, function(result) {  
+		//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 				
 				alert(result);
 				if(result == "0"){
@@ -29,7 +25,6 @@ $(document).ready(function(){
 				else{
 					alert("Errore ajax login.js");
 				}
-			}
 			
 		}); /*fine ajax*/
 
