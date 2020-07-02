@@ -76,7 +76,7 @@
 	 		<div class="card-body">
 	    	<h5 class="card-title">Aggiungi item</h5> <hr>
 	    	
-			   	<form action="../aggiungiItem" method="post">
+			   	<form action="../inserisciItemServlet" method="post">
           
                   
                 </div>
