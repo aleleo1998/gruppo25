@@ -62,11 +62,15 @@ public class loginServlet extends HttpServlet {
 		{
 			request.getSession().setAttribute("utente",utente);  //memorizza l'utente nella sessione
 			risposta = "1"; //è stato trovato un utente con email e password valide
+			//REDIRECT
+			response.sendRedirect("./jsp/profilo.jsp");
 		}
-		else 
+		else {
 			risposta = "0"; //NON è stato trovato un utente con email e password valide
+			response.sendRedirect("./jsp/loginForm.jsp");
+		}
 		
-		out.write(risposta);
+		//out.write(risposta);
 		
 	}
 

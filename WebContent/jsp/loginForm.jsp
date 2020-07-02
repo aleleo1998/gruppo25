@@ -4,22 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>AcaGreen: effettua l'accesso</title>
 
-<link rel="stylesheet" href="../css/loginForm.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../javascript/jquery-3.5.1.js"></script>
+<script src="https://kit.fontawesome.com/7606041806.js"></script>
+<script src="../javascript/login.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
-<script src="../javascript/login.js" type="text/javascript"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--  JAVASCRIPT -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">google.load('jquery', '1.6.4');</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../css/loginForm.css">
 
 <% String tipo = request.getSession().getAttribute("ruolo_agricoltore").toString(); %>
 
@@ -78,7 +71,7 @@
                   
                 </div>
                 <div class="text-center mt-4" style="margin-bottom: 2em">
-                  <a class="myButton" id="accedi" style="color:black">Accedi</a>
+                  <button class="myButton" id="accedi" style="color:black">Accedi</button>
                   <hr class="hr-light mb-3 mt-4">
                   <div class="inline-ul text-center d-flex justify-content-center">
                     <a class="p-2 m-2 tw-ic">

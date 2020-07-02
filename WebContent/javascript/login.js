@@ -9,7 +9,7 @@ $(document).ready(function(){
 	var email = $("#email").val();
 	var password = $("#password").val();
 	
-	alert("oo");
+	//alert("oo");
 	
 	$.ajax({            //AJAX CON JQUERY
 			type : 'Post',   //TIPO DI CHIAMATA
