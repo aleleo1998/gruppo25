@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import DBConnection.DriverManagerConnectionPool;
 
@@ -22,6 +23,7 @@ private static final String TABLE_NAME = "item";
 
 		String selectSQL = "SELECT * FROM "+ItemModel.TABLE_NAME;
 		
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -31,6 +33,7 @@ private static final String TABLE_NAME = "item";
 			while (rs.next()) {
 				id = rs.getString("id");
 				System.out.println("ID: "+id);
+				idList.add(Integer.parseInt(id));
 			}
 
 		} finally {
@@ -43,18 +46,19 @@ private static final String TABLE_NAME = "item";
 		}
 		
 		int index = 0;
+		int max=0;
 		
-		if(id=="")
-			index = 1;
-		else {
-			index = Integer.parseInt(id.toString());
-			index++;
+		for(int i=0; i<idList.size();i++) {
+			index=idList.get(i);
+			if(index>max) {
+				max=index;
+			}
 		}
+		max= max+1;
 		
-		id = Integer.toString(index);
-		
-		System.out.println("\n\n\n\nid restituito da generateID(): "+id+"\n\n\n");
-		return id;
+		String idNew = Integer.toString(max);
+		System.out.println("\n\n\n\nid restituito da generateID(): "+idNew+"\n\n\n");
+		return idNew;
 		}
 	
 	
