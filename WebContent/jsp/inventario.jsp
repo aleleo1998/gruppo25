@@ -1,9 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="Model.*"%>
+<%@page import="java.sql.*"%>
+<%@page import ="java.util.*"%>
+<%@page import="Model.Inventario" %>
+
+<%@page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="../css/inventario.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -11,6 +16,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/inventario.js"></script>
+
+
+<% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
+<%! ArrayList<Inventario> inventarioList; %>
+<% if(utente!=null){%>
+<%
+	Model.InventarioModel im = new InventarioModel();
+	inventarioList = (ArrayList<Inventario>) im.doInventario(utente.getId());
+}
+%>
+
+
 
 <title>Inventario</title>
 </head>
@@ -38,20 +55,15 @@
       </tr>
     </thead>
     <tbody id="myTable">
+    <% for(Inventario inv : inventarioList){ %> 
       <tr>
-        <td><center>John</center></td>
-        <td><center>Doe</center></td>
-        <td><center>john@example.com</center></td>
+        <td><center><%=inv.getNome() %></center></td>
+        <td><center><%=inv.getTipo() %></center></td>
+        <td><center><%=inv.getQuantita() %></center></td>
         <td><center><i class="fa fa-plus-circle" aria-hidden="true"></i> </center></td>
         <td><center><i class="fa fa-minus-circle" aria-hidden="true"></i></center></td>
       </tr>
-      <tr>
-        <td><center>John</center></td>
-        <td><center>Doe</center></td>
-        <td><center>john@example.com</center></td>
-        <td><center><i class="fa fa-plus-circle" aria-hidden="true"></i> </center></td>
-        <td><center><i class="fa fa-minus-circle" aria-hidden="true"></i></center></td>
-      </tr>
+      <% } %> 
     </tbody>
   </table>
 	</div>
