@@ -71,8 +71,8 @@ private static final String TABLE_NAME = "item";
 	 * @param password
 	 * @throws SQLException
 	 */
-	public synchronized void doSave(String nome, String tipo, String quantita) throws SQLException {
-
+	public synchronized int doSave(String nome, String tipo, String quantita, String idUtente) throws SQLException {
+		int i = 0;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -96,6 +96,13 @@ private static final String TABLE_NAME = "item";
 			System.out.println(preparedStatement.executeUpdate());
 
 			connection.commit();
+			
+			InventarioModel inv = new InventarioModel();
+			int ins= inv.doSave(idUtente, id);
+			
+			if(ins==1) {
+			i=1;
+			}
 		}
 		catch(SQLException e)
 		{
@@ -109,6 +116,7 @@ private static final String TABLE_NAME = "item";
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
+		return i;
 			
 	}
 	

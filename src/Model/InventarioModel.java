@@ -22,7 +22,7 @@ public class InventarioModel {
 	 * @return
 	 * @throws SQLException
 	 */
-	public synchronized Collection<Inventario> doInventario(String idUtente) throws SQLException {
+	public synchronized Collection<Inventario> getInventario(String idUtente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -64,6 +64,54 @@ public class InventarioModel {
 			}
 		}
 		return inventario;
+	}
+	
+	
+	/**
+	 * salvare un item nell'inventario di un utente
+	 * @param nome
+	 * @param tipo
+	 * @param quantita
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int doSave(String idUtente, String idItem) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		
+		String insertSQL = "INSERT INTO " + InventarioModel.TABLE_NAME + " (id_utente, id_item) VALUES (?,?)";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, idUtente);
+			preparedStatement.setString(2, idItem);
+		
+			
+			
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
 	}
 }
 	

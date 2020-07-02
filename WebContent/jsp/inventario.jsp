@@ -29,7 +29,7 @@
 <% if(utente!=null){%>
 <%
 	Model.InventarioModel im = new InventarioModel();
-	inventarioList = (ArrayList<Inventario>) im.doInventario(utente.getId());
+	inventarioList = (ArrayList<Inventario>) im.getInventario(utente.getId());
 }
 %>
 
@@ -48,7 +48,7 @@
 		<input class="form-control mb-4" id="tableSearch" type="text"
     placeholder="Type something to search list items">
 
-  <table class="table table-bordered table-striped">
+  <table id="tablelist" class="table table-bordered table-striped">
     <thead>
       <tr>
         <th bgcolor="#3F565A"><span style="color:#ffffff"> Items</span></th>
@@ -142,13 +142,5 @@
 	
 
 
-
-
-
-
-
- 
-
- 
 </body>
 </html>
