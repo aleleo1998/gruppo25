@@ -33,6 +33,33 @@ public class visualizzaCampoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String nomecampo = request.getParameter("nomecampo");
+		
+		CampoModel campoModel = new CampoModel();
+		
+		Campo campo = new Campo();
+		
+		try {
+			campo = campoModel.doRetrieveByNome(nomecampo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(nomecampo);
+		
+		request.getSession().setAttribute("campo_selezionato", campo);
+		
+		response.sendRedirect("../jsp/visualizzaCampo.jsp");
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		PrintWriter out = response.getWriter();
 		
 		String nomecampo = request.getParameter("nomecampo");
@@ -54,14 +81,6 @@ public class visualizzaCampoServlet extends HttpServlet {
 		
 		out.write("1");
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
