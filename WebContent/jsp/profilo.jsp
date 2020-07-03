@@ -107,7 +107,7 @@
 </table>
 </div>
 
-
+<form id="visualizzaCampo" method="post" action="visualizzaCampo.jsp"></form>
 
 
 </div>

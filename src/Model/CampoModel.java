@@ -50,6 +50,43 @@ public class CampoModel {
 		}
 		
 		return campi;
+	}
+	
+	public synchronized Campo doRetrieveByNome(String nome_campo) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		Campo campo = new Campo();
+		
+		String selectSQL = "SELECT * FROM "+CampoModel.TABLE_NAME+" WHERE nome = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nome_campo);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				campo.setNome(rs.getString("nome"));
+				campo.setPosizione(rs.getString("posizione"));
+				campo.setTipo_terreno(rs.getString("tipo_terreno"));
+				campo.setColtura(rs.getString("coltura"));
+				campo.setProprietario("proprietario");
+				campo.setEttari(rs.getString("ettari"));
+				campo.setTemperatura(rs.getString("temperatura"));
+				campo.setUmidita(rs.getString("umidita"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
 		}
+		
+		return campo;
+	}
 
 }

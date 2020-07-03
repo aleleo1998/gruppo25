@@ -2,12 +2,16 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Model.Campo;
+import Model.CampoModel;
 
 /**
  * Servlet implementation class visualizzaCampoServlet
@@ -33,9 +37,22 @@ public class visualizzaCampoServlet extends HttpServlet {
 		
 		String nomecampo = request.getParameter("nomecampo");
 		
+		CampoModel campoModel = new CampoModel();
+		
+		Campo campo = new Campo();
+		
+		try {
+			campo = campoModel.doRetrieveByNome(nomecampo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		System.out.println(nomecampo);
 		
-		out.write(nomecampo);
+		request.getSession().setAttribute("campo_selezionato", campo);
+		
+		out.write("1");
 		
 	}
 
