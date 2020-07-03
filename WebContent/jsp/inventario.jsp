@@ -22,8 +22,9 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="../javascript/inventario.js"></script>
- 
 
+
+ 
 <% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
 <%! ArrayList<Inventario> inventarioList; %>
 <% if(utente!=null){%>
@@ -42,6 +43,7 @@
 <div id="menu">
 	<%@include file="menu.jsp"%>
 </div>
+
 <div id="container">
 
 	<div id="lista">
@@ -64,8 +66,8 @@
         <td><center><%=inv.getNome() %></center></td>
         <td><center><%=inv.getTipo() %></center></td>
         <td><center><%=inv.getQuantita() %></center></td>
-        <td><center><button id="<%=inv.getIdItem() %>" class="myButton"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center></td>
-        <td><center><button id="<%=inv.getIdItem() %>" class="myButton"><i id="<%=inv.getIdItem() %>" class="fa fa-minus-circle" aria-hidden="true"></i></button></center></td>
+        <td><center><button data-toggle="modal" data-target="#modalRelatedContent" id="<%=inv.getIdItem() %>" class="btnMod"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center></td>
+        <td><center><button id="<%=inv.getIdItem() %>" class="btnMin"><i id="<%=inv.getIdItem() %>" class="fa fa-minus-circle" aria-hidden="true"></i></button></center></td>
       	<%System.out.println(""+inv.getIdItem()); %>
       </tr>
       <% } %> 
@@ -75,6 +77,117 @@
 
 
 
+<!--Modal: modalRelatedContent-->
+
+<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Aggiorna Item</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            
+            
+
+          </div>
+        </div>
+      
+        
+        <!-- INIZIO RIGA -->
+		
+        <div class="row">
+
+           <form name="formMod" id="formMod" method="post">
+	 		<div class="card-body">
+	    	
+	    	
+			 
+          
+                  
+                </div>
+	                <!--Body-->
+	                <div class="md-form" style="margin-bottom: 2em; margin-left:2em; margin-right:2em;">
+	                <table>
+	   				<thead>
+	     			  <tr>
+	                  <th bgcolor="#3F565A" width="200px" style="margin-left: 2em"><span style="color:#ffffff"> Nome Item</span></th>
+	                  <th width=75%><input type="text" form="formMod" width="100%" name="nomeMod" id="nomeMod" placeholder="item" class="white-text form-control" style="background: transparent; color: black"></th>
+	                  </tr>
+	                  </table>
+                </div>
+                
+                <div class="md-form" style="margin-bottom: 2em; margin-left:2em; margin-right:2em;">
+	                  <table>
+	   				<thead>
+	     			  <tr>
+	                  <th bgcolor="#3F565A" width="200px" style="margin-left: 2em"><span style="color:#ffffff"> Tipo</span></th>
+	                  <th width=75%>
+	                  <select class="white-text form-control"  form="formMod" width="100%" name="tipoMod" id="tipoMod">
+	                 
+						  <option value="concime">Concime</option>
+						 
+						  <option value="coltura">Coltura</option>
+						
+						  <option value="pesticida">Pesticida</option>
+						  
+						 	
+						</select>
+	                  </th>
+	                  </tr>
+	                  </table>
+                </div>
+                
+                
+                 <div class="md-form" style="margin-bottom: 2em; margin-left:2em; margin-right:2em;">
+	                  <table>
+	   				<thead>
+	     			  <tr>
+	                  <th bgcolor="#3F565A" width="200px" style="margin-left: 2em"><span style="color:#ffffff"> Quantità</span></th>
+	                  <th width=75% ><input type="number" form="formMod" name="quantitaMod" id="quantitaMod" placeholder="quantità" class="white-text form-control"  style="background: transparent; color: black"></th>
+	                  </tr>
+	                  </table>
+                </div>
+                
+                
+               </form>
+        </div>
+        
+        <!-- FINE RIGA -->
+        
+        <hr>
+        
+        <div id="btnConferma">
+			<center> 
+				<button type="button" class="myButtonConfermaModifica" style="margin-right: 2em; width: 150px;">Conferma</button>
+	 			<button type="reset" form="formMod" class="myButtonAnnulla" style="margin-right: 2em; width: 150px;">Annulla</button>
+	 			
+	 		</center>
+	 	</div>
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!--Modal: modalRelatedContent-->
+
+<!-- Aggiungi Item -->
 	<div id="divInserisciItem">
 		<div id="form-box" class="card">
 	  	 <form name="formInsert" id="formInsert" method="post">
@@ -91,7 +204,7 @@
 	   				<thead>
 	     			  <tr>
 	                  <th bgcolor="#3F565A" width="100px" style="margin-left: 2em"><span style="color:#ffffff"> Nome Item</span></th>
-	                  <th width=80%><input type="text" form="formInsert" width="100%" name="nome" id="nome" class="white-text form-control" placeholder="Item" style="background: transparent; color: black"></th>
+	                  <th width=80%><input type="text" form="formInsert" width="100%" name="nome" id="nome" class="white-text form-control" placeholder="item" style="background: transparent; color: black"></th>
 	                  </tr>
 	                  </table>
                 </div>
@@ -117,7 +230,7 @@
 	                  <table>
 	   				<thead>
 	     			  <tr>
-	                  <th bgcolor="#3F565A" width="100px" style="margin-left: 2em"><span style="color:#ffffff"> Tipo</span></th>
+	                  <th bgcolor="#3F565A" width="100px" style="margin-left: 2em"><span style="color:#ffffff"> Quantità</span></th>
 	                  <th width=80% ><input type="number" form="formInsert" name="quantita" id="quantita" class="white-text form-control" placeholder="Quantità" style="background: transparent; color: black"></th>
 	                  </tr>
 	                  </table>
@@ -135,6 +248,9 @@
 </div>
 	
  
+ <div id="ref"> 
+ 	<form id="refForm" action="../jsp/inventario.jsp"></form>
+ </div>
 	
 	
 <div id="footer">
