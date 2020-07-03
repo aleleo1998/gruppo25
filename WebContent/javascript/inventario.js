@@ -3,7 +3,7 @@
  */
 
 var idDaMod = 0;
-
+var idDaEliminare = 0;
 $(document).ready(function(){
 	  
 	  $("#btnAdd").click(function(){
@@ -24,11 +24,11 @@ $(document).ready(function(){
 					alert(result);
 					if(result == "1"){
 						alert("Item aggiunto all'inventario");
-						$("#tablelist").load(" #tablelist");
+						$("#refForm").submit();
 						
 					}else{
 						alert("Errore: item non aggiunto, riprova!");
-						$("#tablelist").load(" #tablelist");
+						$("#refForm").submit();
 					}
 			
 				},
@@ -39,12 +39,21 @@ $(document).ready(function(){
 			}); /*fine ajax*/
 	  });
 	  
-
-
-	  //Per eliminare un item
+	  $("#btnAnnullaElimina").click(function(){
+		  $("#modalRelatedContentElimina").dialog('close');
+	  });
+	  
+	  
 	  $(".btnMin").click(function(){
+		  idDaEliminare= this.id;
+						
+	  });
+	  
+	  
+	  //Per eliminare un item
+	  $(".myButtonConfermaElimina").click(function(){
 			
-			var id = this.id;
+			var id = idDaEliminare;
 			alert(id);		
 			
 
@@ -63,7 +72,7 @@ $(document).ready(function(){
 							
 						}else{
 							alert("Errore: item non rimosso, riprova!");
-							$("#tablelist").replace(" #tablelist");
+							$("#refForm").submit();
 						}
 				
 					},
@@ -111,7 +120,7 @@ $(document).ready(function(){
 	 
 	
 	  
-	  
+	  //Salva id item da modificare
 	  $(".btnMod").click(function(){
 		  
 		  idDaMod= this.id;
@@ -142,11 +151,11 @@ $(document).ready(function(){
 						alert(result);
 						if(result == "1"){
 							alert("Item aggiornato correttamente dall'inventario");
-							$("#tablelist").load(" #tablelist");
+							$("#refForm").submit();
 							
 						}else{
 							alert("Errore: item non aggiornato, riprova!");
-							$("#tablelist").load(" #tablelist");
+							$("#refForm").submit();
 						}
 				
 					},

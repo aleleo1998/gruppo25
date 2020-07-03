@@ -24,7 +24,8 @@
 <script src="../javascript/inventario.js"></script>
 
 
- 
+
+
 <% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
 <%! ArrayList<Inventario> inventarioList; %>
 <% if(utente!=null){%>
@@ -67,7 +68,7 @@
         <td><center><%=inv.getTipo() %></center></td>
         <td><center><%=inv.getQuantita() %></center></td>
         <td><center><button data-toggle="modal" data-target="#modalRelatedContent" id="<%=inv.getIdItem() %>" class="btnMod"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center></td>
-        <td><center><button id="<%=inv.getIdItem() %>" class="btnMin"><i id="<%=inv.getIdItem() %>" class="fa fa-minus-circle" aria-hidden="true"></i></button></center></td>
+        <td><center><button data-toggle="modal" data-target="#modalRelatedContentElimina" id="<%=inv.getIdItem() %>" class="btnMin"><i id="<%=inv.getIdItem() %>" class="fa fa-minus-circle" aria-hidden="true"></i></button></center></td>
       	<%System.out.println(""+inv.getIdItem()); %>
       </tr>
       <% } %> 
@@ -77,7 +78,7 @@
 
 
 
-<!--Modal: modalRelatedContent-->
+<!-- MODIFICA ITEM Modal: modalRelatedContent-->
 
 <div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
@@ -185,7 +186,72 @@
   </div>
 </div>
 
-<!--Modal: modalRelatedContent-->
+<!--FINE MODIFICA ITEM Modal: modalRelatedContent-->
+
+
+
+
+<!--ELIMINA ITEM Modal: modalRelatedContent-->
+<div class="modal fade right" id="modalRelatedContentElimina" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Conferma Cancellazione</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Sei sicuro di voler eliminare questo item?</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        
+        <hr>
+        
+        <div id="btnConferma">
+			<center> 
+				<button type="button" id="btnConfermaElimina" class="myButtonConfermaElimina" style="margin-right: 2em; width: 150px;">Conferma</button>
+	 			<button type="reset" form="formMod"  id="btnAnnullaElimina" class="myButtonAnnulla" style="margin-right: 2em; width: 150px;">Annulla</button>
+	 			
+	 		</center>
+	 	</div>
+        
+            
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--FINE ELIMINA ITEM Modal: modalRelatedContent-->
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Aggiungi Item -->
 	<div id="divInserisciItem">
