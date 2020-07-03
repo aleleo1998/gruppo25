@@ -24,6 +24,26 @@ public Utente(String id, String nome, String cognome, String matricola, String s
 		this.password = password;
 	}
 
+public Utente(String id, String nome, String cognome, String matricola, String sesso, String email, String tipo, String telefono,
+		String stato, String attivita, String codice_fiscale, String durata, String password, String proprietario) {
+	
+	this.id = id;
+	this.nome = nome;
+	this.cognome = cognome;
+	this.matricola = matricola;
+	this.sesso = sesso;
+	this.email = email;
+	this.tipo = tipo;
+	this.telefono = telefono;
+	this.stato = stato;
+	this.attivita = attivita;
+	this.codice_fiscale = codice_fiscale;
+	this.durata = durata;
+	this.password = password;
+	this.proprietario = proprietario;
+	
+}
+
 
 public String getId() {
 		return id;
@@ -105,6 +125,12 @@ public String getId() {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getProprietario() {
+		return this.proprietario;
+	}
+	public void setProprietario(String proprietario) {
+		this.proprietario = proprietario;
+	}
 	
 	
 private String id;
@@ -120,5 +146,6 @@ private String attivita;
 private String codice_fiscale;
 private String durata;
 private String password;
+private String proprietario;
 
 }

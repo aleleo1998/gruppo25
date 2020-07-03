@@ -40,13 +40,22 @@ public class registrazioneServlet extends HttpServlet {
 		String telefono = request.getParameter("telefono");
 		String codiceFiscale = request.getParameter("codiceFiscale");
 		String tipo = request.getParameter("tipo");
+		String dirigente = "";
+		if(tipo != "Agricoltore aziendale") {
+			dirigente = request.getParameter("dirigente");
+		}
 		String password = request.getParameter("password");
 		
 		
 		UtenteModel utenteModel = new UtenteModel();
 		
 		try {
-			utenteModel.doSave(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password);
+			if(tipo == "Agricoltore privato")
+				utenteModel.doSaveAgricoltorePrivato(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password);
+			if(tipo == "Agricoltore aziendale")
+				utenteModel.doSaveAgricoltoreAziendale(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password, dirigente);
+			if(tipo == "Dirigente aziendale")
+				utenteModel.doSaveDirigenteAziendale(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

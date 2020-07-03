@@ -67,7 +67,7 @@
                 <div class="md-form" style="margin-bottom: 2em">
                   <i class="fa fa-lock prefix white-text active"></i>
                   <input type="password" name="password" id="password" class="white-text form-control" placeholder="Password" style="background: transparent; color: white">
-                  
+                  <input type="text" name="tipo" id="tipo" style="display:none" value="<%=tipo%>"></input>
                 </div>
                 <div class="text-center mt-4" style="margin-bottom: 2em">
                   <p class="myButton" id="accedi" style="color:black">Accedi</p>

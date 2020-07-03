@@ -39,15 +39,17 @@ public class loginServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String tipo = request.getParameter("tipo");
+		//System.out.println("\n\n\n"+tipo+"\n\n\n");
 		
-		System.out.println(email);
+		//System.out.println(email);
 		
 		UtenteModel utenteModel = new UtenteModel();
 		
 		Utente utente = new Utente();
 		
 		try {
-			utente = utenteModel.searchUser(email, password);
+			utente = utenteModel.searchUser(email, password, tipo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
