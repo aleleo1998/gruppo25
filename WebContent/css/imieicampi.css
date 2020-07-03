@@ -24,7 +24,7 @@ html, body, #container{
 	width: 100%;
 }
 
-.myButton, .butt{
+.myButton{
 	background-color:#ebd700;
 	border-radius:8px;
 	border:2px solid #030200;
@@ -35,9 +35,9 @@ html, body, #container{
 	font-size:14px;
 	font-weight:bold;
 	padding:6px 24px;
-	text-decoration:none;
-	
+	text-decoration:none;	
 }
+
 .myButton:hover , .butt:hover {
 	background-color:#dec804;
 }

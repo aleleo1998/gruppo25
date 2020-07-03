@@ -26,7 +26,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-       	<a class="nav-link" href="#"> I miei campi </a>
+       	<a class="nav-link" href="i_miei_campi.jsp"> I miei campi </a>
       </li>
       <li class="nav-item active">
        	<a class="nav-link" href="#"> Inventario </a>

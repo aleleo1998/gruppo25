@@ -107,7 +107,7 @@ public class CampoModel {
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(2, nomeCampo);
+			preparedStatement.setString(1, nomeCampo);
 		
 			System.out.println(preparedStatement.executeUpdate());
 

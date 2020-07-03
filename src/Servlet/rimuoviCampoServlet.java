@@ -36,6 +36,8 @@ public class rimuoviCampoServlet extends HttpServlet {
 		
 		String nome = request.getParameter("nomecampo");
 		
+		System.out.println(nome);
+		
 		CampoModel campoModel = new CampoModel();
 		
 		int result = 0;
