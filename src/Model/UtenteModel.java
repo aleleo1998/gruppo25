@@ -141,7 +141,7 @@ public class UtenteModel {
 			preparedStatement.setString(9, "");
 			preparedStatement.setString(10, codiceFiscale);
 			preparedStatement.setString(11, tipo);
-			preparedStatement.setString(12, "0");
+			preparedStatement.setString(12, "-- : --");
 			preparedStatement.setString(13, password);
 			preparedStatement.setString(14, "");
 			
@@ -383,7 +383,7 @@ public class UtenteModel {
 			preparedStatement.setString(9, "");
 			preparedStatement.setString(10, codiceFiscale);
 			preparedStatement.setString(11, tipo);
-			preparedStatement.setString(12, "0");
+			preparedStatement.setString(12, "-- : --");
 			preparedStatement.setString(13, password);
 			preparedStatement.setString(14, dirigente);
 			
@@ -436,7 +436,7 @@ public class UtenteModel {
 			preparedStatement.setString(9, "");
 			preparedStatement.setString(10, codiceFiscale);
 			preparedStatement.setString(11, tipo);
-			preparedStatement.setString(12, "0");
+			preparedStatement.setString(12, "-- : --");
 			preparedStatement.setString(13, password);
 			preparedStatement.setString(14, id);
 			
@@ -459,6 +459,148 @@ public class UtenteModel {
 		}
 		
 		
+	}
+	
+	
+	public synchronized ArrayList<Utente> doRetrieveRisorseUmane(String idDirigente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ArrayList<Utente> utenti = new ArrayList<Utente>();
+		String ruolo = "Agricoltore aziendale";
+		
+		String selectSQL = "SELECT * FROM "+UtenteModel.TABLE_NAME+" WHERE tipo = ? AND dirigente = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, ruolo);
+			preparedStatement.setString(2, idDirigente);
+			
+			System.out.println(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Utente utente = new Utente();
+				utente.setId(rs.getString("id"));
+				utente.setMatricola(rs.getString("matricola"));
+				utente.setNome(rs.getString("nome"));
+				utente.setCognome(rs.getString("cognome"));
+				utente.setSesso(rs.getString("sesso"));
+				utente.setEmail(rs.getString("email"));
+				utente.setTelefono(rs.getString("telefono"));
+				utente.setStato(rs.getString("stato"));
+				utente.setAttivita(rs.getString("attivita"));
+				utente.setCodice_fiscale(rs.getString("codice_fiscale"));
+				utente.setDurata(rs.getString("durata"));
+				utente.setTipo(rs.getString("tipo"));
+				utente.setPassword(rs.getString("password"));
+				utente.setProprietario(rs.getString("dirigente"));
+				System.out.println("\n\n\n\nutente id: "+utente.getId());
+				utenti.add(utente);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+		return utenti;
+		}
+	
+	/**
+	 * Modifica utente cercandolo per ID
+	 * @param idUtente
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int assegnaLavoro(String id, String campo_selezionato, String attivita_selezionata, String durata_selezionata) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String stato = "Occupato";
+		
+		System.out.println("Sono in query mod");
+		String insertSQL = "UPDATE "+UtenteModel.TABLE_NAME +" SET stato ='"+stato+"' , attivita='"+attivita_selezionata+"' , durata='"+durata_selezionata+"' WHERE id='"+id+"'";
+		//System.out.println(""+insertSQL);
+				
+		//System.out.println("ID ORA = "+idUtente);
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+		
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
+	
+	
+	/**
+	 * Modifica utente cercandolo per ID
+	 * @param idUtente
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int annullaLavoro(String id) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String stato = "";
+		String attivita = "";
+		String durata = "-- : --";
+		System.out.println("Sono in query mod");
+		String insertSQL = "UPDATE "+UtenteModel.TABLE_NAME +" SET stato ='"+stato+"' , attivita='"+attivita+"' , durata='"+durata+"' WHERE id='"+id+"'";
+		//System.out.println(""+insertSQL);
+				
+		//System.out.println("ID ORA = "+idUtente);
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+		
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
 	}
 	
 }
