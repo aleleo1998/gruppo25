@@ -81,9 +81,8 @@ img{
 }
 
 #datisx{
-
-	border: solid 2px red;
-	width:50%;
+	left:0;
+	width:60%;
 	float:left;
 }
 
@@ -93,11 +92,21 @@ img{
 	float:left;
 }
 
-#monitorDati{	
+#monitorDatisx{	
+	margin-left:1em;
 	margin-top:1em;
+	margin-bottom:1em;
+	float:left;
+	width:40%;
 	
 }
-
+#monitorDatidx{	
+	margin-top:1em;
+	margin-left:2em;
+	margin-bottom:1em;
+	width:50%;	
+	float:left;
+}
 
 #sensoriRobot{
 	margin-top:2em;
@@ -111,3 +120,55 @@ img{
 	width: 450px; 
 	height: 350px; 
 }
+
+.myButtonDark{
+	background-color:#DEDED6 !important;
+	border-radius:8px;
+	border:2px solid #030200;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+
+
+.myButtonDark:hover {
+	background-color:#dec804;
+}
+.myButtonDark:active {
+	position:relative;
+	top:1px;
+}
+
+
+#dispositivi{
+	margin-top:2em;
+	border:2px solid red;
+}
+
+
+#sensori{	
+	margin-left:1em;
+	margin-top:1em;
+	margin-bottom:1em;
+	float:left;
+	width:40%;
+	
+}
+#robot{	
+	margin-top:1em;
+	margin-left:2em;
+	margin-bottom:1em;
+	width:50%;	
+	float:left;
+}
+
+
+#divBtnAzioni{
+	margin-top:1em;
+}
+
