@@ -1,3 +1,7 @@
+<%@page import="Model.*"%>
+<%@page import="java.sql.*"%>
+<%@page import ="java.util.*"%>
+<%@page import="Model.Inventario" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +16,24 @@
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 
 
+<% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
+<% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
+<%! ArrayList<Inventario> inventarioList; %>
+<% if(utente!=null){%>
+<%
+	Model.InventarioModel im = new InventarioModel();
+	inventarioList = (ArrayList<Inventario>) im.getInventario(utente.getId());
+}
+%>
+
+
+<%! ArrayList<Dispositivo> dispositiviList; %>
+<% if(utente!=null){%>
+<%
+	Model.DispositivoModel dm = new DispositivoModel();
+	dispositiviList = (ArrayList<Dispositivo>) dm.doRetrieveByNomeCampo(campo.getNome());
+}
+%>
 <title>Semina</title>
 </head>
 <body>
@@ -30,59 +52,51 @@
 	   
 	   <div class="container my-5">
 
+<!-- FORM -->
+<form name="formSemina" id="formSemina">
+</form>
 
   <!--Row-->
+    <% for(Inventario inv : inventarioList){ %> 
+    	<%if(inv.getTipo().equals("coltura")){ %>
   	<div id="row" >
     
 	    <div class="media mb-4">
-			<input id="radio" type="radio" id="male" name="gender" value="male">  
+			<input required form="formSemina" id="radio" type="radio" id="male" name="gender" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
-		          <h5 class="user-name font-weight-bold">Peperoncino</h5>
+		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article">Il peperoncino, quis nostrud exercitation ullamco laboris nisi ut
-		          aliquip ex ea commodo
-		          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-		          nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura disponibile nell'inventario.
+		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
+		        <span>Kg di </span>
+		        <%=inv.getNome() %><span></span></p>
 		          
-		          <strong>Quantità necessaria per la semina del campo: 200kg</strong> <br>
-		           <strong><font color="green">Quantità sufficiente per la semina del campo</font></strong>
+		          <%
+						Random rand = new Random();
+						int n = rand.nextInt(10000) + 1;
+						System.out.println(n);
+				  %>
+		          
+		          <strong>Quantità necessaria per la semina del campo: <%=n %>kg</strong> <br>
+		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
+		           	<strong><font color="green">Quantità sufficiente per la semina del campo: <%=inv.getQuantita() %></font></strong>
+		           <%} %>
+		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
+		           	<strong><font color="red">Quantità insufficiente per la semina del campo: <%=inv.getQuantita() %></font></strong>
+		           <%} %>
 		      </div>
 	    </div>
    
 	</div>
-	
-	
-	<!--Row-->
-  	<div id="row" >
-  
+	<%}
+    }
+     %>
 
-  
-	    <div class="media mb-4">
-			<input id="radio" type="radio" id="male" name="gender" value="male">  
-			
-	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
-		    
-		      <div class="media-body">
-		        <a>
-		          <h5 class="user-name font-weight-bold">Peperoncino</h5>
-		        </a>
-		      
-		        <p class="dark-grey-text article">Il peperoncino, quis nostrud exercitation ullamco laboris nisi ut
-		          aliquip ex ea commodo
-		          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-		          nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-		          
-		          <strong>Quantità necessaria per la semina del campo: 200kg</strong> <br>
-		           <strong><font color="green">Quantità sufficiente per la semina del campo</font></strong>
-		      </div>
-	    </div>
-   
-	</div>
 	
 	<div id="divButtonAnalizza">
 	<button type="button" id="btnAnalizza" class="myButton" style="margin-right: 2em; width: 180px;">Analizza terreno</button>
@@ -96,27 +110,30 @@
 	  <!--  ROBOT -->
 	  
 	   <div class="card-body">
-	    <h5 class="card-title">Assegna attività - Lista dei robot associati al campo xxx inattivi</h5> <hr>
+	    <h5 class="card-title">Assegna attività - Lista dei robot associati al campo <%=campo.getNome() %> inattivi</h5> <hr>
 	   
 	   <div class="container my-5">
 
 
   <!--Row Robot-->
+  
+  <% for(Dispositivo disp : dispositiviList){ %> 
+    	<%if(disp.getTipo().equals("robot") && disp.getStato().equals("disponibile")){ %>
   	<div id="row" >
     
 	    <div class="media mb-4">
-	    	<input type="checkbox" id="checkbox" name="robot1" value="robot1">
+	    	<input required form="formSemina"  type="checkbox" id="checkbox" name="robot1" value="<%=disp.getId()%>">
 			
 			
 	      	<img class="rounded" src="../img/robot1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
-		          <h5 class="user-name font-weight-bold">Robot 1</h5>
+		          <h5 class="user-name font-weight-bold"><%=disp.getNome() %></h5>
 		        </a>
 		      
 		      	
-		        <p class="dark-grey-text article"> <strong>Impiego: </strong>  Attualmente installato su campo xxx </p>
+		        <p class="dark-grey-text article"> <strong>Impiego: </strong>  Attualmente installato su campo <%=campo.getNome() %> </p>
 		          <i class="fa fa-circle" style="color:green;" aria-hidden="true"></i>
 		          <strong>Disponibile</strong> <br>
 		           
@@ -126,7 +143,8 @@
 	</div>
 	
 	
-
+	<%}
+    }%>
 	
 	
 	
@@ -140,8 +158,8 @@
 	
 	<div id="btnConferma">
 		<center> 
-			<button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
-	 		<button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Reset</button> 
+			<button form="formSemina" type="button" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
+	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Reset</button> 
 	 	</center>
 	 </div>
 </div>
