@@ -11,6 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<script src="../javascript/login.js"></script>
 
 <% String tipo = request.getSession().getAttribute("ruolo_agricoltore").toString(); %>
 
@@ -58,16 +59,16 @@
                 <div class="md-form" style="margin-bottom: 2em">
                 
                   <i class="fa fa-user prefix white-text active"></i>
-                  <input type="text" name="email" id="form3" class="white-text form-control" placeholder="Email" style="background: transparent; color: white">
+                  <input type="text" name="email" id="email" class="white-text form-control" placeholder="Email" style="background: transparent; color: white">
                   
                 </div>
                 <div class="md-form" style="margin-bottom: 2em">
                   <i class="fa fa-lock prefix white-text active"></i>
-                  <input type="password" name="password" id="form4" class="white-text form-control" placeholder="Password" style="background: transparent; color: white">
-                  
+                  <input type="password" name="password" id="password" class="white-text form-control" placeholder="Password" style="background: transparent; color: white">
+                  <input type="text" name="tipo" id="tipo" style="display:none" value="<%=tipo%>"></input>
                 </div>
                 <div class="text-center mt-4" style="margin-bottom: 2em">
-                  <button class="myButton">Accedi</button>
+                  <p class="myButton" id="accedi" style="color:black">Accedi</p>
                   <hr class="hr-light mb-3 mt-4">
                   <div class="inline-ul text-center d-flex justify-content-center">
                     <a class="p-2 m-2 tw-ic">
@@ -95,6 +96,8 @@
     <!-- Mask & flexbox options-->
   </div>
   <!-- Full Page Intro -->
+  
+  <form action="profilo.jsp" id="profile" style="display:none"> </form>
 
 </div>
 

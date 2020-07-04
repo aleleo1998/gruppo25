@@ -11,7 +11,6 @@
 <script src="https://kit.fontawesome.com/7606041806.js"></script>
 <script src="../javascript/login.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 <link rel="stylesheet" href="../css/loginForm.css">
 
 <% String tipo = request.getSession().getAttribute("ruolo_agricoltore").toString(); %>
@@ -68,7 +67,7 @@
                 <div class="md-form" style="margin-bottom: 2em">
                   <i class="fa fa-lock prefix white-text active"></i>
                   <input type="password" name="password" id="password" class="white-text form-control" placeholder="Password" style="background: transparent; color: white">
-                  
+                  <input type="text" name="tipo" id="tipo" style="display:none" value="<%=tipo%>"></input>
                 </div>
                 <div class="text-center mt-4" style="margin-bottom: 2em">
                   <p class="myButton" id="accedi" style="color:black">Accedi</p>

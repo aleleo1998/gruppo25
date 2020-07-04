@@ -115,7 +115,7 @@ public class UtenteModel {
 	}
 	
 	
-	public synchronized void doSave(String nome, String cognome, String sesso, String email, String telefono, String codiceFiscale, String tipo, String password) throws SQLException {
+	public synchronized void doSaveAgricoltorePrivato(String nome, String cognome, String sesso, String email, String telefono, String codiceFiscale, String tipo, String password) throws SQLException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -125,7 +125,7 @@ public class UtenteModel {
         
 		
 		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
-				+ " (id, matricola, nome, cognome, sesso, email, telefono, stato, attivita, codice_fiscale,tipo, durata, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " (id, matricola, nome, cognome, sesso, email, telefono, stato, attivita, codice_fiscale,tipo, durata, password, dirigente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
@@ -143,6 +143,7 @@ public class UtenteModel {
 			preparedStatement.setString(11, tipo);
 			preparedStatement.setString(12, "0");
 			preparedStatement.setString(13, password);
+			preparedStatement.setString(14, "");
 			
 
 			System.out.println(preparedStatement.executeUpdate());
@@ -210,6 +211,55 @@ public class UtenteModel {
 		return utente;
 		}
 	
+	
+	public synchronized ArrayList<Utente> doRetrieveCEO() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ArrayList<Utente> utenti = new ArrayList<Utente>();
+		String ruolo = "Dirigente aziendale";
+		
+		String selectSQL = "SELECT * FROM "+UtenteModel.TABLE_NAME+" WHERE tipo = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, ruolo);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Utente utente = new Utente();
+				utente.setId(rs.getString("id"));
+				utente.setMatricola(rs.getString("matricola"));
+				utente.setNome(rs.getString("nome"));
+				utente.setCognome(rs.getString("cognome"));
+				utente.setSesso(rs.getString("sesso"));
+				utente.setEmail(rs.getString("email"));
+				utente.setTelefono(rs.getString("telefono"));
+				utente.setStato(rs.getString("stato"));
+				utente.setAttivita(rs.getString("attivita"));
+				utente.setCodice_fiscale(rs.getString("codice_fiscale"));
+				utente.setDurata(rs.getString("durata"));
+				utente.setTipo(rs.getString("tipo"));
+				utente.setPassword(rs.getString("password"));
+				utente.setProprietario(rs.getString("dirigente"));
+				System.out.println("\n\n\n\nutente id: "+utente.getId());
+				utenti.add(utente);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+		return utenti;
+		}
+	
 	/**cerca utente con email e password (verifica login) **/
 	
 	public synchronized Utente searchUser(String email, String password) throws SQLException {
@@ -256,5 +306,159 @@ public class UtenteModel {
 		System.out.println(utente.toString());
 		return utente;
 		}
+	
+	
+	/**cerca utente con email e password (verifica login) **/
+	
+	public synchronized Utente searchUser(String email, String password, String tipo) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Utente utente = new Utente();
+		
+		String selectSQL = "SELECT * FROM "+UtenteModel.TABLE_NAME+" WHERE email = ? AND password = ? AND tipo = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
+			preparedStatement.setString(3, tipo);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				
+				utente.setId(rs.getString("id"));
+				utente.setMatricola(rs.getString("matricola"));
+				utente.setNome(rs.getString("nome"));
+				utente.setCognome(rs.getString("cognome"));
+				utente.setSesso(rs.getString("sesso"));
+				utente.setEmail(rs.getString("email"));
+				utente.setTelefono(rs.getString("telefono"));
+				utente.setStato(rs.getString("stato"));
+				utente.setAttivita(rs.getString("attivita"));
+				utente.setCodice_fiscale(rs.getString("codice_fiscale"));
+				utente.setDurata(rs.getString("durata"));
+				utente.setTipo(rs.getString("tipo"));
+				utente.setPassword(rs.getString("password"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		System.out.println(utente.toString());
+		return utente;
+		}
+
+	public void doSaveAgricoltoreAziendale(String nome, String cognome, String sesso, String email, String telefono, String codiceFiscale,
+			String tipo, String password, String dirigente) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String id = this.generateID();
+		String matricola = this.generateMatricola();
+        
+		
+		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
+				+ " (id, matricola, nome, cognome, sesso, email, telefono, stato, attivita, codice_fiscale,tipo, durata, password, dirigente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, matricola);
+			preparedStatement.setString(3, nome);
+			preparedStatement.setString(4, cognome);
+			preparedStatement.setString(5, sesso);
+			preparedStatement.setString(6, email);
+			preparedStatement.setString(7, telefono);
+			preparedStatement.setString(8, "");
+			preparedStatement.setString(9, "");
+			preparedStatement.setString(10, codiceFiscale);
+			preparedStatement.setString(11, tipo);
+			preparedStatement.setString(12, "0");
+			preparedStatement.setString(13, password);
+			preparedStatement.setString(14, dirigente);
+			
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+	}
+	
+	
+	public void doSaveDirigenteAziendale(String nome, String cognome, String sesso, String email, String telefono, String codiceFiscale,
+			String tipo, String password) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String id = this.generateID();
+		String matricola = this.generateMatricola();
+        
+		
+		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
+				+ " (id, matricola, nome, cognome, sesso, email, telefono, stato, attivita, codice_fiscale,tipo, durata, password, dirigente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, matricola);
+			preparedStatement.setString(3, nome);
+			preparedStatement.setString(4, cognome);
+			preparedStatement.setString(5, sesso);
+			preparedStatement.setString(6, email);
+			preparedStatement.setString(7, telefono);
+			preparedStatement.setString(8, "");
+			preparedStatement.setString(9, "");
+			preparedStatement.setString(10, codiceFiscale);
+			preparedStatement.setString(11, tipo);
+			preparedStatement.setString(12, "0");
+			preparedStatement.setString(13, password);
+			preparedStatement.setString(14, id);
+			
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+	}
 	
 }

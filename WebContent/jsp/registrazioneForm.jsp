@@ -14,6 +14,18 @@
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/registrazione.js"></script>
 
+<%@ page import="Model.*"%>
+<%@ page import="java.util.*"%>
+
+<% String tipo = request.getSession().getAttribute("ruolo_agricoltore").toString(); 
+	System.out.println("\n\n\ntipo: "+tipo+"\n\n\n");
+	
+	UtenteModel utenteModel = new UtenteModel();
+	
+	ArrayList<Utente> utenti = utenteModel.doRetrieveCEO();
+	System.out.println("\n\n\n\n"+utenti.size());
+%>
+
 </head>
 <body>
 
@@ -95,6 +107,17 @@
                   	<option value="Agricoltore aziendale">Agricoltore aziendale</option>
                   	<option value="Dirigente aziendale">Dirigente aziendale</option>
                   </select>
+                </div>
+                <!-- CEO -->
+                <div class="md-form" style="margin-bottom: 1em">
+                <% if(tipo.equals("Agricoltore aziendale") && (utenti.size() >= 1)) { %>
+                  <i class="fa fa-user prefix white-text active"></i> Dirigente aziendale:
+                  <select required name="dirigente" id="form3" class="white-text form-control" style="background: transparent; margin-bottom:2em; color: white;">
+                  <% for(Utente utente : utenti){ %>
+                  		<option value="<%=utente.getId()%>"><%=utente.getCognome()%> <%=utente.getNome()%></option>
+                  	<% } %>
+                <% } %>
+                 </select>
                 </div>
                 <!-- Password -->
                 <div class="md-form" style="margin-bottom: 1em">

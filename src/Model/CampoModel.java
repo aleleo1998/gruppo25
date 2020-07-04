@@ -88,5 +88,46 @@ public class CampoModel {
 		
 		return campo;
 	}
+	
+	/**
+	 * 
+	 * @param nomeCampo
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int removeCampoByName(String nomeCampo) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		
+		String insertSQL = "DELETE FROM " + CampoModel.TABLE_NAME + " WHERE nome = ? ";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, nomeCampo);
+		
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
 
 }
