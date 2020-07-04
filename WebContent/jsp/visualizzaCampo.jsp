@@ -1,3 +1,8 @@
+<%@page import="Model.*"%>
+<%@page import="java.sql.*"%>
+<%@page import ="java.util.*"%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +15,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+
+
+<% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
+<%! ArrayList<Dispositivo> dispositiviList; %>
+<% dispositiviList = (ArrayList<Dispositivo>) request.getSession().getAttribute("lista_dispositivi"); %>
 
 <title>Visualizza Campo</title>
 </head>
@@ -37,7 +47,7 @@
 			    <thead>
 			      <tr>
 			        <th bgcolor="#3F565A"><span style="color:#ffffff"> Nome Campo: </span></th>
-			        <th ><span style="color:#000000"> nome campo</span></th>
+			        <th ><span style="color:#000000"><%=campo.getNome() %></span></th>
 			        
 			      </tr>
 			    </thead>
@@ -48,7 +58,7 @@
 			    <tbody id="myTable">
 			       <tr>
 			        <th bgcolor="#3F565A"><span style="color:#ffffff"> Posizione: </span></th>
-			        <th ><span style="color:#000000"> posizione campo</span></th>
+			        <th ><span style="color:#000000"><%=campo.getPosizione() %> </span></th>
 			       
 			      </tr>
 			      
@@ -58,7 +68,7 @@
 			    <tbody id="myTable">
 			       <tr>
 			        <th bgcolor="#3F565A"><span style="color:#ffffff"> Tipo terreno: </span></th>
-			        <th ><span style="color:#000000"> tipo terreno</span></th>
+			        <th ><span style="color:#000000"><%=campo.getTipo_terreno() %></span></th>
 			       
 			      </tr>
 			  </tbody>
@@ -73,7 +83,7 @@
 			    <thead>
 			      <tr>
 			        <th bgcolor="#3F565A"><span style="color:#ffffff"> Coltura: </span></th>
-			        <th ><span style="color:#000000"> coltura</span></th>
+			        <th ><span style="color:#000000"> <%=campo.getColtura() %></span></th>
 			        
 			      </tr>
 			    </thead>
@@ -84,7 +94,7 @@
 			    <tbody id="myTable">
 			       <tr>
 			        <th bgcolor="#3F565A"><span style="color:#ffffff"> Temperatura </span></th>
-			        <th ><span style="color:#000000"> 22</span></th>
+			        <th ><span style="color:#000000"><%=campo.getTemperatura() %></span></th>
 			       
 			      </tr>
 			      
@@ -119,10 +129,109 @@
 		 			 </div>
 		  				<div class="card-body">
 		  				 
-		  				 <div id="sensori"> Sensori</div>
+		  				 
+		  				 
+		  				 <div id="sensori"> Sensori
+		  				<div class="card example-1 scrollbar-ripe-malinka">
+      					<div class="card-body">
+      					<%if(dispositiviList.size()==0){ %>
+      					<span style="color:#000000">Nessun sensore associato.</span>
+      					<%} %>
+      					<% for(Dispositivo disp : dispositiviList){ 
+      						if(disp.getTipo().equals("sensore")){%> 
+      						<div class="sensorDiv">
+        				<h6 class="section1" id="section1"><strong><%=disp.getNome() %></strong></h6>
+        				
+        				 <table id="tableSensori" class="tableSensori" width="auto">
+			  
+							    <thead>
+							      <tr>
+							        <th ><span> Dati: </span></th>
+							        <th ><span style="color:#000000"> <%=disp.getId() %></span></th>
+							        
+							      </tr>
+							    </thead>
+			    
+							    <tr>
+							      <th colspan="5" height="10em"><span style="color:#ffffff">  </span></th>
+							      </tr>
+							    <tbody id="myTable">
+							       <tr>
+							    
+							        <th >
+							        <%if(disp.getStato().equals("disponibile")){ %>
+							        	<span ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span>
+							        <%} %>
+							         <%if(disp.getStato().equals("occupato")){ %>
+							        	<span ><i style="color:red" class="fa fa-circle" aria-hidden="true"></i></span>
+							        <%} %>
+							        
+							        </th>
+							        <th ><span style="color:#000000"><%=disp.getStato() %></span></th>
+							       
+							      </tr>
+							      </tbody>
+			     		 </table>
+        				</div>
+        			<%}} %>
+        				
+        				
+      </div>
+    </div>
+		  				 
+		  				 </div>
 		  				 	
 		  				 	
-		  				 <div id="robot"> Robot </div>
+		  				 <div id="robot"> Robot 
+		  				 
+		  				 
+		  				 <div class="card example-1 scrollbar-ripe-malinka">
+      					<div class="card-body">
+      					<%if(dispositiviList.size()==0){ %>
+      					<span style="color:#000000">Nessun robot associato.</span>
+      					<%} %>
+      					<% for(Dispositivo disp : dispositiviList){ 
+      						if(disp.getTipo().equals("robot")){%> 
+      						<div class="sensorDiv">
+        				<h6 class="section1" id="section1"><strong><%=disp.getNome() %></strong></h6>
+        				
+        				 <table id="tableSensori" class="tableSensori" width="auto">
+			  
+							    <thead>
+							      <tr>
+							        <th ><span> Dati: </span></th>
+							        <th ><span style="color:#000000"> <%=disp.getId() %></span></th>
+							        
+							      </tr>
+							    </thead>
+			    
+							    <tr>
+							      <th colspan="5" height="10em"><span style="color:#ffffff">  </span></th>
+							      </tr>
+							    <tbody id="myTable">
+							       <tr>
+							        <th>
+							        <%if(disp.getStato().equals("disponibile")){ %>
+							        	<span ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span>
+							        <%} %>
+							         <%if(disp.getStato().equals("occupato")){ %>
+							        	<span ><i style="color:red" class="fa fa-circle" aria-hidden="true"></i></span>
+							        <%} %>
+							        </th>
+							        <th ><span style="color:#000000"><%=disp.getStato() %></span></th>
+							       
+							      </tr>
+							      </tbody>
+			     		 </table>
+        				</div>
+        			<%}} %>
+        				
+        				
+      </div>
+    </div>
+		  		</div>
+		  		
+		  		
 		  				</div>
 		  		
 		  		
