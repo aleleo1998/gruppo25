@@ -109,8 +109,8 @@
                   </select>
                 </div>
                 <!-- CEO -->
-                <% if(tipo.equals("Agricoltore aziendale") && (utenti.size() >= 1)) { %>
                 <div class="md-form" style="margin-bottom: 1em">
+                <% if(tipo.equals("Agricoltore aziendale") && (utenti.size() >= 1)) { %>
                   <i class="fa fa-user prefix white-text active"></i> Dirigente aziendale:
                   <select required name="dirigente" id="form3" class="white-text form-control" style="background: transparent; margin-bottom:2em; color: white;">
                   <% for(Utente utente : utenti){ %>

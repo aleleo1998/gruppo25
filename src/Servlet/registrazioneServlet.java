@@ -41,8 +41,9 @@ public class registrazioneServlet extends HttpServlet {
 		String codiceFiscale = request.getParameter("codiceFiscale");
 		String tipo = request.getParameter("tipo");
 		String dirigente = "";
-		if(tipo != "Agricoltore aziendale") {
+		if(tipo.equals("Agricoltore aziendale")) {
 			dirigente = request.getParameter("dirigente");
+			System.out.println("\n\n\n\ndirigente: "+dirigente);
 		}
 		String password = request.getParameter("password");
 		
@@ -50,11 +51,11 @@ public class registrazioneServlet extends HttpServlet {
 		UtenteModel utenteModel = new UtenteModel();
 		
 		try {
-			if(tipo == "Agricoltore privato")
+			if(tipo.equals("Agricoltore privato"))
 				utenteModel.doSaveAgricoltorePrivato(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password);
-			if(tipo == "Agricoltore aziendale")
+			if(tipo.equals("Agricoltore aziendale"))
 				utenteModel.doSaveAgricoltoreAziendale(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password, dirigente);
-			if(tipo == "Dirigente aziendale")
+			if(tipo.equals("Dirigente aziendale"))
 				utenteModel.doSaveDirigenteAziendale(nome, cognome, sesso, email, telefono, codiceFiscale, tipo, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

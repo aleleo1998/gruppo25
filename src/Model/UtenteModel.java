@@ -125,7 +125,7 @@ public class UtenteModel {
         
 		
 		String insertSQL = "INSERT INTO " + UtenteModel.TABLE_NAME
-				+ " (id, matricola, nome, cognome, sesso, email, telefono, stato, attivita, codice_fiscale,tipo, durata, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " (id, matricola, nome, cognome, sesso, email, telefono, stato, attivita, codice_fiscale,tipo, durata, password, dirigente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
@@ -143,6 +143,7 @@ public class UtenteModel {
 			preparedStatement.setString(11, tipo);
 			preparedStatement.setString(12, "0");
 			preparedStatement.setString(13, password);
+			preparedStatement.setString(14, "");
 			
 
 			System.out.println(preparedStatement.executeUpdate());

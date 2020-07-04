@@ -32,7 +32,7 @@
   </ol>
   <!--/.Indicators-->
   <% if(size == 0){ %>
-	  <p> Non hai inserito nessun campo! </p>
+	  <p style="margin-left:2.55em; margin-top:3em;"><strong> Non hai ancora inserito nessun campo.</strong> Clicca sulla voce "Inserisci campo" per inserire un nuovo campo.</p>
   <% } else { %>
   
   <!--Slides-->

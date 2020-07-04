@@ -30,7 +30,7 @@
  	
  	
  	<br><br><br><br>
- 	<p class="myButton" style="margin-left: 3em;">Aggiungi campo</p>
+ 	<p class="myButton" style="margin-left: 3em;">Inserisci campo</p>
  	
  	<table style="margin-left: 2.5em;">
  	<% int i=0;

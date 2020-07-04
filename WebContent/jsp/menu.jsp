@@ -18,7 +18,7 @@
 
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color" style="background-color:#3F565A;">
-  <a class="navbar-brand" href="#">AcaGreen</a>
+  <a class="navbar-brand" href="profilo.jsp">AcaGreen</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
     aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
        	<a class="nav-link" href="i_miei_campi.jsp"> I miei campi </a>
       </li>
       <li class="nav-item active">
-       	<a class="nav-link" href="#"> Inventario </a>
+       	<a class="nav-link" href="inventario.jsp"> Inventario </a>
       </li>
       <li class="nav-item active">
        	<a class="nav-link" href="#"> Sensori e Robot </a>
@@ -39,7 +39,7 @@
       </li>
       
        <li class="nav-item active" id="profilotext" style="display: none">
-       	<a class="nav-link" href="#"> Profilo </a>
+       	<a class="nav-link" href="profilo.jsp"> Profilo </a>
       </li>
       <li class="nav-item active" id="instagram">
         <a class="nav-link" href="#"> <i class="fab fa-instagram"></i> </a>
@@ -58,8 +58,8 @@
           <i class="fas fa-user" style="color: whitesmoke"></i></a>
         
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="#">Profilo</a>
-          <a class="dropdown-item" href="#">Esci</a>
+          <a class="dropdown-item" href="profilo.jsp">Profilo</a>
+          <a class="dropdown-item" href="../logoutServlet">Esci</a>
         </div>
       </li>
     </ul>
