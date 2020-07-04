@@ -49,9 +49,9 @@
 	<p style="margin-left: 2em;"><strong>Risorse umane:</strong> ricerca dipendenti e assegna loro un lavoro.</p>
 	
 	<!-- SEARCH BAR -->
-	<form class="form-inline" style="margin: 1em 0em 2em 2em; width: 300px;">
+	<form id="searchForm" class="form-inline" action="../ricercaRUServlet" method="post" style="margin: 1em 0em 2em 2em; width: 300px;">
   		<i class="fas fa-search" aria-hidden="true" id="searchButton" style="cursor:pointer"></i>
-  		<input id="searchInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Mario Rossi" aria-label="Search">
+  		<input id="searchInput" class="form-control form-control-sm ml-3 w-75" type="text" name="search" placeholder="Mario Rossi" aria-label="Search">
 	</form>
 	<!-- END SEARCH BAR -->
 

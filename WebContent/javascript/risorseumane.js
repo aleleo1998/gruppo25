@@ -78,12 +78,23 @@ $(".myButton2").click(function(){
 		
 	});
 
+
+	$("#searchButton").click(function(){
+		
+		$("#searchForm").submit();
+	
+	});
+
+
+/*
 	
 	$("#searchButton").click(function(){
 		
 		alert($("#searchInput").val());
 		
 		var search = $("#searchInput").val();
+		
+		alert(search);
 		
 		$.ajax({            //AJAX CON JQUERY
 			type : 'Get',   //TIPO DI CHIAMATA
@@ -98,7 +109,7 @@ $(".myButton2").click(function(){
 			
 		}); /*fine ajax*/
 		
-	});
+	//});
 	
 	
 	
