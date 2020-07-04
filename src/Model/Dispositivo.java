@@ -2,13 +2,17 @@ package Model;
 
 public class Dispositivo {
 	
-public Dispositivo(String id, String nome, String tipo, String campo, String stato) {
-	
+
+
+
+public Dispositivo(String id, String nome, String tipo, String campo, String stato, String utente) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.tipo = tipo;
 		this.campo = campo;
 		this.stato = stato;
+		this.utente = utente;
 	}
 
 public Dispositivo() {
@@ -55,9 +59,18 @@ public void setStato(String stato) {
 	this.stato = stato;
 }
 
+public String getUtente() {
+	return utente;
+}
+
+public void setUtente(String utente) {
+	this.utente = utente;
+}
+
 private String id;
 private String nome;
 private String tipo;
 private String campo;
 private String stato;
+private String utente;
 }

@@ -1,35 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/drago.css">
 <title>Aca green</title>
 
 <script>
+$(document).ready(function(){
+	$(".id").hide();
+
+	
+});
 function controllo_form_aggiungi()
 {
 	inizio=document.getElementById("ora-inizio").value
 	fine=document.getElementById("ora-fine").value
 	giorno=document.getElementById("giorno").value
-	if(inizio<fine)
-	{
-		if (giorno!="")
+    if((inizio!="")&&(fine!=""))
+    {
+	    if(inizio<fine)
+	    {
+	 	    if (giorno!="")
 			{
-			document.getElementById("form-aggiungi").submit();
+			  document.getElementById("form_aggiungi").submit();
 			}
-		else
+		    else
 			{
 			alert("Devi selezionare un giorno")
 			}
-	}
-	else
-	{
-		alert("L'orario di fine precede l'orario di inzio")
-	}
+	    }
+	    else
+	    {
+		 alert("L'orario di fine precede l'orario di inzio")
+	    }
+    }
+    else
+	  {
+		alert("Devi selezionare un orario di inizio e uno di fine")
+	  }
 	
 }
 </script>
@@ -37,54 +52,187 @@ function controllo_form_aggiungi()
 <body>
 <%@ page import="Model.*"%>
 <%@ page import ="java.util.*" %>
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
  <div id="container">
   <p style="margin:50px 0px 0px 40px">Aggiungi irrigazione</p> 
-  <div id="AggiungiIrrigazione" style="border-style: ridge;padding:20px 0px 0px 50px;margin:0px 40px 0px 40px">
+  <div id="AggiungiIrrigazione" style="border-style: ridge;padding:20px 0px 20px 0px;margin:0px 40px 0px 40px">
   <form class="scelta-form" id="form_aggiungi" action="../AggiungiIrrigazioneServlet">
    <table class="table">
    <tr>
-   <td style="text-align:center">
+   <td>
+      <div style="margin-left:40px">
       Giorno
-      <select id="giorno" name="giorno" id="giorno" >
-       <option value="Lunedì">Lunedì</option>
-       <option value="Martedì">Martedì</option>
-       <option value="Mercoledì">Mercoledì</option>
-       <option value="Giovedì">Giovedì</option>
-       <option value="Venerdì">Venerdì</option>
+      <select id="giorno" name="giorno" id="giorno" style="font-size:12px; height:24px;margin-left:10px" >
+       <option value="LunedÃ¬" >LunedÃ¬</option>
+       <option value="MartedÃ¬">MartedÃ¬</option>
+       <option value="MercoledÃ¬">MercoledÃ¬</option>
+       <option value="GiovedÃ¬">GiovedÃ¬</option>
+       <option value="VenerdÃ¬">VenerdÃ¬</option>
        <option value="Sabato">Sabato</option>
        <option value="Domenica">Domenica</option>
       </select>
+    </div> 
    </td>
-   <td style="text-align:center">
-      orario di inizio<input type="time" name="ora-inizio" id="ora-inizio">
+   <td>
+      orario di inizio<input type="time" name="ora-inizio" id="ora-inizio" style="margin:0px 0px 0px 10px">
    </td>
-   <td style="text-align:center"> 
-      orario di fine<input type="time" name="ora-fine" id="ora-fine" >
+   <td > 
+      orario di fine<input type="time" name="ora-fine" id="ora-fine" style="margin:0px 0px 0px 10px" >
    </td>
    </tr>
    <tr>
    </table>
-   <table class="table">
-   <tr>
-   <td style="text-align:center">
-   <input type="button" value="Conferma" onclick="controllo_form_aggiungi()">
-   </td>
-   <td style="text-align:center">
-   <input type="button" value="Annulla">
-   </td>
-   </tr>  
-   </table>
+   </form>
    
-     </form>
+   <div id="pulsanti" style="margin-left:48px">
+   <button class="myButton" data-toggle="modal" data-target="#modal_aggiungi">Conferma</button>
+   <input type="button" class="myButton" value="Annulla" style="margin-left:20px">
+   </div>
+   
   </div>
-  <div id="visualizza-irrigazioni">
+  <p style="margin:50px 0px 0px 40px">Irrigazioni programmate</p>
+  <div id="visualizza-irrigazioni" style="border-style: ridge;padding:20px 0px 20px 50px;margin:0px 40px 0px 40px">
   <%
-  IrrigazioneModel i = new IrrigazioneModel();
-  LinkedList<Irrigazione> list = (LinkedList<Irrigazione>) i.doRetrieveAllByCampo("campo1");  
+  int i=0;
+  IrrigazioneModel im = new IrrigazioneModel();
+ // Campo c=(Campo) request.getSession().getAttribute("campo_selezionato");
+  LinkedList<Irrigazione> list = (LinkedList<Irrigazione>) im.doRetrieveAllByCampo("campo1");
+  for(Irrigazione c: list)
+  {
+	  %>
+	   <form id=<%=c.getId() %> method="get" action="../RimuoviIrrigazioneServlet">
+	   <input type="text" name="id_irrigazione" class="id" value=<%=c.getId()%>>
+	   </form>
+	   <div style="margin-top:20px">
+	   <%=c.getGiorno()+" "+c.getOra_inizio()+"-"+c.getOra_fine()%>
+	   <%if(c.getGiorno().equals("LunedÃ¬")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:35px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	   <%if(c.getGiorno().equals("MartedÃ¬")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:28px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	    <%if(c.getGiorno().equals("MercoledÃ¬")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:11px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	    <%if(c.getGiorno().equals("GiovedÃ¬")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:28px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	   <%if(c.getGiorno().equals("VenerdÃ¬")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:28px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	   <%if(c.getGiorno().equals("Sabato")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:33px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	   <%if(c.getGiorno().equals("Domenica")){ %>
+	   <input type="button" class="myButton" value="Cambia" style="margin-left:11px">
+	   <button type="button" class="myButton" data-toggle="modal" style="margin-left:20px" data-target="#modalRelatedContent<%=i%>">Rimuovi</button>
+	   <% }%>
+	  
+	  </div>
+	 <div class="modal fade right" id="modalRelatedContent<%=i%>" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Riepilogo di rimozione</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+          <div class="col-7">
+            <p><strong>Sei sicuro di voler eliminare l'irrigazione programmata per 
+             <%=c.getGiorno()+" "+c.getOra_inizio()+"-"+c.getOra_fine()%>?</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        
+        
+        <hr>
+        
+        	<button type="submit" class="myButton" form=<%=c.getId() %> style="margin-right: 2em">Conferma</button>
+            <button type="button" class="myButton" data-dismiss="modal" >Annulla</button>
+        
+      </div>
+    </div>
+    </div>
+</div>
+    <!--/.Content-->
+	  <% 
+  i++;}
+  
   %>
   </div>
-  
-  
+   <div class="modal fade right" id="modal_aggiungi" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Riepilogo</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+          <div class="col-7">
+            <p><strong>Sei sicuro di inserire questa nuova irrigazione programmata</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        
+        
+        <hr>
+        
+        	<button type="button" onclick="controllo_form_aggiungi()" class="myButton" 
+        	style="margin-right: 2em">Conferma</button>
+            <button type="button" class="myButton" data-dismiss="modal" >Annulla</button>
+        
+      </div>
+    </div>
+    </div>
 </div>
+    <!--/.Content-->
+
+  </div>
+  
+
+  <div id="footer">
+	<%@include file="../html/footer.html"%>
+</div>
+  
 </body>
 </html>

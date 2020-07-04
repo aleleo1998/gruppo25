@@ -7,7 +7,7 @@ public class Irrigazione {
 	public Irrigazione() {
 		super();
 	}
-	public Irrigazione(String id, String giorno, String ora_inizio, String ora_fine, String campo) {
+	public Irrigazione(int id, String giorno, String ora_inizio, String ora_fine, String campo) {
 		super();
 		this.id = id;
 		this.giorno = giorno;
@@ -15,10 +15,10 @@ public class Irrigazione {
 		this.ora_fine = ora_fine;
 		this.campo = campo;
 	}
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getGiorno() {
@@ -45,7 +45,7 @@ public class Irrigazione {
 	public void setCampo(String campo) {
 		this.campo = campo;
 	}
-	private String id;
+	private int id;
 	private String giorno;
 	private String ora_inizio;
 	private String ora_fine;
