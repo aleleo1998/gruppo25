@@ -35,7 +35,7 @@
        	<a class="nav-link" href="#"> Sensori e Robot </a>
       </li>
       <li class="nav-item active">
-       	<a class="nav-link" href="#"> Risorse umane </a>
+       	<a class="nav-link" href="risorseumane.jsp"> Risorse umane </a>
       </li>
       
        <li class="nav-item active" id="profilotext" style="display: none">

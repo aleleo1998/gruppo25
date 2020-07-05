@@ -13,7 +13,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
-<script src="../javascript/profilo.js"></script>
+<script src="../javascript/risorseumane.js"></script>
+
+<%@ page import="Model.*"%>
+<%@ page import="java.util.*"%>
+
+<% String tipo = request.getSession().getAttribute("ruolo_agricoltore").toString(); 
+	
+	Utente user = new Utente();
+	user = (Utente) request.getSession().getAttribute("utente");
+	
+	UtenteModel utenteModel = new UtenteModel();
+	
+	ArrayList<Utente> utenti = utenteModel.doRetrieveRisorseUmane(user.getId());
+	System.out.println("\n\n\n\n"+utenti.size());
+	
+	CampoModel campoModel = new CampoModel();
+	
+	ArrayList<Campo> campi = campoModel.doRetrieveByCEO(user.getId());
+%>
 
 </head>
 <body>
@@ -24,43 +42,58 @@
 
 <div id="container">
 
+<input id="size" type="text" value="<%= utenti.size() %>" style="display:none">
+
 	<!-- Ricerca dipendenti -->
 	
 	<p style="margin-left: 2em;"><strong>Risorse umane:</strong> ricerca dipendenti e assegna loro un lavoro.</p>
 	
 	<!-- SEARCH BAR -->
-	<form class="form-inline" style="margin: 1em 0em 2em 2em; width: 300px;">
+	<form id="searchForm" class="form-inline" action="../ricercaRUServlet" method="post" style="margin: 1em 0em 2em 2em; width: 300px;">
   		<i class="fas fa-search" aria-hidden="true" id="searchButton" style="cursor:pointer"></i>
-  		<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Mario Rossi" aria-label="Search">
+  		<input id="searchInput" class="form-control form-control-sm ml-3 w-75" type="text" name="search" placeholder="Mario Rossi" aria-label="Search">
 	</form>
 	<!-- END SEARCH BAR -->
 
 	<!-- Tabella dipendenti -->
+	
+	<% 
+		int i = 0;
+	for(Utente utente : utenti){ 
+	System.out.println(utente.getStato()); %>
 
   <div class="row" style="margin-left:2em; margin-right: 2em; padding-top: 1em; border: 2px ridge rgba(28,110,164,0.24);">
-    <div class="col-sm"><strong style="font-size:0.8em;">Nome Cognome</strong>
+ 
+  <!-- INFO STATO -->
+  <p id="info<%=i%>" style="display:none"><%=utente.getStato()%></p>
+  <p id="id<%=i%>" style="display:none"><%=utente.getId()%></p>
+  
+  	
+    <div class="col-sm"><strong style="font-size:0.8em;"><%= utente.getNome() %> <%= utente.getCognome() %></strong>
     	<img src="../img/farmer.png" style="width:100px; height:100px; margin-top:1em; margin-bottom:1em;">
     </div>
-    <div class="col-sm"><strong style="font-size:0.8em;">Matricola</strong>
-    	<p style="margin-top: 3em; font-size: 0.8em;">0000</p>
+    <div class="col-sm"><strong style="font-size:0.8em; width:100px;">Matricola</strong>
+    	<p style="margin-top: 3em; font-size: 0.8em; width:100px;"><%= utente.getMatricola()%></p>
     </div>
-    <div class="col-sm"><strong style="font-size:0.8em;">Sesso</strong>
-    	<p style="margin-top: 3em; font-size: 0.8em;">M</p>
+    <div class="col-sm"><strong style="font-size:0.8em; width:5px;">Sesso</strong>
+    	<p style="margin-top: 3em; font-size: 0.8em; width:5px;"><%= utente.getSesso() %></p>
     </div>
-    <div class="col-sm"><strong style="font-size:0.8em;">Email</strong>
-    	<p style="margin-top: 3em; font-size: 0.8em;">0000</p>
+    <div class="col-sm"><strong style="font-size:0.8em; width:140px;">Email</strong>
+    	<p style="margin-top: 3em; font-size: 0.8em; width:140px; overflow:scroll"><%= utente.getEmail() %></p>
     </div>
-    <div class="col-sm"><strong style="font-size:0.8em;">Telefono</strong>
-    	<p style="margin-top: 3em; font-size: 0.8em;">+39 3293939393</p>
+    <div class="col-sm"><strong style="font-size:0.8em; width:100px;">Telefono</strong>
+    	<p style="margin-top: 3em; font-size: 0.8em; width:100px;"><%=utente.getTelefono() %></p>
     </div>
     <div class="col-sm"><strong style="font-size:0.8em;">Seleziona campo</strong>
-    	<select style="margin-top: 1.5em; font-size: 0.8em;" name="selezionacampo" id="selezionacampo">
-    		<option value="ciao">campo 1</option>
+    	<select style="margin-top: 3em; font-size: 0.8em; width: 120px;" name="selezionacampo<%=i%>" id="selezionacampo<%=i%>">
+    		<% for(Campo campo : campi) { %>
+    		<option value="<%=campo.getNome()%>" selected><%= campo.getNome() %></option>
+    		<% } %>
     	</select>
     </div>
     <div class="col-sm"><strong style="font-size:0.8em;">Seleziona attività</strong>
-    	<select style="margin-top: 3.4em; font-size: 0.8em;" name="selezionaattivita" id="selezionaattivita">
-    		<option value="Semina">Semina</option>
+    	<select style="margin-top: 3em; font-size: 0.8em; width: 120px" name="selezionaattivita<%=i%>" id="selezionaattivita<%=i%>">
+    		<option value="Semina" selected>Semina</option>
     		<option value="Raccolto">Raccolto</option>
     		<option value="Preparazione terreno">Preparazione terreno</option>
     		<option value="Controllo campi">Controllo campi</option>
@@ -70,7 +103,7 @@
     	</select>
     </div>
     <div class="col-sm"><strong style="font-size:0.8em;">Seleziona durata</strong>
-    	<select style="margin-top: 1.5em; font-size: 0.8em;" name="selezionadurata" id="selezionadurata">
+    	<select style="margin-top: 3em; font-size: 0.8em; width: 120px" name="selezionadurata<%=i%>" id="selezionadurata<%=i%>">
     		<option value="2 ore">2 ore</option>
     		<option value="4 ore">4 ore</option>
     		<option value="2 giorni">2 giorni</option>
@@ -81,22 +114,29 @@
     		<option value="1 settimana">1 settimana</option>
     		<option value="2 settimane">2 settimane</option>
     		<option value="2 settimane">3 settimane</option>
-    		<option value="1 mese">1 mese</option>
+    		<option value="1 mese" selected>1 mese</option>
     	</select>
     </div>
-    <div class="col-sm"><strong style="font-size: 0.8em;">Stato</strong>
-    	<img src="../img/riposo.png" style="width: 30px; height: 30px;">
-    	<button style="margin-top:3em; font-size:0.6em; width: 125px;"class="myButton">Assegna lavoro </button>
+    <div class="col-sm" id="libero<%=i%>"><strong style="font-size: 0.8em;">Stato</strong>
+    	<img src="../img/riposo.png" style="width: 30px; height: 30px;">	
+    		<input type="text" value="<%=utente.getId()%>" style="display:none"></input>
+    		<button style="margin-top:3em; font-size:0.6em; width: 125px;" class="myButton" id="<%=i%>">Assegna lavoro</button>
     </div>
-    <div style="display:none" class="col-sm"><strong style="font-size: 0.8em;">Stato</strong>
+    <div style="display:none" id="occupato<%=i%>" class="col-sm"><strong style="font-size: 0.8em;">Stato</strong>
     	<img src="../img/lavoro.png" style="width: 30px; height: 30px;">
-    	<button style="margin-top:1em; font-size:0.8em; width: 148px;"class="myButton2">Annulla lavoro </button>
+    	<form>
+    	<button style="margin-top:3em; font-size:0.6em; width: 125px;" class="myButton2" id="<%=i%>">Annulla lavoro </button>
+    	</form>
     </div>
     <div class="col-sm"><strong style="font-size:0.8em;">Tempo rimanente</strong>
     <br>
-    	<p style="margin-top: 1em; font-size: 0.8em;">3 giorni, 2 ore</p>
+    	<p style="margin-top: 1em; font-size: 0.8em;"><%=utente.getDurata()%></p>
     </div>
+    <!--  END FORM -->
   </div>
+  
+  <% i++; } %>
+  
  </div>
   
   <div id="footer">
