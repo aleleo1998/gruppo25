@@ -160,6 +160,59 @@ public class InventarioModel {
 		return i;
 			
 	}
+	
+	
+	/**
+	 * crea un inventario di altre colture non presenti nell'inventario
+	 * @param idUtente
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized ArrayList<Inventario> getAltreColture(String idUtente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<Inventario> inventario = new ArrayList<Inventario>();
+
+		String selectSQL = "SELECT inventario.id_utente, item.id, item.nome, item.tipo, item.quantita FROM acagreen_db.item JOIN acagreen_db.inventario WHERE id_utente<>?;";
+		
+	
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, idUtente);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Inventario bean = new Inventario();
+				
+				bean.setIdUtente(rs.getString("id_utente"));
+				bean.setIdItem(rs.getString("id"));
+				bean.setNome(rs.getString("nome"));
+				bean.setTipo(rs.getString("tipo"));
+				bean.setQuantita(rs.getString("quantita"));
+
+				
+				
+				if(bean!=null) {	
+					inventario.add(bean);
+				}
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return inventario;
+	}
+	
+	
 }
 	
 

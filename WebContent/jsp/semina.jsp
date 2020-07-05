@@ -20,10 +20,12 @@
 <% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
 <% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
 <%! ArrayList<Inventario> inventarioList; %>
+<%! ArrayList<Inventario> altreColtureList; %>
 <% if(utente!=null){%>
 <%
 	Model.InventarioModel im = new InventarioModel();
 	inventarioList = (ArrayList<Inventario>) im.getInventario(utente.getId());
+	altreColtureList = (ArrayList<Inventario>) im.getAltreColture(utente.getId());
 }
 %>
 
@@ -62,17 +64,31 @@
 </form>
 
   <!--Row COLTURE-->
+  <%!int j = 0;
+  	String path="";
+  %>
     <% for(Inventario inv : inventarioList){ %> 
     	<%if(inv.getTipo().equals("coltura")){ 
     		ArrayList<Inventario> coltureList = new ArrayList<Inventario>(); 
     		coltureList.add(inv);
+    		
+    		if(j%4 == 0)
+				path = "../img/coltura1.jpg";
+			if(j%4 == 1)
+				path = "../img/coltura2.jpg";
+			if (j%3 == 2)
+				path = "../img/coltura3.jpg";
+			if (j%4 == 3)
+				path = "../img/coltura4.jpg";
+			
+			j++;
     	%>
   	<div id="row" class="rowInventario">
     
 	    <div class="media mb-4">
 			<input required form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
 			
-	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
+	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
@@ -125,6 +141,17 @@
     for(int i = 0;i<mod;i++){
     	Inventario inv = coltureList.get(r.nextInt(coltureList.size()));
     	
+    	if(j%4 == 0)
+			path = "../img/coltura1.jpg";
+		if(j%4 == 1)
+			path = "../img/coltura2.jpg";
+		if (j%3 == 2)
+			path = "../img/coltura3.jpg";
+		if (j%4 == 3)
+			path = "../img/coltura4.jpg";
+		
+		j++;
+    	
      %> 
     	
   	<div id="rowConsigliate" >
@@ -132,7 +159,7 @@
 	    <div class="media mb-4">
 			<input required form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
 			
-	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
+	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
@@ -234,6 +261,90 @@
 	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Reset</button> 
 	 	</center>
 	 </div>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	   <!-- ALTRE COLTURE --> 
+    
+    <div id="altreColture">
+  		<div id="form-box" class="card">
+	  
+	  <div class="card-body">
+	    <h5 class="card-title">Altre colture consigliate non presenti nell'inventario</h5> <hr>
+	   
+	   <div class="container my-5">
+
+
+
+  <!--Row ALTRE COLTURE-->
+  <%!int i = 0; 
+  
+  %>
+    <% 
+    for(Inventario inv : altreColtureList){ %> 
+    	<%if(inv.getTipo().equals("coltura")){ 
+    		ArrayList<Inventario> altreColtureConsigliate = new ArrayList<Inventario>(); 
+    		altreColtureConsigliate.add(inv);
+    		
+    		if(i%4 == 0)
+				path = "../img/coltura1.jpg";
+			if(i%4 == 1)
+				path = "../img/coltura2.jpg";
+			if (i%3 == 2)
+				path = "../img/coltura3.jpg";
+			if (i%4 == 3)
+				path = "../img/coltura4.jpg";
+			
+			i++;
+    	%>
+  	<div id="rowAltreColture" class="rowInventario">
+    
+	    <div class="media mb-4">
+			 
+
+			
+	      	<img class="rounded" src="<%=path%>" alt="Generic placeholder image">
+		    
+		      <div class="media-body">
+		        <a>
+		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
+		        </a>
+		      
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura consigliate per il campo <%=campo.getNome() %> non presente nel tuo inventario.
+		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questa coltura per ottenere il meglio dal tuo terreno! </span> 
+		        
+		        <%=inv.getNome() %><span></span></p>
+		          
+		          <%
+						Random rand = new Random();
+						int n = rand.nextInt(10000) + 1;
+						int costo = rand.nextInt(100) + 1;
+						System.out.println(n);
+				  %>
+		          
+		          <strong>Quantità necessaria per la semina del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
+		           <strong>Costo previsto: <%=costo %>&euro;</strong> <br>
+		        
+		      </div>
+	    </div>
+   
+	</div>
+	<%}
+    }
+     %>
+     </div>
+     </div>
+     </div>
+    </div>
+	 
+	 
+	 
 </div>
 
 
@@ -280,6 +391,9 @@
       </div>
     </div>
     </div>
+    
+  
+    
 </div>
     <!--/.Content-->
 <!--Modal: modalRelatedContent-->
