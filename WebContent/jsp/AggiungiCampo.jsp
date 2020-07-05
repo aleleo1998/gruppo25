@@ -3,11 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../css/AggiungiCampo.css">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/drago.css">
 <meta charset="ISO-8859-1">
 <title>Acagreen</title>
@@ -16,9 +21,40 @@
 $(document).ready(function(){
 	$(".nsensori").hide();
 	$("#nrobot").hide();
+	$("#proprietario").hide();
 
+
+		   $("#conferma").click(function(){
+			
+			var nome = $("#nome").val();
+			var cord = $("#cord").val();
+			var ettari = $("#km").val();
+			var tipo=$("#tipo").val();
+			var proprietario=$("#proprietario").val();
+			
+			if(nome!="")
+			{
+			 if((cord!="")&&(ettari!="")&&(tipo!="")){
+				 $.post("../CheckNomeCampo",{nome:nome,ettari:ettari,cord:cord,tipo:tipo,proprietario:proprietario}, function(result) {  
+						//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+								alert(result)
+				  });
+			 }
+			 else
+				 {
+				 alert("Devi eseguire la rilevazione")
+				 }
+			}
+			else
+				{
+				alert("Devi inserire un nome per il campo")
+				}
+		 
+		   
+		});
 	
 });
+
 var i = 0;
 var bool=false
 var bool2=false
@@ -64,8 +100,8 @@ function move() {
 	      document.getElementById("pulsante").style.display="block";
 	    } else {
 	      width++; 
-	      elem.style.width = width + '%'; 
-	      elem.innerHTML = width * 1  + '%';
+	      elem.style.width = width +'%'; 
+	      elem.innerHTML = width*1+'%';
 	    }
 	  }
 	  
@@ -106,26 +142,7 @@ function move() {
 	  }
 	  
    }
-   function controllo_nome()
-   {
-	  if(i!=0)
-	 {
-	   nome=document.getElementById("nome").value
-	   if(nome=="")
-		   {
-		   alert("Devi inserire un nome per il tuo campo")
-		   }
-	   else
-		   {
-		   document.getElementById("form").submit()
-		   }
-     }
-	  else
-		  {
-		  alert("Devi eseguire la rilevazione")
-		  }
-	  
-   }
+
    function refresh()
    {
 	   location.reload();
@@ -146,7 +163,8 @@ function move() {
      <a style="margin-left:10px;background-color:#3F565A;padding:3px 32px 5px 0px;color: whitesmoke;" >Posizione</a><input type="text" name="posizione" id="cord"><br><br>
      <a style="margin-left:10px;background-color:#3F565A;padding:3px 61px 5px 0px;color: whitesmoke;"> Ettari</a><input type="text" id="km" name="ettari"><br><br>
      <a style="margin-left:10px;background-color:#3F565A;padding:3px 10px 5px 0px;color: whitesmoke;">Tipo terreno</a><input type="text" id="tipo" name="tipo">
-     <button onclick="controllo_nome()" style="margin-left:10px;margin-top:40px" type="button" class="myButton" >Conferma</button>
+     <input type="text" id="proprietario" value="alex"><!-- modificare -->
+     <button  style="margin-left:10px;margin-top:40px" type="button" class="myButton" id="conferma" >Conferma</button>
      <button onclick="refresh()" style="margin-left:30px;margin-top:40px" type="button" class="myButton" >Annulla</button>
     
    </form>
@@ -156,40 +174,54 @@ function move() {
    <form>
    
     
-     <div id="sensori" style="border-style: ridge;width: 20% ;float:left;margin-left:90px;padding-bottom:18%">
+     <div id="sensori" style="border-style: ridge;width: 24% ;float:left;margin-left:90px;">
+     <div class="card example-1 scrollbar-ripe-malinka">
+      					<div class="card-body">
      Sensori<br>
      <%DispositivoModel dp= new DispositivoModel();
-       LinkedList<Dispositivo> list = (LinkedList<Dispositivo>) dp.getSensori();
+     //Utente u =(Utente) request.getSession().getAttribute("utente")
+       LinkedList<Dispositivo> list = (LinkedList<Dispositivo>) dp.getSensori("alex");
        int i=0;
        for(Dispositivo disp:list)
        {
     	  %>
     	  <img style="width:30px ;height:30px" src="../img/sensore.jpg">
-    	  <input type="checkbox" id="sensore<%=i%>"><%=disp.getNome()%><br>
+    	  <input type="checkbox" style="margin-top:40px" id="sensore<%=i%>"><%=disp.getNome()%>
+    	  <span><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
+    	  
    
      <%i++;} %>
      <input type="text" id="nsensori" class="nsensori" value=<%=i %>>
-     </div>
+     </div></div> </div>
+     </form>
+    
   
     
-     <div id="robot"   style="border-style: ridge; clear:right;width: 20%;float:left;margin-left:40px;padding-bottom:18%">
+     <div id="robot"   style="border-style: ridge; clear:right;width: 24%;float:left;margin-left:40px;padding-bottom:0%">
+       				
+     <div class="card example-1 scrollbar-ripe-malinka">
+      					<div class="card-body">
      Robot<br>
      <%
      
-       LinkedList<Dispositivo> list2 = (LinkedList<Dispositivo>) dp.getRobot();
+       LinkedList<Dispositivo> list2 = (LinkedList<Dispositivo>) dp.getRobot("alex");
        int j=0;
        for(Dispositivo disp:list2)
        {
     	  %>
-    	  <a style="margin-top:10px">
+    	  <a >
     	  <img style="width:30px ;height:30px" src="../img/robot1.jpg">
-    	  <input type="checkbox" id="robot<%=j%>"><%=disp.getNome()%><br>
+    	  <input type="checkbox" style="margin-top:40px" id="robot<%=j%>"><%=disp.getNome()%>
+    	  <span ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
           </a>
           
      <%j++;} %>
      <input type="text" id="nrobot" value=<%=j %>>
      </div>
-     <button  style="margin:26% 0px 0% -25%;" type="button" class="myButton"  data-toggle="modal" 
+       				
+      </div>
+    </div>
+     <button  style="margin:26% 0px 0% -29%;" type="button" class="myButton"  data-toggle="modal" 
       data-target="#progress_bar" onclick="move()">Rileva</button>
      
      </form><br>

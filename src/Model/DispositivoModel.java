@@ -12,19 +12,19 @@ import DBConnection.DriverManagerConnectionPool;
 
 public class DispositivoModel 
 {
-	public synchronized Collection<Dispositivo> getSensori() throws SQLException {
+	public synchronized Collection<Dispositivo> getSensori(String utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		Collection<Dispositivo> dispositivo = new LinkedList<Dispositivo>();
 
-		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'sensore'";
+		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'sensore' AND  utente = ?";
 	
 		
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-
+			preparedStatement.setString(1, utente);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
@@ -55,19 +55,19 @@ public class DispositivoModel
 		}
 		return dispositivo;
 	}
-	public synchronized Collection<Dispositivo> getRobot() throws SQLException {
+	public synchronized Collection<Dispositivo> getRobot(String utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		Collection<Dispositivo> dispositivo = new LinkedList<Dispositivo>();
 
-		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'robot'";
+		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'robot' AND utente = ?";
 	
 		
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-
+			preparedStatement.setString(1, utente);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {

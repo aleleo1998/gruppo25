@@ -129,5 +129,45 @@ public class CampoModel {
 		return i;
 			
 	}
+	public synchronized void doSave(String nome,String cord,String proprietario,String tipo,String ettari,String temperatura,String umidità)
+	{
+     String insertSQL = "INSERT INTO campo  (nome,posizione,tipo_terreno,proprietario,ettari,temperatura,umidita) VALUES (?,?,?,?,?,?,?)";
+     Connection connection = null;
+     PreparedStatement preparedStatement = null;
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, nome);
+			preparedStatement.setString(2, cord);
+			preparedStatement.setString(4, proprietario);
+			preparedStatement.setString(3, tipo);
+			preparedStatement.setString(5, ettari);
+			preparedStatement.setString(6, temperatura);
+			preparedStatement.setString(7, umidità);
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			
+	}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					try {
+						preparedStatement.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+	}
+	
 
 }
