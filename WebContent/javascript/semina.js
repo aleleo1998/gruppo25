@@ -1,6 +1,9 @@
 /**
  * 
  */
+
+var risColture = 0;
+var risRobot = 0;
 $(document).ready(function(){
 	
 	$("#btnConfermaAnalisi").click(function(){
@@ -29,12 +32,16 @@ $(document).ready(function(){
 	  
 	  $("#confermaSemina").click(function(){
 		  alert("ookokkkko");
+		  
 		  controlloRadioButton();
 		  controlloCheckBox();
 		  
+		  if(risColture == 1 && risRobot == 1){
+			  $("formSemina").submit();
+		  }
 		  
-			alert("ew"); 
-			$("formSemina").submit();
+			
+			
 		})
 });
 
@@ -48,11 +55,17 @@ function controlloRadioButton(){
         if(radiobutton[i].checked)
         {
             okay=true;
-            break;
+            risColture=1;
+           
         }
     }
-    if(okay)alert("OK");
-    else alert("Nessun coltura selezionato. Seleziona un robot per proseguire");
+    if(okay){
+    	risColture=1;
+    }
+    else {
+    	risColture=0;
+    	$("#colturaError").click();
+    }
 }
 
 
@@ -68,10 +81,16 @@ function controlloCheckBox(){
         if(checkboxs[i].checked)
         {
             okay=true;
-            break;
+           
+            
         }
     }
-    if(okay)alert("OK");
-    else alert("Nessun robot selezionato. Seleziona un robot per proseguire");
+    if(okay){
+    	 risRobot=1;
+    }
+    else {
+    	risRobot=0;
+    	$("#robotError").click();
+    }
 }
 

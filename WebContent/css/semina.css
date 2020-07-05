@@ -51,6 +51,17 @@ html, body, #container{
 display:none;
 }
 
+#rowAltreColture{
+	width:100%;
+	height: auto;
+	margin-left: 1em;
+	margin-top: 1em;
+	border-style:solid; 
+	border-color:#CCCCCC; 
+	border-width:1px;
+display:none;
+}
+
 #radio{
 	margin-top:49px;
 	margin-left:1em;
@@ -121,5 +132,12 @@ img{
 #altreColture{ 
 	display:none;
 	margin-top:6em;
-	
+}
+
+#colturaError{
+	display:none;
+}
+
+#robotError{
+	display:none;
 }
