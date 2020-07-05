@@ -2,6 +2,8 @@
  * 
  */
 
+var global = 0;
+
 $(document).ready(function(){
 	
 	var size = $("#size").val();
@@ -24,11 +26,21 @@ $(document).ready(function(){
 		}
 	}
 	
+	/***check counter int i***/
+	$(".buttonAssegna").click(function(){
+		
+		global = this.name;
+		
+	})
+	/******/
 	
 	$(".myButton").click(function(){
 		
-		var i = this.id;
-		var id = $("#id"+i).text();
+		var i = global;
+		//alert("indice cliccato: "+i);
+		var id = $("#id"+i).text();  //lettura <p id="#id[1|2|3|...">utente.getId()</p>
+		alert("id cliccato: "+id);
+		
 		
 		var campo_selezionato = $("#selezionacampo"+i+" :selected").text();
 		var attivita_selezionata = $("#selezionaattivita"+i+" :selected").text();
@@ -40,7 +52,6 @@ $(document).ready(function(){
 			async: false,
 			url : '../assegnaLavoroServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
 			success : function resultServelt(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
-				//alert("result servlet: "+result)
 				if(result == "0"){
 					alert("Si è verificato un errore. Riprova più tardi.");
 				}
@@ -54,9 +65,10 @@ $(document).ready(function(){
 	});
 	
 	
-$(".myButton2").click(function(){
+$(".myButton").click(function(){
 		
-		var i = this.id;
+		var i = global;
+		
 		var id = $("#id"+i).text();
 		
 		$.ajax({            //AJAX CON JQUERY
@@ -83,34 +95,7 @@ $(".myButton2").click(function(){
 		
 		$("#searchForm").submit();
 	
-	});
-
-
-/*
-	
-	$("#searchButton").click(function(){
-		
-		alert($("#searchInput").val());
-		
-		var search = $("#searchInput").val();
-		
-		alert(search);
-		
-		$.ajax({            //AJAX CON JQUERY
-			type : 'Get',   //TIPO DI CHIAMATA
-			data : {search : search},  //COPPIE NOME-VALORE DA PASSARE ALLA SERVLET
-			async: false,
-			url : '../ricercaRUServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
-			success : function resultServelt(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
-				
-				alert(result);
-				
-			}
-			
-		}); /*fine ajax*/
-		
-	//});
-	
+	});	
 	
 	
 });
