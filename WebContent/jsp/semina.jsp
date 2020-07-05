@@ -32,7 +32,7 @@
 <% if(utente!=null){%>
 <%
 	Model.DispositivoModel dm = new DispositivoModel();
-	dispositiviList = (ArrayList<Dispositivo>) dm.doRetrieveByNomeCampo(campo.getNome());
+    dispositiviList = (ArrayList<Dispositivo>) dm.doRetrieveByNomeCampo(campo.getNome());
 }
 %>
 
