@@ -7,6 +7,8 @@ $(document).ready(function(){
 		 
 		$(".rowInventario").css({display:'none'});
 		$("#rowConsigliate").css({display:'block'});
+		$("#altreColture").css({display:'block'});
+		$("#rowAltreColture").css({display:'block'});
 	})
 	
 	var elem = document.getElementById("myBar");   
