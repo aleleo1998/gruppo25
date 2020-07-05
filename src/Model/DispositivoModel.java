@@ -150,5 +150,49 @@ public class DispositivoModel
 		
 		return dispositiviList;
 	}
+	
+	
+	
+	/**
+	 * Aggiorna lo stato di un dispositivo
+	 * @param idDispositivo
+	 * @param stato
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int updateStatoById(String idDispositivo, String stato) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		String insertSQL = "UPDATE "+DispositivoModel.TABLE_NAME +" SET stato='"+stato+"'  WHERE id='"+idDispositivo+"'";
+		
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+		
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
 }
 

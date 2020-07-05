@@ -225,11 +225,9 @@ private static final String TABLE_NAME = "item";
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		System.out.println("Sono in query mod");
+		
 		String insertSQL = "UPDATE "+ItemModel.TABLE_NAME +" SET nome='"+nome+"' , tipo='"+tipo+"' , quantita='"+quantita+"' WHERE id='"+idItem+"'";
-		System.out.println(""+insertSQL);
-				
-		System.out.println("ID ORA = "+idItem);
+	
 		
 		try {
 			connection = DriverManagerConnectionPool.getDbConnection();

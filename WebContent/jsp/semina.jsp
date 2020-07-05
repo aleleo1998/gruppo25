@@ -58,7 +58,7 @@
 	   <div class="container my-5">
 
 <!-- FORM -->
-<form action="#" name="formSemina" id="formSemina">
+<form action="../seminaServlet" name="formSemina" id="formSemina">
 </form>
 
   <!--Row COLTURE-->
@@ -70,7 +70,7 @@
   	<div id="row" class="rowInventario">
     
 	    <div class="media mb-4">
-			<input required form="formSemina" id="radio" type="radio" name="<%=inv.getIdItem()%>" value="<%=inv.getIdItem()%>">  
+			<input required form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
 		    
@@ -130,7 +130,7 @@
   	<div id="rowConsigliate" >
     
 	    <div class="media mb-4">
-			<input required form="formSemina" id="radio" type="radio"  name="<%=inv.getIdItem()%>" value="<%=inv.getIdItem()%>">  
+			<input required form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
 		    
@@ -193,7 +193,7 @@
   	<div id="row" >
     
 	    <div class="media mb-4">
-	    	<input required form="formSemina"  type="checkbox" id="checkbox" name="<%=disp.getId()%>" value="<%=disp.getId()%>">
+	    	<input form="formSemina"  type="checkbox" id="checkbox" name="robot" value="<%=disp.getId()%>">
 			
 			
 	      	<img class="rounded" src="../img/robot1.jpg" alt="Generic placeholder image">

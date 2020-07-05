@@ -129,5 +129,51 @@ public class CampoModel {
 		return i;
 			
 	}
+	
+	
+	
+	
+	/**
+	 * Aggiorna la coltura del campo in seguito all'operazione di semina
+	 * @param idCampo
+	 * @param coltura
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized int updateColturaCampo(String nomeCampo, String coltura) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		String insertSQL = "UPDATE "+CampoModel.TABLE_NAME +" SET coltura='"+coltura+"'  WHERE nome='"+nomeCampo+"'";
+		
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+		
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
+	
 
 }
