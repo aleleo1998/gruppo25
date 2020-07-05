@@ -194,5 +194,89 @@ public class DispositivoModel
 		return i;
 			
 	}
+	
+	public synchronized void doSave(String nome,String tipo,String campo,String stato,String utente)
+	{
+     String insertSQL = "INSERT INTO dispositivo  (id,nome,tipo,campo,stato,utente) VALUES (?,?,?,?,?,?)";
+     Connection connection = null;
+     PreparedStatement preparedStatement = null;
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, generateID());
+			preparedStatement.setString(2, nome);
+			preparedStatement.setString(3, tipo);
+			preparedStatement.setString(4, campo);
+			preparedStatement.setString(5, stato);
+			preparedStatement.setString(6, utente);
+			
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			
+	}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					try {
+						preparedStatement.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+
+	}
+	public synchronized String generateID() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String id = "";
+
+		String selectSQL = "SELECT * FROM dispositivo";
+		
+		ArrayList<Integer> idList = new ArrayList<Integer>();
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				id = rs.getString("id");
+				System.out.println("ID: "+id);
+				idList.add(Integer.parseInt(id));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		int index = 0;
+		int max=0;
+		
+		for(int i=0; i<idList.size();i++) {
+			index=idList.get(i);
+			if(index>max) {
+				max=index;
+			}
+		}
+		max= max+1;
+		
+		String idNew = Integer.toString(max);
+		System.out.println("\n\n\n\nid restituito da generateID(): "+idNew+"\n\n\n");
+		return idNew;
+		}
 }
 
