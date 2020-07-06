@@ -5,7 +5,7 @@
 var risColture = 0;
 var risRobot = 0;
 $(document).ready(function(){
-	 
+	
 	$("#btnConfermaAnalisi").click(function(){
 		 
 		$(".rowInventario").css({display:'none'});
@@ -32,13 +32,10 @@ $(document).ready(function(){
 	  
 	  $("#confermaSemina").click(function(){
 		   
-		
-		  controlloRadioButton();
 		  
+		  controlloRadioButton();
 		  controlloCheckBox();
 		  
-		  alert("riscoltura: " + risColture);
-		  alert("risrobot: "+ risRobot);
 		  if(risColture == 1 && risRobot == 1){
 			  $("formSemina").submit();
 		  }
@@ -51,10 +48,8 @@ $(document).ready(function(){
 
 /*controllo radio button colture*/
 function controlloRadioButton(){
-	alert("check radio");
     var radiobutton=document.getElementsByName("colture");
     var okay=false;
-
     for(var i=0;i<radiobutton.length;i++)
     {
         if(radiobutton[i].checked)
@@ -64,46 +59,38 @@ function controlloRadioButton(){
            
         }
     }
-
-    if(risColture==0){
+    if(okay){
+    	risColture=1;
+    }
+    else {
+    	risColture=0;
     	$("#colturaError").click();
     }
 }
 
 
 
+
+
 /* Controllo checkbox robot*/
 function controlloCheckBox(){
-	alert("checkContr");
-	
-	var numRobot = document.getElementById("nRobot").value;
-    alert("numRobot " + numRobot);
-   
+    var checkboxs=document.getElementsByName("robot");
     var okay=false;
-
-    alert("prima for");
-    for(var j=1;j<=numRobot;j++)
-    {    	
-    
-        if(document.getElementById("checkbox"+j).checked===true)
+    for(var i=0;i<checkboxs.length;i++)
+    {
+        if(checkboxs[i].checked)
         {
-       
-           okay=true;
-         
+            okay=true;
+           
+            
         }
     }
-    
-    
-   alert("okay "+ okay);
     if(okay){
-    	risRobot=1;
+    	 risRobot=1;
     }
-    else{
+    else {
+    	risRobot=0;
     	$("#robotError").click();
     }
-    
-    
- 
-    
 }
 
