@@ -44,6 +44,7 @@ public class modificaItemServlet extends HttpServlet {
 		String tipoMod = request.getParameter("tipoMod");
 		String quantitaMod = request.getParameter("quantitaMod");
 		
+		 
 	
 		System.out.println("id servlet "+id);
 		Utente utente = (Utente) request.getSession().getAttribute("utente"); //Preleva utente dalla sessione

@@ -225,6 +225,15 @@ private static final String TABLE_NAME = "item";
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
+		Item it = doRetrieveById(idItem);
+		
+		if(nome.equals("")) {
+			nome = it.getNome();
+		}
+		
+		if(quantita.equals("")) {
+			quantita = it.getQuantita();
+		}
 		
 		String insertSQL = "UPDATE "+ItemModel.TABLE_NAME +" SET nome='"+nome+"' , tipo='"+tipo+"' , quantita='"+quantita+"' WHERE id='"+idItem+"'";
 	
