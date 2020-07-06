@@ -35,7 +35,7 @@
        	<a class="nav-link" href="inventario.jsp"> Inventario </a>
       </li>
       <li class="nav-item active">
-       	<a class="nav-link" href="#"> Sensori e Robot </a>
+       	<a class="nav-link" href="SensoriRobotView.jsp"> Sensori e Robot </a>
       </li>
       <% if(tipo2.equals("Dirigente aziendale")){ %>
       <li class="nav-item active">
