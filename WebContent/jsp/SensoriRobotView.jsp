@@ -119,6 +119,9 @@ function controllo_radio_robot()
 
 
 
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
 
  <div id="container">
  
@@ -287,7 +290,7 @@ function controllo_radio_robot()
            <div class="row">
              <form action="../AggiungiSensore" id="formSensore" method="post">
                 <%
-                  ArrayList<Campo> campi2 =cm.doRetrieveByCEO("alex"); //modificare
+                  ArrayList<Campo> campi2 =cm.doRetrieveByCEO(u.getId()); //modificare
                  
                 %> <!-- Modificare -->
                 <a style="margin-left:10px;background-color:#3F565A;padding:3px 1px 5px 0px;color: whitesmoke;">Nome dispositivo</a><input type="text" id="nomeSensore" name="nome"><br><br>

@@ -16,9 +16,7 @@
 <link rel="stylesheet" href="../css/drago.css">
 <meta charset="ISO-8859-1">
 <title>Acagreen</title>
-<div id="menu">
-	<%@include file="menu.jsp"%>
-</div>
+
 <script>
 $(document).ready(function(){
 	$(".nsensori").hide();
@@ -155,6 +153,9 @@ function move() {
 <%@ page import="Model.*"%>
 <%@ page import ="java.util.*" %>
 
+<div id="menu">
+	<%@include file="menu.jsp"%>
+</div>
 <div style="border:ridge;margin:0px 40px 0px 40px">
    <p style="margin:50px 0px 0px 40px">Inserisci dati del terreno</p> 
    <div id="aggiungiCampo" style="border-style: ridge;margin:0px 40px 0px 40px;padding-bottom:30px;padding-top:20px;width:30%;float:left">
