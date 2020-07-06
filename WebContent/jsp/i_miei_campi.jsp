@@ -68,50 +68,40 @@
     			
     			<!-- ALERT RIMUOVI TRIGGER  -->
     			
-    			<!--  ALERT DIALOG -->
- 	<!-- Button trigger modal-->
+<!--  ALERT DIALOG -->
+<!-- Button trigger modal-->
 <button type="button" class="myButton" data-toggle="modal" data-target="#modalRelatedContent" style="margin-top:8em; margin-right: 1em">Eimina</button>
 
-<!--Modal: modalRelatedContent-->
-<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
-  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
-    <!--Content-->
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header">
-        <h5 class="heading">Conferma eliminazione campo</h5>
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">&times;</span>
-        </button>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body">
-
-		<!-- INIZIO PRIMA RIGA -->
-		
-        <div class="row">
-        
-          <div class="col-7">
-            <p>Sei sicuro di voler rimuovere il campo "<%=campo.getNome()%>" ?</p>
-            
-
-          </div>
-        </div>
-        
-        <!-- FINE PRIMA RIGA -->
-        
-        	<button class="myButton" id="conferma" name="button<%=campo.getNome()%>" style="margin-right: 2em">Conferma</button>
-            <button type="button" id="annulla" class="myButton">Annulla</button>
-        
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
-				<!--Modal: modalRelatedContent--> 
+		<!--Modal: modalRelatedContent-->
+		<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+		  	<div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+		    	<!--Content-->
+		    		<div class="modal-content">
+		      	<!--Header-->
+		      		<div class="modal-header">
+			        	<h5 class="heading">Conferma eliminazione campo</h5>
+			
+			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          	<span aria-hidden="true" class="white-text">&times;</span>
+			        	</button>
+		      		</div>
+		      <!--Body-->
+		      <div class="modal-body">
+				<!-- INIZIO PRIMA RIGA -->
+		        	<div class="row">
+		       			<div class="col-7">
+		            		<p>Sei sicuro di voler rimuovere il campo "<%=campo.getNome()%>" ?</p>
+		           		</div>
+		        	</div>
+		      <!-- FINE PRIMA RIGA -->  
+		        	<button class="myButton" id="conferma" name="button<%=campo.getNome()%>" style="margin-right: 2em">Conferma</button>
+		            <button type="button" id="annulla" class="myButton">Annulla</button>
+		      </div>
+		    </div>
+		    <!--/.Content-->
+		  </div>
+		</div>
+<!--Modal: modalRelatedContent--> 
     			
     		</form>
     	</th>

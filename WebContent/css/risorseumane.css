@@ -111,3 +111,47 @@ html, body, #container{
 }
 
 
+.buttonAnnulla {
+	background-color:#808080;
+	border-radius:8px;
+	border:2px solid #030200;
+	display:inline-block;
+	cursor:pointer;
+	color:#E5DC22;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	
+}
+.buttonAnnulla:hover {
+	background-color:#737273;
+}
+.buttonAnnulla:active {
+	position:relative;
+	top:1px;
+}
+
+.buttonConfermaAnnulla {
+	background-color:#ebd700;
+	border-radius:8px;
+	border:2px solid #030200;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	
+}
+.buttonConfermaAnnulla:hover {
+	background-color:#dec804;
+}
+.buttonConfermaAnnulla:active {
+	position:relative;
+	top:1px;
+}
+

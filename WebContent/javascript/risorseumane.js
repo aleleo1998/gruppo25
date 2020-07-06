@@ -3,37 +3,58 @@
  */
 
 var global = 0;
+var global_annulla = 0;
+var flag = 0;
 
 $(document).ready(function(){
 	
 	var size = $("#size").val();
-	
+
 	for(var i=0; i<size; i++){
 		var stato = $("#info"+i).text();
-		if(stato != "Occupato"){  //Se l'utente è libero
-			$("#occupato"+i).css("display","none");
-			$("#libero"+i).css("display","visible");
-			$("#selezionacampo"+i).removeAttr("disabled");
-			$("#selezionaattivita"+i).removeAttr("disabled");
-			$("#selezionadurata"+i).removeAttr("disabled");
-		}else{  //Se l'utente è occupato in un lavoro
-			
+		alert(stato);
+		if(stato === 'Occupato'){  //Se l'utente è libero
 			$("#occupato"+i).css("display","visible");
 			$("#libero"+i).css("display","none");
 			$("#selezionacampo"+i).attr("disabled","disabled");
 			$("#selezionaattivita"+i).attr("disabled","disabled");
 			$("#selezionadurata"+i).attr("disabled","disabled");
+		}else{  //Se l'utente è occupato in un lavoro
+			$("#occupato"+i).css("display","none");
+			$("#libero"+i).css("display","visible");
+			$("#selezionacampo"+i).removeAttr("disabled");
+			$("#selezionaattivita"+i).removeAttr("disabled");
+			$("#selezionadurata"+i).removeAttr("disabled");
 		}
+		
 	}
-	
+
 	/***check counter int i***/
 	$(".buttonAssegna").click(function(){
 		
 		global = this.name;
 		
+		alert("global: "+global);
+		
+		
+		
 	})
 	/******/
 	
+		/***check counter int i***/
+	$(".buttonAnnulla").click(function(){
+		
+		global_annulla = this.name;
+		
+		alert("global_annulla: "+global_annulla);
+		
+	})
+	/******/
+	
+	
+	
+	
+	/*CONFERMA ASSEGNA LAVORO*/
 	$(".myButton").click(function(){
 		
 		var i = global;
@@ -64,10 +85,10 @@ $(document).ready(function(){
 		
 	});
 	
-	
-$(".myButton").click(function(){
+	/*CONFERMA ANNULLA LAVORO*/
+$(".buttonConfermaAnnulla").click(function(){
 		
-		var i = global;
+		var i = global_annulla;
 		
 		var id = $("#id"+i).text();
 		

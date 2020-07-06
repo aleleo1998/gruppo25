@@ -25,7 +25,10 @@
 	
 	UtenteModel utenteModel = new UtenteModel();
 	
-	ArrayList<Utente> utenti = utenteModel.doRetrieveRisorseUmane(user.getId());
+	ArrayList<Utente> list = utenteModel.doRetrieveRisorseUmane(user.getId());
+	request.getSession().setAttribute("risorseumane",list);
+	ArrayList<Utente> utenti = new ArrayList<Utente>();
+	utenti = (ArrayList<Utente>) request.getSession().getAttribute("risorseumane");
 	System.out.println("\n\n\n\n"+utenti.size());
 	
 	CampoModel campoModel = new CampoModel();
@@ -120,17 +123,20 @@
     <div class="col-sm" id="libero<%=i%>"><strong style="font-size: 0.8em;">Stato</strong>
     	<img src="../img/riposo.png" style="width: 30px; height: 30px;">	
     		<input type="text" value="<%=utente.getId()%>" style="display:none"></input>
-    		<button style="margin-top:3em; font-size:0.6em; width: 125px;" class="buttonAssegna" name="<%=i%>" data-toggle="modal" data-target="#modalRelatedContent" id="libero<%=i%>">Assegna lavoro</button>
+    		<button type="button" style="margin-top:3em; font-size:0.6em; width: 125px;" class="buttonAssegna" name="<%=i%>" data-toggle="modal" data-target="#modalAssegna" id="libero<%=i%>">Assegna lavoro</button>
+			
 			<!--Modal: modalRelatedContent-->
-					<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog"
-					  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+					<div class="modal fade right" id="modalAssegna" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden=true data-backdrop="false">
 					  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
 					    <!--Content-->
 					    <div class="modal-content">
 					      <!--Header-->
 					      <div class="modal-header">
-					        <h5 class="heading">Conferma eliminazione campo</h5>
-					
+					      	<% if(!utente.getStato().equals("Occupato")){ %>
+					        	<h5 class="heading">Conferma lavoro</h5>
+					        <% } else { %>
+								<h5 class="heading">Annulla lavoro</h5>
+							<% } %>
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					          <span aria-hidden="true" class="white-text">&times;</span>
 					        </button>
@@ -151,8 +157,12 @@
 					        </div>
 					        
 					        <!-- FINE PRIMA RIGA -->
-					        	<button class="myButton" id="<%=i%>" style="margin-right: 2em">Conferma</button>
-					            <button type="button" id="annulla" class="myButton">Annulla</button>
+					        	<% if(!utente.getStato().equals("Occupato")){ %>
+					        		<button class="myButton" id="<%=i%>" style="margin-right: 2em">Conferma assegna</button>
+					        	<% } else { %>
+					        		<button class="buttonConfermaAnnulla" id="<%=i%>" style="margin-right: 2em">Conferma eliminazione</button>
+					        	<% } %>
+					            <button type="button" id="annulla" class="">Annulla</button>
 					        
 					      </div>
 					    </div>
@@ -163,9 +173,53 @@
     </div>
     <div style="display:none" id="occupato<%=i%>" class="col-sm"><strong style="font-size: 0.8em;">Stato</strong>
     	<img src="../img/lavoro.png" style="width: 30px; height: 30px;">
-    	<form>
-    	<button style="margin-top:3em; font-size:0.6em; width: 125px;" class="myButton2" id="<%=i%>">Annulla lavoro </button>
-    	</form>
+    	<input type="text" value="<%=utente.getId()%>" style="display:none"></input>
+    		<button style="margin-top:3em; font-size:0.6em; width: 125px;" class="buttonAnnulla" name="<%=i%>" data-toggle="modal" data-target="#modalAnnulla" id="occupato<%=i%>">Annulla lavoro</button>
+	<!--Modal: modalRelatedContent-->
+					<div class="modal fade right" id="modalAnnulla" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden=true data-backdrop="false">
+					  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+					    <!--Content-->
+					    <div class="modal-content">
+					      <!--Header-->
+					      <div class="modal-header">
+					      	<% if(!utente.getStato().equals("Occupato")){ %>
+					        	<h5 class="heading">Conferma lavoro</h5>
+					        <% } else { %>
+								<h5 class="heading">Annulla lavoro</h5>
+							<% } %>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true" class="white-text">&times;</span>
+					        </button>
+					      </div>
+					
+					      <!--Body-->
+					      <div class="modal-body">
+					
+							<!-- INIZIO PRIMA RIGA -->
+							
+					        <div class="row">
+					        
+					          <div class="col-7">
+					            <p>Vuoi confermare l'assegnazione del lavoro?</p>
+					            
+					
+					          </div>
+					        </div>
+					        
+					        <!-- FINE PRIMA RIGA -->
+					        	<% if(!utente.getStato().equals("Occupato")){ %>
+					        		<button class="myButton" id="<%=i%>" style="margin-right: 2em">Conferma assegna</button>
+					        	<% } else { %>
+					        		<button class="buttonConfermaAnnulla" id="<%=i%>" style="margin-right: 2em">Conferma eliminazione</button>
+					        	<% } %>
+					            <button type="button" id="annulla" class="">Annulla</button>
+					        
+					      </div>
+					    </div>
+					    <!--/.Content-->
+					  </div>
+					</div>
+			<!--Modal: modalRelatedContent--> 
     </div>
     <div class="col-sm"><strong style="font-size:0.8em;">Tempo rimanente</strong>
     <br>
