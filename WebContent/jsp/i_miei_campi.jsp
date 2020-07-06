@@ -30,7 +30,7 @@
  	
  	
  	<br><br><br><br>
- 	<p class="myButton" style="margin-left: 3em;">Inserisci campo</p>
+ 	<a href="AggiungiCampo.jsp"><p class="myButton" style="margin-left: 3em;">Inserisci campo</p></a>
  	
  	<table style="margin-left: 2.5em;">
  	<% int i=0;
