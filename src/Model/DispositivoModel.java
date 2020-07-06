@@ -278,5 +278,43 @@ public class DispositivoModel
 		System.out.println("\n\n\n\nid restituito da generateID(): "+idNew+"\n\n\n");
 		return idNew;
 		}
+	public synchronized int remove(String id) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		
+		String insertSQL = "DELETE FROM dispositivo WHERE id = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, id);
+		
+		
+			
+			
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
 }
 

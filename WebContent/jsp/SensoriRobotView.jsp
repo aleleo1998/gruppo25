@@ -20,6 +20,8 @@ $(document).ready(function(){
 	$("#proprietario").hide();
 	$("#tipo2").hide();
 	$("#proprietario2").hide();
+	$("#nSensori").hide();
+	$("#nRobot").hide();
 	
 	 $("#confermaRobot").click(function(){
 		 var nome=$("#nomeRobot").val();
@@ -115,9 +117,7 @@ function controllo_radio_robot()
 <%@ page import="Model.*"%>
 <%@ page import ="java.util.*" %>
 
-<div id="menu">
-	<%@include file="menu.jsp"%>
-</div>
+
 
 
  <div id="container">
@@ -147,7 +147,7 @@ function controllo_radio_robot()
     	 %>
     	   <p>
     	    
-    	    <input type="radio" style="margin-top:20px" name="radioSensori" id="sensore<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a>
+    	    <input type="radio" style="margin-top:20px" name="radioDis" id="sensore<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a>
     	    <%if(disp.getStato().equals("disponibile")){ %>
     	    <a style="margin-left:20px"><strong>Impiego</strong>:attualmente installato in <%=disp.getCampo() %><br>
     	    <span style="margin-left:110px" ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
@@ -193,7 +193,7 @@ function controllo_radio_robot()
     	   %>
     	   <p>
     	    
-    	    <input type="radio" style="margin-top:20px" name="radioRobot" id="robot<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a>
+    	    <input type="radio" style="margin-top:20px" name="radioDis" id="robot<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a>
     	    <%if(disp.getStato().equals("disponibile")){ %>
     	    <a style="margin-left:10px"><strong style="margin-left:13px">Impiego</strong>:attualmente installato in <%=disp.getCampo() %><br>
     	    <span style="margin-left:100px" ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
@@ -333,7 +333,7 @@ function controllo_radio_robot()
            <div class="modal-body">
 
 		   <!-- INIZIO PRIMA RIGA -->
-           <div class="row">
+           <div class="row" style="margin-left:20px">
                 <a id="aRobot"></a>
                 <div style="margin:30px 0px 0px 20px">
                 <button   type="submit" class="myButton" id="confermaRo" form="eliminaRobot">Conferma</button>
