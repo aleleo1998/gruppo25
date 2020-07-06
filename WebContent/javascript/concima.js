@@ -2,10 +2,10 @@
  * 
  */
 
-var risColture = 0;
-var risRobot = 0;
+var risConcime = 0;
+var risRobot1 = 0;
 $(document).ready(function(){
-	
+	 
 	$("#btnConfermaAnalisi").click(function(){
 		 
 		$(".rowInventario").css({display:'none'});
@@ -32,12 +32,16 @@ $(document).ready(function(){
 	  
 	  $("#confermaSemina").click(function(){
 		   
-		  
+		  alert("dasDAS");
 		  controlloRadioButton();
-		  controlloCheckBox();
 		  
-		  if(risColture == 1 && risRobot == 1){
-			  $("formSemina").submit();
+		  controlloCheckBox();
+		  alert("Concime"+ risConcime);
+		  alert("robot" +risRobot1);
+		  
+		  if(risConcime == 1 && risRobot1 == 1){
+			  alert("CC");
+			  $("#formSemina").submit();
 		  }
 		  
 			
@@ -48,49 +52,59 @@ $(document).ready(function(){
 
 /*controllo radio button colture*/
 function controlloRadioButton(){
+	 
     var radiobutton=document.getElementsByName("colture");
     var okay=false;
+
     for(var i=0;i<radiobutton.length;i++)
     {
         if(radiobutton[i].checked)
         {
             okay=true;
-            risColture=1;
+            risConcime=1;
            
         }
     }
-    if(okay){
-    	risColture=1;
-    }
-    else {
-    	risColture=0;
+
+    if(risConcime==0){
     	$("#colturaError").click();
     }
 }
 
 
 
-
-
 /* Controllo checkbox robot*/
 function controlloCheckBox(){
-    var checkboxs=document.getElementsByName("robot");
+ 
+	
+	var numRobot = document.getElementById("nRobot").value;
+    alert("numRobot " + numRobot);
+   
     var okay=false;
-    for(var i=0;i<checkboxs.length;i++)
-    {
-        if(checkboxs[i].checked)
+
+    alert("prima for");
+    for(var j=1;j<=numRobot;j++)
+    {    	
+    
+        if(document.getElementById("checkbox"+j).checked===true)
         {
-            okay=true;
-           
-            
+       
+           okay=true;
+         
         }
     }
+    
+    
+   alert("okay "+ okay);
     if(okay){
-    	 risRobot=1;
+    	risRobot1=1;
     }
-    else {
-    	risRobot=0;
+    else{
     	$("#robotError").click();
     }
+    
+    
+ 
+    
 }
 

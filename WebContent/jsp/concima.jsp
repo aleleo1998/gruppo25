@@ -41,6 +41,7 @@
 
 
 <%!int mod=0; %>
+<%!int numRobot=0; %>
 <title>Concima</title>
 </head>
 <body>
@@ -52,7 +53,7 @@
 <div id="container">
 	<div id="form-box" class="card">
 	  <div class="card-header">
-	    Seleziona la coltura da seminare <p style = "text-decoration:line-through;"> </p>
+	    Seleziona il concime da utilizzare per l'attività di concimazione <p style = "text-decoration:line-through;"> </p>
 	  </div>
 	  <div class="card-body">
 	    <h5 class="card-title">Prodotti presenti nell'inventario</h5> <hr>
@@ -60,7 +61,7 @@
 	   <div class="container my-5">
 
 <!-- FORM -->
-<form action="../seminaServlet" name="formSemina" id="formSemina">
+<form action="../concimaServlet" name="formSemina" id="formSemina">
 </form>
 
   <!--Row COLTURE-->
@@ -86,7 +87,7 @@
   	<div id="row" class="rowInventario">
     
 	    <div class="media mb-4">
-			<input required form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
+			<input form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
@@ -135,9 +136,9 @@
 	}
     Random r = new Random();
 	mod = 0;
-	 System.out.println("Lista dim:" + coltureList.size());
-    mod = (coltureList.size()/2);
-    System.out.println("MOD" + mod);
+	
+     mod = (coltureList.size()/2);
+ 
     for(int i = 0;i<mod;i++){
     	Inventario inv = coltureList.get(r.nextInt(coltureList.size()));
     	
@@ -157,7 +158,7 @@
   	<div id="rowConsigliate" >
     
 	    <div class="media mb-4">
-			<input required form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
+			<input form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
@@ -215,12 +216,16 @@
 
   <!--Row Robot-->
   
-  <% for(Dispositivo disp : dispositiviList){ %> 
-    	<%if(disp.getTipo().equals("robot") && disp.getStato().equals("disponibile")){ %>
+  <% numRobot=0;
+  for(Dispositivo disp : dispositiviList){ %> 
+    	<%if(disp.getTipo().equals("robot") && disp.getStato().equals("disponibile")){ 
+    		numRobot++;
+    		
+    	%>
   	<div id="row" >
     
 	    <div class="media mb-4">
-	    	<input required form="formSemina"  type="checkbox" id="checkbox" name="robot" value="<%=disp.getId()%>">
+	    	<input type="checkbox" form="formSemina" class="checkbox"  id="checkbox<%=numRobot%>" name="robot" value="<%=disp.getId()%>">
 			
 			
 	      	<img class="rounded" src="../img/robot1.jpg" alt="Generic placeholder image">
@@ -249,7 +254,8 @@
 	
 
 </div>
-	 
+
+	 <input type="text" id="nRobot" class="nRobot" value=<%=numRobot%>>
 	
 	  </div>
 	  
@@ -257,7 +263,7 @@
 	
 	<div id="btnConferma">
 		<center> 
-			<button form="formSemina" id="confermaSemina" type="submit" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
+			<button form="formSemina" id="confermaSemina" type="button" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
 	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Annulla</button> 
 	 	</center>
 	 </div>
@@ -316,7 +322,7 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime consigliato per il campo <%=campo.getNome() %> non presente nel tuo inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concimazione consigliata per il campo <%=campo.getNome() %> non presente nel tuo inventario.
 		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questo concime per ottenere il meglio dal tuo terreno! </span> 
 		        
 		        <span></span></p>
@@ -473,7 +479,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>Seleziona un robot per poter proseguire nell'operazione di Semina</strong></p>
+            <p><strong>Seleziona un robot per poter proseguire nell'operazione di Concimazione</strong></p>
             
 
           </div>

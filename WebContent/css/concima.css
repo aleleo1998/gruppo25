@@ -68,7 +68,7 @@ display:none;
 	margin-right:1em;
 }
 
-#checkbox{
+.checkbox{
 	margin-top:49px;
 	margin-left:1em;
 	margin-right:1em;
@@ -139,5 +139,9 @@ img{
 }
 
 #robotError{
+	display:none;
+}
+
+#nRobot{
 	display:none;
 }

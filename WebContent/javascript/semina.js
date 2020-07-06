@@ -37,10 +37,9 @@ $(document).ready(function(){
 		  
 		  controlloCheckBox();
 		  
-		  alert("riscoltura: " + risColture);
-		  alert("risrobot: "+ risRobot);
+		   
 		  if(risColture == 1 && risRobot == 1){
-			  $("formSemina").submit();
+			  $("#formSemina").submit();
 		  }
 		  
 			
@@ -51,7 +50,7 @@ $(document).ready(function(){
 
 /*controllo radio button colture*/
 function controlloRadioButton(){
-	alert("check radio");
+	 
     var radiobutton=document.getElementsByName("colture");
     var okay=false;
 
@@ -74,7 +73,7 @@ function controlloRadioButton(){
 
 /* Controllo checkbox robot*/
 function controlloCheckBox(){
-	alert("checkContr");
+	 
 	
 	var numRobot = document.getElementById("nRobot").value;
     alert("numRobot " + numRobot);

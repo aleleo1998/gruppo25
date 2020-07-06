@@ -263,7 +263,7 @@
 	
 	<div id="btnConferma">
 		<center> 
-			<button form="formSemina" id="confermaSemina" type="submit" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
+			<button form="formSemina" id="confermaSemina" type="button" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
 	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Annulla</button> 
 	 	</center>
 	 </div>
