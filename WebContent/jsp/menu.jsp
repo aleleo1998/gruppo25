@@ -20,6 +20,7 @@
 
 
 <!--Navbar -->
+
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color" style="background-color:#3F565A;">
   <a class="navbar-brand" href="profilo.jsp">AcaGreen</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
