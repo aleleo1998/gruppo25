@@ -119,4 +119,10 @@ $(".buttonConfermaAnnulla").click(function(){
 	});	
 	
 	
+	$(".annulla").click(function(){
+		$(".close").click();
+		
+	})
+	
+	
 });

@@ -30,7 +30,7 @@
  	
  	
  	<br><br><br><br>
- 	<p class="myButton" style="margin-left: 3em;">Inserisci campo</p>
+ 	<a href="AggiungiCampo.jsp"><p class="myButton" style="margin-left: 3em;">Inserisci campo</p></a>
  	
  	<table style="margin-left: 2.5em;">
  	<% int i=0;
@@ -95,7 +95,7 @@
 		        	</div>
 		      <!-- FINE PRIMA RIGA -->  
 		        	<button class="myButton" id="conferma" name="button<%=campo.getNome()%>" style="margin-right: 2em">Conferma</button>
-		            <button type="button" id="annulla" class="myButton">Annulla</button>
+		            <button type="button" id="annulla" class="annulla">Annulla</button>
 		      </div>
 		    </div>
 		    <!--/.Content-->

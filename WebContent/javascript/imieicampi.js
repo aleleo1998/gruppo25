@@ -24,9 +24,8 @@ $(document).ready(function(){
 			}); /*fine ajax*/
 	});
 	
-	$("#annulla").click(function(){
+	$(".annulla").click(function(){
 		$(".close").click();
-		$("#ref").submit();
 	})
 
 	

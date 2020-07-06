@@ -162,7 +162,7 @@
 					        	<% } else { %>
 					        		<button class="buttonConfermaAnnulla" id="<%=i%>" style="margin-right: 2em">Conferma eliminazione</button>
 					        	<% } %>
-					            <button type="button" id="annulla" class="">Annulla</button>
+					            <button type="button" id="annulla" class="annulla">Annulla</button>
 					        
 					      </div>
 					    </div>
@@ -212,7 +212,7 @@
 					        	<% } else { %>
 					        		<button class="buttonConfermaAnnulla" id="<%=i%>" style="margin-right: 2em">Conferma eliminazione</button>
 					        	<% } %>
-					            <button type="button" id="annulla" class="">Annulla</button>
+					            <button type="button" id="annulla" class="annulla">Annulla</button>
 					        
 					      </div>
 					    </div>
