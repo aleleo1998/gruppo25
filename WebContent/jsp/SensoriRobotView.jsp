@@ -137,7 +137,8 @@ function controllo_radio_robot()
   			
           <%
           DispositivoModel dp= new DispositivoModel();
-         LinkedList<Dispositivo> list = (LinkedList<Dispositivo>) dp.getSensori("alex");
+          Utente u =(Utente) request.getSession().getAttribute("utente");
+         LinkedList<Dispositivo> list = (LinkedList<Dispositivo>) dp.getSensori(u.getId());
          String valDisp="";
          int i=0;
          %><form  id="eliminaSensore" action="../eliminaDispositivo" method="post"><% 
@@ -185,7 +186,7 @@ function controllo_radio_robot()
          <form id="eliminaRobot" action="../eliminaDispositivo" method="post" >
          <%
          //Utente u =(Utente) request.getSession().getAttribute("utente")
-         LinkedList<Dispositivo> list2 = (LinkedList<Dispositivo>) dp.getRobot("alex");
+         LinkedList<Dispositivo> list2 = (LinkedList<Dispositivo>) dp.getRobot(u.getId());
          i=0;
          for(Dispositivo disp:list2)
          {
