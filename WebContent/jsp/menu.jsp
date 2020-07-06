@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<% String tipo2 = request.getSession().getAttribute("ruolo_agricoltore").toString(); %>
+
 </head>
 <body>
 
@@ -34,10 +37,16 @@
       <li class="nav-item active">
        	<a class="nav-link" href="#"> Sensori e Robot </a>
       </li>
+      <% if(tipo2.equals("Dirigente aziendale")){ %>
       <li class="nav-item active">
        	<a class="nav-link" href="risorseumane.jsp"> Risorse umane </a>
       </li>
-      
+      <% } %>
+      <% if(!tipo2.equals("Dirigente aziendale")){ %>
+      <li class="nav-item active" style="display:contents">
+       	<a class="nav-link"> </a>
+      </li>
+      <% } %>
        <li class="nav-item active" id="profilotext" style="display: none">
        	<a class="nav-link" href="profilo.jsp"> Profilo </a>
       </li>

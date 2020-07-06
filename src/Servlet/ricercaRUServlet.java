@@ -79,6 +79,7 @@ public class ricercaRUServlet extends HttpServlet {
 		
 		try {
 			utenti = utenteModel.ricercaDipendenti(nome, cognome);
+			request.getSession().setAttribute("ricerca_dipendenti", utenti);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

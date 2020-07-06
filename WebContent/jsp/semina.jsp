@@ -220,7 +220,7 @@
   	<div id="row" >
     
 	    <div class="media mb-4">
-	    	<input form="formSemina"  type="checkbox" id="checkbox" name="robot" value="<%=disp.getId()%>">
+	    	<input required form="formSemina"  type="checkbox" id="checkbox" name="robot" value="<%=disp.getId()%>">
 			
 			
 	      	<img class="rounded" src="../img/robot1.jpg" alt="Generic placeholder image">
@@ -258,7 +258,7 @@
 	<div id="btnConferma">
 		<center> 
 			<button form="formSemina" id="confermaSemina" type="submit" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
-	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Reset</button> 
+	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Annulla</button> 
 	 	</center>
 	 </div>
 	 
@@ -319,7 +319,7 @@
 		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura consigliate per il campo <%=campo.getNome() %> non presente nel tuo inventario.
 		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questa coltura per ottenere il meglio dal tuo terreno! </span> 
 		        
-		        <%=inv.getNome() %><span></span></p>
+		        <span></span></p>
 		          
 		          <%
 						Random rand = new Random();
@@ -396,6 +396,102 @@
     
 </div>
     <!--/.Content-->
+<!--Modal: modalRelatedContent-->
+
+
+
+
+
+
+<!--  ALERT BASE CONTROLLO COLTURA SELEZIONATA -->
+<button id="colturaError" type="button" class="myButton" data-toggle="modal" data-target="#errColtura"></button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="errColtura" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Seleziona Coltura</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Seleziona una coltura per poter proseguire nell'operazione di Semina</strong></p>
+            
+
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+
+
+<!--  ALERT BASE CONTROLLO ROBOT SELEZIONATA -->
+<button id="robotError" type="button" class="myButton" data-toggle="modal" data-target="#errRobot"></button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="errRobot" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Seleziona Robot</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Seleziona un robot per poter proseguire nell'operazione di Semina</strong></p>
+            
+
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
 <!--Modal: modalRelatedContent-->
 
 <div id="footer">
