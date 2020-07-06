@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="../css/semina.css">
+<link rel="stylesheet" href="../css/concima.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
-<script src="../javascript/semina.js"></script>
+<script src="../javascript/concima.js"></script>
 
 
 <% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
@@ -41,8 +41,7 @@
 
 
 <%!int mod=0; %>
-<%!int numRobot=0; %>
-<title>Semina</title>
+<title>Concima</title>
 </head>
 <body>
 
@@ -69,25 +68,25 @@
   	String path="";
   %>
     <% for(Inventario inv : inventarioList){ %> 
-    	<%if(inv.getTipo().equals("coltura")){ 
+    	<%if(inv.getTipo().equals("concime")){ 
     		ArrayList<Inventario> coltureList = new ArrayList<Inventario>(); 
     		coltureList.add(inv);
     		
     		if(j%4 == 0)
-				path = "../img/coltura1.jpg";
+				path = "../img/concime1.jpg";
 			if(j%4 == 1)
-				path = "../img/coltura2.jpg";
+				path = "../img/concime2.jpg";
 			if (j%3 == 2)
-				path = "../img/coltura3.jpg";
+				path = "../img/concime3.jpg";
 			if (j%4 == 3)
-				path = "../img/coltura4.jpg";
+				path = "../img/concime4.jpg";
 			
 			j++;
     	%>
   	<div id="row" class="rowInventario">
     
 	    <div class="media mb-4">
-			<input form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
+			<input required form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
@@ -96,7 +95,7 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura disponibile nell'inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime disponibile nell'inventario.
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
@@ -107,12 +106,12 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la semina del campo: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concimazione del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
-		           	<strong><font color="green">Quantità sufficiente per la semina del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="green">Quantità sufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
-		           	<strong><font color="red">Quantità insufficiente per la semina del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="red">Quantità insufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		      </div>
 	    </div>
@@ -129,7 +128,7 @@
     <% 
     ArrayList<Inventario> coltureList = new ArrayList<Inventario>(); 
     for(Inventario inv : inventarioList){ 
-	if(inv.getTipo().equals("coltura")){ 
+	if(inv.getTipo().equals("concime")){ 
 		
 		coltureList.add(inv);
 	}
@@ -143,13 +142,13 @@
     	Inventario inv = coltureList.get(r.nextInt(coltureList.size()));
     	
     	if(j%4 == 0)
-			path = "../img/coltura1.jpg";
+			path = "../img/concime1.jpg";
 		if(j%4 == 1)
-			path = "../img/coltura2.jpg";
+			path = "../img/concime2.jpg";
 		if (j%3 == 2)
-			path = "../img/coltura3.jpg";
+			path = "../img/concime3.jpg";
 		if (j%4 == 3)
-			path = "../img/coltura4.jpg";
+			path = "../img/concime4.jpg";
 		
 		j++;
     	
@@ -158,7 +157,7 @@
   	<div id="rowConsigliate" >
     
 	    <div class="media mb-4">
-			<input form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
+			<input required form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
 			
 	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
@@ -167,7 +166,7 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura disponibile nell'inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime disponibile nell'inventario.
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
@@ -178,12 +177,12 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la semina del campo: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concimazione del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
-		           	<strong><font color="green">Quantità sufficiente per la semina del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="green">Quantità sufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
-		           	<strong><font color="red">Quantità insufficiente per la semina del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="red">Quantità insufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		      </div>
 	    </div>
@@ -216,16 +215,12 @@
 
   <!--Row Robot-->
   
-  <% numRobot=0;
-  for(Dispositivo disp : dispositiviList){ %> 
-    	<%if(disp.getTipo().equals("robot") && disp.getStato().equals("disponibile")){ 
-    		numRobot++;
-    		
-    	%>
+  <% for(Dispositivo disp : dispositiviList){ %> 
+    	<%if(disp.getTipo().equals("robot") && disp.getStato().equals("disponibile")){ %>
   	<div id="row" >
     
 	    <div class="media mb-4">
-	    	<input type="checkbox" form="formSemina" class="checkbox"  id="checkbox<%=numRobot%>" name="robot" value="<%=disp.getId()%>">
+	    	<input required form="formSemina"  type="checkbox" id="checkbox" name="robot" value="<%=disp.getId()%>">
 			
 			
 	      	<img class="rounded" src="../img/robot1.jpg" alt="Generic placeholder image">
@@ -254,8 +249,7 @@
 	
 
 </div>
-
-	 <input type="text" id="nRobot" class="nRobot" value=<%=numRobot%>>
+	 
 	
 	  </div>
 	  
@@ -282,7 +276,7 @@
   		<div id="form-box" class="card">
 	  
 	  <div class="card-body">
-	    <h5 class="card-title">Altre colture consigliate non presenti nell'inventario</h5> <hr>
+	    <h5 class="card-title">Altri concimi consigliati non presenti nell'inventario</h5> <hr>
 	   
 	   <div class="container my-5">
 
@@ -294,18 +288,18 @@
   %>
     <% 
     for(Inventario inv : altreColtureList){ %> 
-    	<%if(inv.getTipo().equals("coltura")){ 
+    	<%if(inv.getTipo().equals("concime")){ 
     		ArrayList<Inventario> altreColtureConsigliate = new ArrayList<Inventario>(); 
     		altreColtureConsigliate.add(inv);
     		
     		if(i%4 == 0)
-				path = "../img/coltura1.jpg";
+				path = "../img/concime1.jpg";
 			if(i%4 == 1)
-				path = "../img/coltura2.jpg";
+				path = "../img/concime2.jpg";
 			if (i%3 == 2)
-				path = "../img/coltura3.jpg";
+				path = "../img/concime3.jpg";
 			if (i%4 == 3)
-				path = "../img/coltura4.jpg";
+				path = "../img/concime4.jpg";
 			
 			i++;
     	%>
@@ -322,8 +316,8 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura consigliate per il campo <%=campo.getNome() %> non presente nel tuo inventario.
-		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questa coltura per ottenere il meglio dal tuo terreno! </span> 
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime consigliato per il campo <%=campo.getNome() %> non presente nel tuo inventario.
+		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questo concime per ottenere il meglio dal tuo terreno! </span> 
 		        
 		        <span></span></p>
 		          
@@ -334,7 +328,7 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la semina del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concimazione del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
 		           <strong>Costo previsto: <%=costo %>&euro;</strong> <br>
 		        
 		      </div>
@@ -433,7 +427,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>Seleziona una coltura per poter proseguire nell'operazione di Semina</strong></p>
+            <p><strong>Seleziona un concime per poter proseguire nell'operazione di Concimazione</strong></p>
             
 
           </div>
