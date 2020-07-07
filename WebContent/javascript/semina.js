@@ -4,6 +4,8 @@
 
 var risColture = 0;
 var risRobot = 0;
+var colturaId;
+var robotId;
 $(document).ready(function(){
 	 
 	$("#btnConfermaAnalisi").click(function(){
@@ -39,8 +41,21 @@ $(document).ready(function(){
 		  
 		   
 		  if(risColture == 1 && risRobot == 1){
-			  
-			  $("#modalRiepilogo").click();
+			  	$.post("../richiestaSeminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
+	    			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+	    					if(result == "0"){
+	    						$("#error").click();
+	    						
+	    					}else if(result == "1"){
+	    						alert("OdddK richiesta");
+	    						//$("# ").load(" ");
+	    						$("#modalRiepilogo").click();
+	    					
+	    					}
+	    				
+	    				
+	    			}); /*fine ajax*/
+			  //$("#modalRiepilogo").click();
 			  
 		  }  
 			
@@ -52,7 +67,7 @@ $(document).ready(function(){
 
 
 
-var colturaId;
+
 /*controllo radio button colture*/
 function controlloRadioButton(){
 	 
@@ -66,7 +81,7 @@ function controlloRadioButton(){
             okay=true;
          
             colturaId=radiobutton[i].value;
-            alert("coltura selezionata id : "+colturaId);
+          //  alert("coltura selezionata id : "+colturaId);
             risColture=1;
            
         }
@@ -78,7 +93,6 @@ function controlloRadioButton(){
 }
 
 
-var robotId;
 /* Controllo checkbox robot*/
 function controlloCheckBox(){
 	 
@@ -95,7 +109,7 @@ function controlloCheckBox(){
         if(document.getElementById("checkbox"+j).checked===true)
         {
         	robotId= document.getElementById("checkbox"+j).value;
-            alert("robot selezionata id : "+robotId);
+            //alert("robot selezionata id : "+robotId);
 
            okay=true;
          
@@ -103,7 +117,7 @@ function controlloCheckBox(){
     }
     
     
-   alert("okay "+ okay);
+  // alert("okay "+ okay);
     if(okay){
     	risRobot=1;
     }
@@ -115,8 +129,8 @@ function controlloCheckBox(){
 
     $("#riconfermaSemina").click(function(){
     	
-    	  alert(colturaId);
-    	  alert(robotId);
+    	 // alert(colturaId);
+    	//  alert(robotId);
     	  $.post("../seminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
     			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
     					if(result == "0"){

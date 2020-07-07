@@ -15,6 +15,22 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/semina.js"></script>
+ 
+
+  <%! Dispositivo robotSelezionato =  new Dispositivo();
+ 	Item itemSelezionato = new Item();
+
+ %> 
+ 
+
+ <%
+  request.getSession().setAttribute("robot_selezionato", null);
+ request.getSession().setAttribute("item_selezionato", null);
+ %>
+ <%
+ 	robotSelezionato = (Dispositivo) request.getSession().getAttribute("robot_selezionato");
+ 	itemSelezionato = (Item) request.getSession().getAttribute("item_selezionato");
+ %>
 
 
 <% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
@@ -270,8 +286,9 @@
 	 	</center>
 	 </div>
 	 
-	 
+	
 	 <!-- ALERT RIEPILOGO OPERAZIONE SEMINA -->
+
  
 <button type="button" class="myButton" id="modalRiepilogo"  data-toggle="modal" data-target="#riepilogoSemina" style="margin-right: 2em; width: 150px; display: none">Conferma</button>
 <!--Modal: modalRelatedContent-->
@@ -296,14 +313,16 @@
 		
         <div class="row">
           <div class="col-5">
-            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+            <img class="immagine" src="<%=path %>"
               class="img-fluid" alt="">
           </div>
 
           <div class="col-7">
-            <p><strong>Prodotto</strong></p>
-            
-
+            <% if(itemSelezionato!=null){ %>
+            <p><strong><%=itemSelezionato.getNome() %></strong></p>
+            <%}else{%>
+				<p><strong>Prodotto</strong></p>
+			<%} %>
           </div>
         </div>
         
@@ -315,14 +334,16 @@
 		
         <div class="row">
           <div class="col-5">
-            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+            <img class="immagine" src="../img/robot1.jpg"
               class="img-fluid" alt="">
           </div>
 
           <div class="col-7">
-            <p><strong>Robot</strong></p>
-            
-
+          <% if(robotSelezionato!=null){ %>
+            <p><strong><%=robotSelezionato.getNome() %></strong></p>
+        	<%} else{ %>    
+				 <p><strong>Robot</strong></p>
+			<%} %>
           </div>
         </div>
         
@@ -334,12 +355,12 @@
 		
         <div class="row">
           <div class="col-5">
-            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+            <img class="immagine" src="../img/campo1.jpg"
               class="img-fluid" alt="">
           </div>
 
           <div class="col-7">
-            <p><strong>Campo</strong></p>
+            <p><strong><%=campo.getNome() %></strong></p>
             
 
           </div>
@@ -349,7 +370,7 @@
         
         <hr>
         
-        	<button type="button" data-toggle="modal" class="myButton" form="formSemina" id="riconfermaSemina" style="margin-right: 2em">Conferma</button>
+        	<button type="button" data-dismiss="modal" class="myButton" form="formSemina" id="riconfermaSemina" style="margin-right: 2em">Conferma</button>
             <button type="button"  data-dismiss="modal" class="myButton" >Annulla</button>
         
       </div>

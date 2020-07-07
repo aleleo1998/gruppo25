@@ -403,7 +403,12 @@ public class DispositivoModel
 			
 	}
 	
-	
+	/**
+	 * setta lo stato dei robot del terreno a disponibile
+	 * @param campo
+	 * @return
+	 * @throws SQLException
+	 */
 	
 	public synchronized int liberaRobot(String campo) throws SQLException {
 		int i = 0;
@@ -440,6 +445,47 @@ public class DispositivoModel
 		return i;
 			
 	}
+	
+	
+	public synchronized Dispositivo doRetrieveById(String id) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Dispositivo dispositivo = new Dispositivo();
+		
+		String selectSQL = "SELECT * FROM "+DispositivoModel.TABLE_NAME+" WHERE id = "+id;
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				id = rs.getString("id");
+				System.out.println("ID: "+id);
+				
+				dispositivo.setId(rs.getString("id"));
+				dispositivo.setNome(rs.getString("nome"));
+				dispositivo.setTipo(rs.getString("tipo"));
+				dispositivo.setCampo(rs.getString("campo"));
+				dispositivo.setStato(rs.getString("stato"));
+				dispositivo.setUtente(rs.getString("utente"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		return dispositivo;
+		}
+	
+	
 
 }
 
