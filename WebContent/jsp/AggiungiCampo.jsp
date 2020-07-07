@@ -188,8 +188,8 @@ function move() {
        {
     	  %>
     	  <img style="width:30px ;height:30px" src="../img/sensore.jpg">
-    	  <input type="checkbox" style="margin-top:40px" id="sensore<%=i%>"><%=disp.getNome()%>
-    	  <span><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
+    	  <input type="checkbox" style="margin-top:40px" id="sensore<%=i%>"><a style="margin-left:8px"><%=disp.getNome()%></a><br>
+    	  <span><i style="color:green;margin-left:33px" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
     	  
    
      <%i++;} %>
@@ -213,8 +213,8 @@ function move() {
     	  %>
     	  <a >
     	  <img style="width:30px ;height:30px" src="../img/robot1.jpg">
-    	  <input type="checkbox" style="margin-top:40px" id="robot<%=j%>"><%=disp.getNome()%>
-    	  <span ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
+    	  <input type="checkbox" style="margin-top:40px" id="robot<%=j%>"><a style="margin-left:8px"><%=disp.getNome()%></a><br>
+    	  <span ><i style="color:green;margin-left:33px" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
           </a>
           
      <%j++;} %>

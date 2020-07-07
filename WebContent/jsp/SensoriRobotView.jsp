@@ -141,7 +141,7 @@ function controllo_radio_robot()
           <%
           DispositivoModel dp= new DispositivoModel();
           Utente u =(Utente) request.getSession().getAttribute("utente");
-         LinkedList<Dispositivo> list = (LinkedList<Dispositivo>) dp.getSensori(u.getId());
+         LinkedList<Dispositivo> list = (LinkedList<Dispositivo>) dp.getSensoriAll(u.getId());
          String valDisp="";
          int i=0;
          %><form  id="eliminaSensore" action="../eliminaDispositivo" method="post"><% 
@@ -151,15 +151,15 @@ function controllo_radio_robot()
     	 %>
     	   <p>
     	    
-    	    <input type="radio" style="margin-top:20px" name="radioDis" id="sensore<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a>
+    	    <input type="radio" style="margin-top:20px" name="radioDis" id="sensore<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a><br>
     	    <%if(disp.getStato().equals("disponibile")){ %>
-    	    <a style="margin-left:20px"><strong>Impiego</strong>:attualmente installato in <%=disp.getCampo() %><br>
-    	    <span style="margin-left:110px" ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
+    	    <a style="margin-left:110px"><strong >Impiego</strong>:attualmente installato in <%=disp.getCampo() %><br>
+    	    <i style="color:green;margin-left:110px" class="fa fa-circle" aria-hidden="true"></i> Disponibile<br>
     	    <img style="width:70px;height:80px" src="../img/sensore2.jpg">
     	    </a>
     	    <%} else {%>
-    	     <a  style="margin-left:20px"><strong>Impiego</strong>:attualmente impiegato in <%=disp.getCampo() %></a><br>
-    	      <span style="margin-left:110px" ><i style="color:red" class="fa fa-circle" aria-hidden="true"></i></span> Occupato<br>
+    	     <a  style="margin-left:110px"><strong>Impiego</strong>:attualmente impiegato in <%=disp.getCampo() %></a><br>
+    	      <i style="color:red;margin-left:110px" class="fa fa-circle" aria-hidden="true"></i>Occupato<br>
     	     <img style="width:70px;height:80px" src="../img/sensore2.jpg">
     	   </p>
     	   <br>
@@ -189,7 +189,7 @@ function controllo_radio_robot()
          <form id="eliminaRobot" action="../eliminaDispositivo" method="post" >
          <%
          //Utente u =(Utente) request.getSession().getAttribute("utente")
-         LinkedList<Dispositivo> list2 = (LinkedList<Dispositivo>) dp.getRobot(u.getId());
+         LinkedList<Dispositivo> list2 = (LinkedList<Dispositivo>) dp.getRobotAll(u.getId());
          i=0;
          for(Dispositivo disp:list2)
          {
@@ -197,16 +197,16 @@ function controllo_radio_robot()
     	   %>
     	   <p>
     	    
-    	    <input type="radio" style="margin-top:20px" name="radioDis" id="robot<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a>
+    	    <input type="radio" style="margin-top:20px" name="radioDis" id="robot<%=i%>" value="<%=valDisp%>"><a style="margin-left:10px"><%=disp.getNome()%></a><br>
     	    <%if(disp.getStato().equals("disponibile")){ %>
-    	    <a style="margin-left:10px"><strong style="margin-left:13px">Impiego</strong>:attualmente installato in <%=disp.getCampo() %><br>
-    	    <span style="margin-left:100px" ><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></span> Disponibile<br>
+    	    <a  style="margin-left:90px"><strong style="margin-left:13px">Impiego</strong>:attualmente installato in <%=disp.getCampo() %><br>
+    	    <i style="color:green;margin-left:100px" class="fa fa-circle" aria-hidden="true"></i>Disponibile<br>
     	    <img style="width:50px;height:50px" src="../img/robot1.jpg">
     	    </a>
     	    <%} else {%>
-    	     <a  style="margin-left:10px"><strong style="margin-left:13px">Impiego</strong>:attualmente impiegato in <%=disp.getCampo()%>
+    	     <a  style="margin-left:90px"><strong style="margin-left:13px">Impiego</strong>:attualmente impiegato in <%=disp.getCampo()%>
     	     <br>
-    	     <span style="margin-left:100px" ><i style="color:red" class="fa fa-circle" aria-hidden="true"></i></span> Occupato
+    	     <i style="color:red;margin-left:100px" class="fa fa-circle" aria-hidden="true"></i> Occupato
     	     </a>
     	      <br>
     	     <img style="width:50px;height:50px" src="../img/robot1.jpg">

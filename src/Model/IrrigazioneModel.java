@@ -121,4 +121,40 @@ public class IrrigazioneModel
 			}
 		}
 	}
+	
+	public synchronized int updateIrrigazione(String id,String ora_inizio,String ora_fine,String giorno) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		String insertSQL = "UPDATE "+IrrigazioneModel.TABLE_NAME +" SET ora_inizio='"+ora_inizio+"' , ora_fine='"+ora_fine+"' , giorno='"+giorno+"' WHERE id='"+id+"'";
+	
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+		
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
+	
 }

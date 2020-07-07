@@ -263,7 +263,7 @@
 			<a href="../jsp/preparazioneTerreno.jsp" ><button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Preparazione</button></a>
 	 		<a href="../jsp/semina.jsp" ><button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Semina</button></a>
 	 		<a href="../jsp/concima.jsp" ><button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Concima</button></a>
-	 		<a href="../jsp/irrigazione.jsp" ><button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Irrigazione</button></a>
+	 		<a href="../jsp/IrrigazioneView.jsp" ><button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Irrigazione</button></a>
 	 	</center>
 	 </div>
 
