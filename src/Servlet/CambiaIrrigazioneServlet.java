@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.IrrigazioneModel;
-
 /**
- * Servlet implementation class AggiungiIrrigazioneServlet
+ * Servlet implementation class CambiaIrrigazioneServlet
  */
-@WebServlet("/AggiungiIrrigazioneServlet")
-public class AggiungiIrrigazioneServlet extends HttpServlet {
+@WebServlet("/CambiaIrrigazioneServlet")
+public class CambiaIrrigazioneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AggiungiIrrigazioneServlet() {
+    public CambiaIrrigazioneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +28,20 @@ public class AggiungiIrrigazioneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ora_inizio=request.getParameter("ora-inizio");
-		String ora_fine=request.getParameter("ora-fine");
-		String giorno=request.getParameter("giorno");
-		Campo c=(Campo) request.getSession().getAttribute("campo_selezionato");
-		IrrigazioneModel ir=new IrrigazioneModel();
-		ir.doSave(giorno, ora_inizio, ora_fine, c.getNome());
-		response.sendRedirect("./jsp/IrrigazioneView.jsp");
-		
+		// TODO Auto-generated method stub
+		String giorno=request.getParameter("giorno2");
+		String inizio=request.getParameter("ora-inizio2");
+		String fine=request.getParameter("ora-fine2");
+		String id=request.getParameter("id");
+		IrrigazioneModel im=new IrrigazioneModel();
+		try {
+			im.updateIrrigazione(id, inizio, fine, giorno);
+			response.sendRedirect("./jsp/IrrigazioneView.jsp");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 	for(var i=0; i<size; i++){
 		var stato = $("#info"+i).text();
-		alert(stato);
+		//alert(stato);
 		if(stato === 'Occupato'){  //Se l'utente è libero
 			$("#occupato"+i).css("display","visible");
 			$("#libero"+i).css("display","none");
@@ -32,9 +32,22 @@ $(document).ready(function(){
 	/***check counter int i***/
 	$(".buttonAssegna").click(function(){
 		
-		global = this.name;
+		global = this.name;       //alert("global: "+global);
 		
-		alert("global: "+global);
+		/*MODIFICA DIALOG*/
+		var campo_selezionato = $("#selezionacampo"+global+" :selected").text();
+		var attivita_selezionata = $("#selezionaattivita"+global+" :selected").text();
+		var durata_selezionata = $("#selezionadurata"+global+" :selected").text();
+		
+//		alert(campo_selezionato);        alert(attivita_selezionata);         alert(durata_selezionata);
+		
+		/*Costruzione messaggio di riepilogo*/
+		document.getElementById("camposelezionato"+global).innerHTML = "<p id='camposelezionato<%=i%>'><strong>Lavoro su:</strong> "+campo_selezionato+" </p>";
+		document.getElementById("attivitaselezionata"+global).innerHTML = "<p id='attivitaselezionata<%=i%>'><strong>Attività di:</strong> "+attivita_selezionata+" </p>";
+		document.getElementById("durataselezionata"+global).innerHTML = "<p id='durataselezionata<%=i%>' style='margin-bottom: 2em'><strong>Durata attività:</strong> "+durata_selezionata+" </p>";
+		/**/
+		
+		
 		
 		
 		
@@ -44,9 +57,22 @@ $(document).ready(function(){
 		/***check counter int i***/
 	$(".buttonAnnulla").click(function(){
 		
-		global_annulla = this.name;
+		global_annulla = this.name;      //alert("global_annulla: "+global_annulla);
+	
+		/*MODIFICA DIALOG*/
+		var campo_selezionato = $("#selezionacampo"+global_annulla+" :selected").text();
+		var attivita_selezionata = $("#selezionaattivita"+global_annulla+" :selected").text();
+		var durata_selezionata = $("#selezionadurata"+global_annulla+" :selected").text();
 		
-		alert("global_annulla: "+global_annulla);
+//		alert(campo_selezionato);        alert(attivita_selezionata);         alert(durata_selezionata);
+		
+		/*Costruzione messaggio di riepilogo*/
+		document.getElementById("camposelezionato_annulla"+global).innerHTML = "<p id='camposelezionato_annulla<%=i%>'><strong>Lavoro su:</strong> "+campo_selezionato+" </p>";
+		document.getElementById("attivitaselezionata_annulla"+global).innerHTML = "<p id='attivitaselezionata_annulla<%=i%>'><strong>Attività di:</strong> "+attivita_selezionata+" </p>";
+		document.getElementById("durataselezionata_annulla"+global).innerHTML = "<p id='durataselezionata_annulla<%=i%>' style='margin-bottom: 2em'><strong>Durata attività:</strong> "+durata_selezionata+" </p>";
+		/**/
+		
+		
 		
 	})
 	/******/
@@ -60,7 +86,7 @@ $(document).ready(function(){
 		var i = global;
 		//alert("indice cliccato: "+i);
 		var id = $("#id"+i).text();  //lettura <p id="#id[1|2|3|...">utente.getId()</p>
-		alert("id cliccato: "+id);
+		//alert("id cliccato: "+id);
 		
 		
 		var campo_selezionato = $("#selezionacampo"+i+" :selected").text();

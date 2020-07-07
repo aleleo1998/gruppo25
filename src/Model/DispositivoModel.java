@@ -18,6 +18,49 @@ public class DispositivoModel
 
 		Collection<Dispositivo> dispositivo = new LinkedList<Dispositivo>();
 
+		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'sensore' AND  utente = ? AND stato = 'disponibile'";
+	
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, utente);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Dispositivo bean = new Dispositivo();
+				
+				bean.setId(rs.getString("id"));
+				bean.setNome(rs.getString("nome"));
+				bean.setCampo(rs.getString("campo"));
+				bean.setStato(rs.getString("stato"));
+				bean.setTipo(rs.getString("tipo"));
+				bean.setUtente(rs.getString("utente"));
+				bean.setStato(rs.getString("stato"));
+
+				
+				
+				if(bean!=null) {	
+					dispositivo.add(bean);
+				}
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return dispositivo;
+	}
+	public synchronized Collection<Dispositivo> getSensoriAll(String utente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Dispositivo> dispositivo = new LinkedList<Dispositivo>();
+
 		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'sensore' AND  utente = ?";
 	
 		
@@ -56,6 +99,49 @@ public class DispositivoModel
 		return dispositivo;
 	}
 	public synchronized Collection<Dispositivo> getRobot(String utente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<Dispositivo> dispositivo = new LinkedList<Dispositivo>();
+
+		String selectSQL = "SELECT * FROM dispositivo WHERE tipo = 'robot' AND utente = ? AND stato = 'disponibile'";
+	
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, utente);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Dispositivo bean = new Dispositivo();
+				
+				bean.setId(rs.getString("id"));
+				bean.setNome(rs.getString("nome"));
+				bean.setCampo(rs.getString("campo"));
+				bean.setStato(rs.getString("stato"));
+				bean.setTipo(rs.getString("tipo"));
+				bean.setUtente(rs.getString("utente"));
+				bean.setStato(rs.getString("stato"));
+
+				
+				
+				if(bean!=null) {	
+					dispositivo.add(bean);
+				}
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return dispositivo;
+	}
+	public synchronized Collection<Dispositivo> getRobotAll(String utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
