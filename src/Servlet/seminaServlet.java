@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -36,9 +37,13 @@ public class seminaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		
 		Campo campoSelezionato = (Campo) request.getSession().getAttribute("campo_selezionato");
 		String coltura = request.getParameter("colture");
 		String robot = request.getParameter("robot");
+		
+	
 		
 		ItemModel itemModel = new ItemModel();
 		CampoModel campoModel = new CampoModel();
@@ -53,7 +58,7 @@ public class seminaServlet extends HttpServlet {
 		int ris2=0;
 		
 		String stato="occupato";
-		
+		String risposta = "";
 		try {
 			item = itemModel.doRetrieveById(coltura);
 			ris = campoModel.updateColturaCampo(campoSelezionato.getNome(), item.getNome());
@@ -73,11 +78,14 @@ public class seminaServlet extends HttpServlet {
 		}
 		
 		if(ris==1 && ris2==1) {
-			response.sendRedirect("./jsp/visualizzaCampo.jsp");
+			risposta="1";
+			//response.sendRedirect("./jsp/visualizzaCampo.jsp");
 		}
 		else {
-			
+			risposta="0";
 		}
+		System.out.println("risposta " +risposta);
+		out.write(risposta);
 	}
 
 	/**

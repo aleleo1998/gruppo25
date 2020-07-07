@@ -118,7 +118,7 @@
 	    </div>
    
 	</div>
-	<%}
+	<%} j++;
     }
      %>
 
@@ -215,6 +215,8 @@
 
 
   <!--Row Robot-->
+
+  
   
   <% numRobot=0;
   for(Dispositivo disp : dispositiviList){ %> 
@@ -263,14 +265,99 @@
 	
 	<div id="btnConferma">
 		<center> 
-			<button form="formSemina" id="confermaSemina" type="button" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
+			<button type="button" class="myButton" id="confermaSemina" style="margin-right: 2em; width: 150px;">Conferma</button>
 	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Annulla</button> 
 	 	</center>
 	 </div>
 	 
 	 
-	 
-	 
+	 <!-- ALERT RIEPILOGO OPERAZIONE SEMINA -->
+ 
+<button type="button" class="myButton" id="modalRiepilogo"  data-toggle="modal" data-target="#riepilogoSemina" style="margin-right: 2em; width: 150px; display: none">Conferma</button>
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="riepilogoSemina" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Riepilogo selezione</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>Prodotto</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        <hr>
+        
+        <!-- INIZIO SECONDA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>Robot</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE SECONDA RIGA -->
+        
+        <hr>
+        
+        <!-- INIZIO TERZA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>Campo</strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE TERZA RIGA -->
+        
+        <hr>
+        
+        	<button type="button" data-toggle="modal" class="myButton" form="formSemina" id="riconfermaSemina" style="margin-right: 2em">Conferma</button>
+            <button type="button"  data-dismiss="modal" class="myButton" >Annulla</button>
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--FINE RIEPILOGO OPERAZIONE SEMINA-->
 	 
 	 
 	 
@@ -499,6 +586,104 @@
 </div>
 </div>
 <!--Modal: modalRelatedContent-->
+
+
+
+
+<!--  ALERT BASE SEMINA COMPLETATA CON SUCCESSO -->
+<button id="success" type="button" class="myButton" data-toggle="modal" data-target="#successModal"></button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="successModal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Attività completata con successo</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>I robot provvederanno alla semina della coltura.</strong></p>
+            
+  			<p><strong>Per ulteriori informazioni visitare la sezione "I miei campi". </strong></p>
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal" id="fineOperazione" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+
+
+
+
+<!--  ALERT BASE SEMINA ERRORE -->
+<button id="error" type="button" class="myButton" data-toggle="modal" data-target="#errorModal"></button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="errorModal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Attività Annullata</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Si è verificato un errore durante l'operazione di semina.</strong></p>
+                  <p><strong>La invitiamo a riprovare tra poco.</strong></p>
+  			<p><strong>Se il problema persiste contattare l'assistenza su acagreen.it. </strong></p>
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal"  id="fineOperazione"  aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+
+
 
 <div id="footer">
 	<%@include file="../html/footer.html" %>

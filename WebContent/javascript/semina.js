@@ -39,15 +39,20 @@ $(document).ready(function(){
 		  
 		   
 		  if(risColture == 1 && risRobot == 1){
-			  $("#formSemina").submit();
-		  }
-		  
+			  
+			  $("#modalRiepilogo").click();
+			  
+		  }  
 			
 			
 		})
 });
 
 
+
+
+
+var colturaId;
 /*controllo radio button colture*/
 function controlloRadioButton(){
 	 
@@ -59,6 +64,9 @@ function controlloRadioButton(){
         if(radiobutton[i].checked)
         {
             okay=true;
+         
+            colturaId=radiobutton[i].value;
+            alert("coltura selezionata id : "+colturaId);
             risColture=1;
            
         }
@@ -70,7 +78,7 @@ function controlloRadioButton(){
 }
 
 
-
+var robotId;
 /* Controllo checkbox robot*/
 function controlloCheckBox(){
 	 
@@ -86,7 +94,9 @@ function controlloCheckBox(){
     
         if(document.getElementById("checkbox"+j).checked===true)
         {
-       
+        	robotId= document.getElementById("checkbox"+j).value;
+            alert("robot selezionata id : "+robotId);
+
            okay=true;
          
         }
@@ -102,7 +112,32 @@ function controlloCheckBox(){
     }
     
     
- 
+
+    $("#riconfermaSemina").click(function(){
+    	
+    	  alert(colturaId);
+    	  alert(robotId);
+    	  $.post("../seminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
+    			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+    					if(result == "0"){
+    						$("#error").click();
+    						
+    					}else if(result == "1"){
+    				
+    						$("#success").click();
+    					
+    					}
+    				
+    				
+    			}); /*fine ajax*/
+
+    	  
+    	 // $("#formSemina").submit();
+    });
+
+    $("#fineOperazione").click(function(){
+    	window.location.reload();
+    });
     
 }
 
