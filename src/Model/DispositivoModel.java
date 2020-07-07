@@ -316,5 +316,44 @@ public class DispositivoModel
 		return i;
 			
 	}
+	
+	
+	
+	public synchronized int liberaRobot(String campo) throws SQLException {
+		int i = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String stato="disponibile";
+		String tipo="robot";
+		
+		String insertSQL = "UPDATE "+DispositivoModel.TABLE_NAME +" SET stato='"+stato+"'  WHERE campo='"+campo+"' AND tipo='"+tipo+"'";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+		
+
+			System.out.println(preparedStatement.executeUpdate());
+
+			connection.commit();
+			i=1;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return i;
+			
+	}
+
 }
 
