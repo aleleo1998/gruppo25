@@ -71,8 +71,14 @@ $(document).ready(function(){
 						
 						alert(result);
 						if(result == "1"){
-							alert("Item rimosso correttamente dall'inventario");
-							$("#refForm").submit();
+							//alert("Item rimosso correttamente dall'inventario");
+							$("#successDel").click();
+						
+							 $("#fineOperazioneDel").click(function(){
+								 ;
+									//alert("Item eliminato all'inventario");
+								 $("#refForm").submit();
+							});
 							
 						}else{
 							alert("Errore: item non rimosso, riprova!");

@@ -234,8 +234,8 @@
         
         <div id="btnConferma">
 			<center> 
-				<button type="button" id="btnConfermaElimina" class="myButtonConfermaElimina" style="margin-right: 2em; width: 150px;">Conferma</button>
-	 			<button type="reset" form="formMod"  id="btnAnnullaElimina" class="myButtonAnnulla" style="margin-right: 2em; width: 150px;">Annulla</button>
+				<button type="button" data-dismiss="modal" id="btnConfermaElimina" class="myButtonConfermaElimina" style="margin-right: 2em; width: 150px;">Conferma</button>
+	 			<button type="reset" data-dismiss="modal" form="formMod"  id="btnAnnullaElimina" class="myButtonAnnulla" style="margin-right: 2em; width: 150px;">Annulla</button>
 	 			
 	 		</center>
 	 	</div>
@@ -326,7 +326,7 @@
  </div>
 	
 
-<button id="successIns" type="button" class="myButton" data-toggle="modal" data-target="#successInsert">CLICCA</button>
+<button id="successIns" type="button" class="myButton" data-toggle="modal" data-target="#successInsert"> </button>
 	<!--Modal: modalRelatedContent-->
 <div class="modal fade right" id="successInsert" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
@@ -360,6 +360,53 @@
         <hr>
         
         	<button data-dismiss="modal" id="fineOperazione" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+	
+	
+	
+	
+<!-- ELIMINA ITEM MODAL -->
+<button id="successDel" type="button" class="myButton" data-toggle="modal" data-target="#successDelete"> </button>
+	<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="successDelete" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Item Eliminato dall'inventario</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Item eliminato correttamente, Clicca "Ok" per continuare e consultare il tuo inventario!</strong></p>
+            
+  			 
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal" id="fineOperazioneDel" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
 
       </div>
     </div>

@@ -154,3 +154,7 @@ html, body, #container{
 #successIns{
 	display:none;
 }
+
+#successDel{
+	display:none;
+}
