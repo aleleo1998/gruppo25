@@ -23,10 +23,7 @@
  %> 
  
 
- <%
-  request.getSession().setAttribute("robot_selezionato", null);
- request.getSession().setAttribute("item_selezionato", null);
- %>
+
  <%
  	robotSelezionato = (Dispositivo) request.getSession().getAttribute("robot_selezionato");
  	itemSelezionato = (Item) request.getSession().getAttribute("item_selezionato");
@@ -103,8 +100,16 @@
   	<div id="row" class="rowInventario">
     
 	    <div class="media mb-4">
+	    
+	      		<%
+						Random rand = new Random();
+						int n = rand.nextInt(10000) + 1;
+						System.out.println(n);
+				  %>
+	    
+	    
 			<input form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
-			
+		
 	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
@@ -117,11 +122,7 @@
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
 		          
-		          <%
-						Random rand = new Random();
-						int n = rand.nextInt(10000) + 1;
-						System.out.println(n);
-				  %>
+		        
 		          
 		          <strong>Quantità necessaria per la semina del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
@@ -293,7 +294,7 @@
 <button type="button" class="myButton" id="modalRiepilogo"  data-toggle="modal" data-target="#riepilogoSemina" style="margin-right: 2em; width: 150px; display: none">Conferma</button>
 <!--Modal: modalRelatedContent-->
 <div class="modal fade right" id="riepilogoSemina" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
   <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
     <!--Content-->
     <div class="modal-content">
@@ -307,12 +308,15 @@
       </div>
 
       <!--Body-->
-      <div class="modal-body">
+      <div id="datiRiepilogo" class="modal-body">
 
 		<!-- INIZIO PRIMA RIGA -->
 		
         <div class="row">
           <div class="col-5">
+          
+          
+          
             <img class="immagine" src="<%=path %>"
               class="img-fluid" alt="">
           </div>
@@ -360,7 +364,7 @@
           </div>
 
           <div class="col-7">
-            <p><strong><%=campo.getNome() %></strong></p>
+            <p><strong>    <%=campo.getNome() %></strong></p>
             
 
           </div>

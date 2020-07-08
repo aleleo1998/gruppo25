@@ -47,8 +47,9 @@ $(document).ready(function(){
 	    						$("#error").click();
 	    						
 	    					}else if(result == "1"){
-	    						alert("OdddK richiesta");
-	    						//$("# ").load(" ");
+	    						alert("Oxx K richiesta");
+	    						//$("#datiRiepilogo ").load();
+	    						$("#datiRiepilogo").load(location.href + " #datiRiepilogo");
 	    						$("#modalRiepilogo").click();
 	    					
 	    					}
