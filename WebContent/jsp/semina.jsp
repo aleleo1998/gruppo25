@@ -110,7 +110,7 @@
 	    
 			<input form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
 		
-	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
+	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
@@ -177,7 +177,7 @@
 	    <div class="media mb-4">
 			<input form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
 			
-	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
+	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
@@ -317,7 +317,7 @@
           
           
           
-            <img class="immagine" src="<%=path %>"
+            <img class="immagine" src="../img/coltura1.jpg"
               class="img-fluid" alt="">
           </div>
 
@@ -414,7 +414,7 @@
 				path = "../img/coltura1.jpg";
 			if(i%4 == 1)
 				path = "../img/coltura2.jpg";
-			if (i%3 == 2)
+			if (i%4 == 2)
 				path = "../img/coltura3.jpg";
 			if (i%4 == 3)
 				path = "../img/coltura4.jpg";
@@ -427,7 +427,7 @@
 			 
 
 			
-	      	<img class="rounded" src="<%=path%>" alt="Generic placeholder image">
+	      	<img class="rounded" src="../img/coltura1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
