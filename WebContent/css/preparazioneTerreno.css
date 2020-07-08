@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+html, body, #container{
+	height: auto;
+	margin: 0px;
+	padding: 0px;
+}
+
+#menu{
+	margin-bottom: 3em;
+	
+}
+
+#container{
+	
+}
+
+#footer{
+	margin-top: 5em;
+	overflow-x: hidden;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+#form-box{
+  	
+	margin-left: 2em !important;
+	margin-right: 2em !important;
+}
+
+#row{
+	width:100%;
+	height: auto;
+	margin-left: 1em;
+	margin-top: 1em;
+	border-style:solid; 
+	border-color:#CCCCCC; 
+	border-width:1px;
+		
+}
+
+#rowConsigliate{
+	width:100%;
+	height: auto;
+	margin-left: 1em;
+	margin-top: 1em;
+	border-style:solid; 
+	border-color:#CCCCCC; 
+	border-width:1px;
+display:none;
+}
+
+#rowAltreColture{
+	width:100%;
+	height: auto;
+	margin-left: 1em;
+	margin-top: 1em;
+	border-style:solid; 
+	border-color:#CCCCCC; 
+	border-width:1px;
+display:none;
+}
+
+#radio{
+	margin-top:6px;
+	margin-left:1em;
+	margin-right:1em;
+}
+
+.checkbox{
+	margin-top:49px;
+	margin-left:1em;
+	margin-right:1em;
+}
+
+img{ 
+	margin-top:1em;
+	margin-right:1em;
+	width: 200px; 
+	height: 100px; 
+}
+
+
+.myButton {
+	background-color:#ebd700;
+	border-radius:8px;
+	border:2px solid #030200;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+
+.myButton:hover {
+	background-color:#dec804;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#btnAnalizza {
+	background-color:#DEDED6;
+	border-radius:8px;
+	border:2px solid #030200;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+
+
+
+#divButtonAnalizza{
+	margin-top:2em;
+	margin-left:98%;
+}
+
+#btnConferma{
+	margin-top:2em;
+}
+
+#altreColture{ 
+	display:none;
+	margin-top:6em;
+}
+
+#colturaError{
+	display:none;
+}
+
+#robotError{
+	display:none;
+}
+
+#nRobot{
+	display:none;
+}
+
+#error{
+	display:none;
+}
+
+#success{
+	display:none;
+}
