@@ -49,13 +49,13 @@
         <div class="testimonial" id="first">
           <!--Avatar-->
           <div class="avatar mx-auto">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" class="rounded-circle z-depth-1 img-fluid">
+            <img src="../img/privato.jpg" style="width:300px; height: 300px; overflow:hidden;" class="rounded-circle z-depth-1 img-fluid">
           </div>
           <!--Content-->
           <h4 class="font-weight-bold dark-grey-text mt-4">Agricoltore privato</h4>
-          <h6 class="font-weight-bold blue-text my-3">????????????</h6>
-          <p class="font-weight-normal dark-grey-text">
-            <i class="fas fa-quote-left pr-2"></i>????????????????????????????</p>
+          <h6 class="font-weight-bold blue-text my-3"></h6>
+          <p class="font-weight-normal dark-grey-text" style="height: 9em;">
+            <i class="fas fa-quote-left pr-2"></i>È una regola d'oro coltivare il giardino per l'olfatto, e gli occhi si prenderanno cura di se stessi.</p>
           <!--Review-->
           <div class="orange-text">
             <button class="myButton">Accedi</button>
@@ -80,13 +80,13 @@
         <div class="testimonial" id="second">
           <!--Avatar-->
           <div class="avatar mx-auto">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle z-depth-1 img-fluid">
+            <img src="../img/aziendale.jpg" style="width:300px; height: 300px; overflow:hidden;" class="rounded-circle z-depth-1 img-fluid">
           </div>
           <!--Content-->
           <h4 class="font-weight-bold dark-grey-text mt-4">Agricoltore aziendale</h4>
-          <h6 class="font-weight-bold blue-text my-3">???????????????????</h6>
-          <p class="font-weight-normal dark-grey-text">
-            <i class="fas fa-quote-left pr-2"></i>???????????????????????????</p>
+          <h6 class="font-weight-bold blue-text my-3"></h6>
+          <p class="font-weight-normal dark-grey-text" style="height: 9em;">
+            <i class="fas fa-quote-left pr-2"></i>L’agricoltura deve essere capace di mediare tra natura e comunità umana, con impegni ed obblighi in entrambe le direzioni. Coltivare bene richiede un consapevole riguardo verso tutte le creature, animate ed inanimate.</p>
           <!--Review-->
           <div class="orange-text">
             <button class="myButton">Accedi</button>
@@ -107,13 +107,13 @@
         <div class="testimonial" id="third">
           <!--Avatar-->
           <div class="avatar mx-auto">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle z-depth-1 img-fluid">
+            <img src="../img/ceo.jpg" style="width:300px; height: 300px; overflow:hidden;" class="rounded-circle z-depth-1 img-fluid">
           </div>
           <!--Content-->
           <h4 class="font-weight-bold dark-grey-text mt-4">Dirigente aziendale</h4>
-          <h6 class="font-weight-bold blue-text my-3">?????</h6>
-          <p class="font-weight-normal dark-grey-text">
-            <i class="fas fa-quote-left pr-2"></i>????????????????????</p>
+          <h6 class="font-weight-bold blue-text my-3"></h6>
+          <p class="font-weight-normal dark-grey-text" style="height: 9em;">
+            <i class="fas fa-quote-left pr-2"></i>Non è che un bel mare di spighe dorate sia l’ammirevole prodotto dell’ingegno superiore dei primi contadini eurasiatici. Il merito è tutto dell’orientamento dell’asse principale dei continenti. Attorno a questi assi girarono le fortune della storia.</p>
           <!--Review-->
           <div class="orange-text">
             <button class="myButton">Accedi</button>

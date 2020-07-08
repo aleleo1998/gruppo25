@@ -39,7 +39,7 @@ $(document).ready(function(){
 		var attivita_selezionata = $("#selezionaattivita"+global+" :selected").text();
 		var durata_selezionata = $("#selezionadurata"+global+" :selected").text();
 		
-//		alert(campo_selezionato);        alert(attivita_selezionata);         alert(durata_selezionata);
+		//alert(campo_selezionato);        alert(attivita_selezionata);         alert(durata_selezionata);
 		
 		/*Costruzione messaggio di riepilogo*/
 		document.getElementById("camposelezionato"+global).innerHTML = "<p id='camposelezionato<%=i%>'><strong>Lavoro su:</strong> "+campo_selezionato+" </p>";
@@ -151,4 +151,10 @@ $(".buttonConfermaAnnulla").click(function(){
 	})
 	
 	
+	
+	
+	
 });
+
+
+
