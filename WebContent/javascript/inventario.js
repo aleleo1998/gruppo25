@@ -124,7 +124,15 @@ $(document).ready(function(){
 	  $(".btnMod").click(function(){
 		  
 		  idDaMod= this.id;
-					
+			var nomeMod = $("#nome"+idDaMod).val();
+			var tipoMod = $("#tipo"+idDaMod).val();
+			var quantitaMod = $("#quantita"+idDaMod).val();
+				
+ 
+			
+			$("#nomeMod").val(nomeMod);
+			$("#tipoMod").val(tipoMod);
+			$("#quantitaMod").val(quantitaMod)
 			
 	  });
 	  
@@ -171,6 +179,5 @@ $(document).ready(function(){
 
   
 });
-
 
 

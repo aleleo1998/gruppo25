@@ -25,6 +25,8 @@
 
 
 
+ 
+
 
 <% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
 <%! ArrayList<Inventario> inventarioList; %>
@@ -48,9 +50,14 @@
 <div id="container">
 
 	<div id="lista">
+	 
+ 
+	
+	
+<!--
 		<input class="form-control mb-4" id="tableSearch" type="text"
     placeholder="Type something to search list items">
-
+  -->	
   <table id="tablelist" class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -64,9 +71,9 @@
     <tbody id="myTable">
     <% for(Inventario inv : inventarioList){ %> 
       <tr>
-        <td><center><%=inv.getNome() %></center></td>
-        <td><center><%=inv.getTipo() %></center></td>
-        <td><center><%=inv.getQuantita() %></center></td>
+        <td><center><%=inv.getNome() %>   <input type="hidden" id="nome<%=inv.getIdItem() %>"  value="<%=inv.getNome()%>" >  </center></td>
+        <td><center><%=inv.getTipo() %>   <input type="hidden" id="tipo<%=inv.getIdItem() %>"  value="<%=inv.getTipo()%>" >  </center></td>
+        <td><center><%=inv.getQuantita() %> <input type="hidden" id="quantita<%=inv.getIdItem() %>"  value="<%=inv.getQuantita()%>" >  </center></td>
         <td><center><button data-toggle="modal" data-target="#modalRelatedContent" id="<%=inv.getIdItem() %>" class="btnMod"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></center></td>
         <td><center><button data-toggle="modal" data-target="#modalRelatedContentElimina" id="<%=inv.getIdItem() %>" class="btnMin"><i id="<%=inv.getIdItem() %>" class="fa fa-minus-circle" aria-hidden="true"></i></button></center></td>
       	<%System.out.println(""+inv.getIdItem()); %>
