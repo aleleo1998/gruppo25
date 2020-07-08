@@ -7,7 +7,7 @@ var idDaEliminare = 0;
 $(document).ready(function(){
 	  
 	  $("#btnAdd").click(function(){
-		  alert("OO");
+		  
 			var nome = $("#nome").val();
 			var tipo = $("#tipo").val();
 			var quantita = $("#quantita").val();
@@ -23,8 +23,12 @@ $(document).ready(function(){
 					
 					alert(result);
 					if(result == "1"){
-						alert("Item aggiunto all'inventario");
-						$("#refForm").submit();
+						$("#successIns").click();
+						//alert("Item aggiunto all'inventario");
+						 $("#fineOperazione").click(function(){
+							 
+							 $("#refForm").submit();
+						});
 						
 					}else{
 						alert("Errore: item non aggiunto, riprova!");
@@ -146,7 +150,7 @@ $(document).ready(function(){
 			var tipoMod = $("#tipoMod").val();
 			var quantitaMod = $("#quantitaMod").val();
 				
-			alert("ID DA MANDARE" + id);
+			//alert("ID DA MANDARE" + id);
 
 			  $.ajax({            //AJAX CON JQUERY
 					type : 'Post',   //TIPO DI CHIAMATA

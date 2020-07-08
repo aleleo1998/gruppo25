@@ -304,13 +304,13 @@
 	   				<thead>
 	     			  <tr>
 	                  <th bgcolor="#3F565A" width="100px" style="margin-left: 2em"><span style="color:#ffffff"> Quantità</span></th>
-	                  <th width=80% ><input type="number" form="formInsert" name="quantita" id="quantita" class="white-text form-control" placeholder="Quantità" style="background: transparent; color: black"></th>
+	                  <th width=80% ><input type="number" min=0 form="formInsert" name="quantita" id="quantita" class="white-text form-control" placeholder="Quantità" style="background: transparent; color: black"></th>
 	                  </tr>
 	                  </table>
                 </div>
                 
                 <div id="divBtnAdd">
-                  <p id="btnAdd" class="myButton" style="margin-right: 2em; width: 150px;" >Aggiungi Item </p>                          
+                  <p id="btnAdd" class="myButton"  style="margin-right: 2em; width: 150px;" >Aggiungi Item </p>                          
                 </div>
                </form>
            </div>
@@ -324,6 +324,51 @@
  <div id="ref"> 
  	<form id="refForm" action="../jsp/inventario.jsp"></form>
  </div>
+	
+
+<button id="successIns" type="button" class="myButton" data-toggle="modal" data-target="#successInsert">CLICCA</button>
+	<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="successInsert" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Item aggiunto all'inventario</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Premi "Ok" per continuare e consultare il tuo inventario!</strong></p>
+            
+  			 
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal" id="fineOperazione" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+	
 	
 	
 <div id="footer">
