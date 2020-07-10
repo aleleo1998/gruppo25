@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -36,8 +37,11 @@ public class concimaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		String risposta = "";
+		
 		Campo campoSelezionato = (Campo) request.getSession().getAttribute("campo_selezionato");
-		String concime = request.getParameter("colture");
+		String concime = request.getParameter("concime");
 		String robot = request.getParameter("robot");
 		
 		ItemModel itemModel = new ItemModel();
@@ -68,12 +72,16 @@ public class concimaServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+
 		if(ris2==1) {
-			response.sendRedirect("./jsp/visualizzaCampo.jsp");
+			risposta="1";
+			//response.sendRedirect("./jsp/visualizzaCampo.jsp");
 		}
 		else {
-			
+			risposta="0";
 		}
+		System.out.println("risposta " +risposta);
+		out.write(risposta);
 	}
 
 	/**
