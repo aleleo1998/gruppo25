@@ -213,6 +213,54 @@ public class InventarioModel {
 	}
 	
 	
+	public synchronized ArrayList<Inventario> ricercaItem(String idUtente, String item) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ArrayList<Item> itemList = new ArrayList<Item>();
+		ArrayList<Inventario> inventario = new ArrayList<Inventario>();
+		
+		String selectSQL = "SELECT inventario.id_utente, item.id, item.nome, item.tipo, item.quantita FROM acagreen_db.item JOIN acagreen_db.inventario WHERE id_utente=? AND item.id=inventario.id_item AND nome LIKE ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getDbConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, idUtente);
+			preparedStatement.setString(2, "%"+item+"%");
+		
+			System.out.println(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			
+			while (rs.next()) {
+				Inventario bean = new Inventario();
+				
+				bean.setIdUtente(rs.getString("id_utente"));
+				bean.setIdItem(rs.getString("id"));
+				bean.setNome(rs.getString("nome"));
+				bean.setTipo(rs.getString("tipo"));
+				bean.setQuantita(rs.getString("quantita"));
+				
+				inventario.add(bean);
+			}
+			
+			
+				
+		
+			
+		
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return inventario;
+	}
+	
 }
 	
 

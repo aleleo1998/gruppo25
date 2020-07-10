@@ -29,11 +29,12 @@
 
 
 <% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
-<%! ArrayList<Inventario> inventarioList; %>
+<% String search = (String) request.getSession().getAttribute("nomeitem_ricercato"); %>
+<%! ArrayList<Inventario> inventarioList = new ArrayList<Inventario>(); %>
 <% if(utente!=null){%>
 <%
 	Model.InventarioModel im = new InventarioModel();
-	inventarioList = (ArrayList<Inventario>) im.getInventario(utente.getId());
+	inventarioList = (ArrayList<Inventario>) request.getSession().getAttribute("ricerca_item");
 }
 %>
 
@@ -60,10 +61,10 @@
   -->	
   
   <!-- SEARCH BAR -->
-	<form id="searchForm" class="form-inline" action="../ricercaItemServlet" method="post" style="margin: 1em 0em 1em 1em; width: 300px;">
-  		<i class="fas fa-search" aria-hidden="true" id="searchButton" style="cursor:pointer"></i>
-  		<input id="searchInput" class="form-control form-control-sm ml-3 w-75" type="text" name="search" placeholder="ricerca un item..." aria-label="Search">
-	</form>
+		<div style="margin: 1em 0em 2em 2em; width: 300px;">
+  		<button id="button"><a href="inventario.jsp" style="color: black">Annulla ricerca</a></button>
+	</div>
+
 	<!-- END SEARCH BAR -->
   
   <table id="tablelist" class="table table-bordered table-striped">
