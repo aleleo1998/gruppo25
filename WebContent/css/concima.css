@@ -134,7 +134,7 @@ img{
 	margin-top:6em;
 }
 
-#colturaError{
+#concimeError{
 	display:none;
 }
 
@@ -145,3 +145,13 @@ img{
 #nRobot{
 	display:none;
 }
+
+#error{
+	display:none;
+}
+
+#success{
+	display:none;
+}
+
+

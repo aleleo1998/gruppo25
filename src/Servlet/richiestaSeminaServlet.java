@@ -80,7 +80,7 @@ public class richiestaSeminaServlet extends HttpServlet {
 		
 		if(item != null && disp != null) {
 			risposta="1";
-			//response.sendRedirect("./jsp/visualizzaCampo.jsp");
+			response.sendRedirect("./jsp/semina.jsp");
 		}
 		else {
 			risposta="0";

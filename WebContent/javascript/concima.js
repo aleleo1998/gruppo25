@@ -63,7 +63,7 @@ $(document).ready(function(){
 		  
 		   
 		  if(risColture == 1 && risRobot == 1){
-			  	$.post("../richiestaconcimaServlet",{colture : concimeId, robot : robotId}, function(result) {  
+			  	$.post("../richiestaConcimaServlet",{colture : concimeId, robot : robotId}, function(result) {  
 	    			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 	    					if(result == "0"){
 	    						$("#error").click();
@@ -130,7 +130,7 @@ function controlloCheckBox(){
    
     var okay=false;
 
-    alert("prima for");
+    
     for(var j=1;j<=numRobot;j++)
     {    	
     

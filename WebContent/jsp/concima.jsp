@@ -58,7 +58,7 @@
 
 <%!int mod=0; %>
 <%!int numRobot=0; %>
-<title>concima</title>
+<title>Concima</title>
 </head>
 <body>
 
@@ -120,19 +120,19 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concime disponibile nell'inventario.</span>
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime disponibile nell'inventario.</span>
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
 		          
 		        
 		          
-		          <strong>Quantità necessaria per la concima del campo: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concimazione del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
-		           	<strong><font color="green">Quantità sufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="green">Quantità sufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
-		           	<strong><font color="red">Quantità insufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="red">Quantità insufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		      </div>
 	    </div>
@@ -187,7 +187,7 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concime disponibile nell'inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime disponibile nell'inventario.
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
@@ -198,12 +198,12 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la concima del campo: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concimazione del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
-		           	<strong><font color="green">Quantità sufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="green">Quantità sufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
-		           	<strong><font color="red">Quantità insufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="red">Quantità insufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		      </div>
 	    </div>
@@ -437,8 +437,8 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concime consigliate per il campo <%=campo.getNome() %> non presente nel tuo inventario.
-		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questa concime per ottenere il meglio dal tuo terreno! </span> 
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime consigliato per il campo <%=campo.getNome() %> non presente nel tuo inventario.
+		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questo concime per ottenere il meglio dal tuo terreno! </span> 
 		        
 		        <span></span></p>
 		          
@@ -449,7 +449,7 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la concima del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concimazione del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
 		           <strong>Costo previsto: <%=costo %>&euro;</strong> <br>
 		        
 		      </div>
@@ -594,7 +594,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>Seleziona un robot per poter proseguire nell'operazione di concima</strong></p>
+            <p><strong>Seleziona un robot per poter proseguire nell'operazione di concimazione</strong></p>
             
 
           </div>
@@ -642,7 +642,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>I robot provvederanno alla concima della concime.</strong></p>
+            <p><strong>I robot provvederanno alla concimazione del terreno.</strong></p>
             
   			<p><strong>Per ulteriori informazioni visitare la sezione "I miei campi". </strong></p>
           </div>
@@ -690,7 +690,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>Si è verificato un errore durante l'operazione di concima.</strong></p>
+            <p><strong>Si è verificato un errore durante l'operazione di concimazione.</strong></p>
                   <p><strong>La invitiamo a riprovare tra poco.</strong></p>
   			<p><strong>Se il problema persiste contattare l'assistenza su acagreen.it. </strong></p>
           </div>
