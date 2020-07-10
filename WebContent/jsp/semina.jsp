@@ -15,7 +15,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/semina.js"></script>
- 
 
   <%! Dispositivo robotSelezionato =  new Dispositivo();
  	Item itemSelezionato = new Item();
@@ -117,7 +116,7 @@
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura disponibile nell'inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una coltura disponibile nell'inventario.</span>
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
@@ -374,7 +373,7 @@
         
         <hr>
         
-        	<button type="button" data-dismiss="modal" class="myButton" form="formSemina" id="riconfermaSemina" style="margin-right: 2em">Conferma</button>
+        	<button type="submit" class="myButton"  id="riconfermaSemina" form="formSemina" style="margin-right: 2em">Conferma</button>
             <button type="button"  data-dismiss="modal" class="myButton" >Annulla</button>
         
       </div>

@@ -7,6 +7,28 @@ var risRobot = 0;
 var colturaId;
 var robotId;
 $(document).ready(function(){
+	 $("#riconfermaSemina2").click(function(){
+			
+		 // alert(colturaId);
+		//  alert(robotId);
+		 alert("sto qua")
+		 /* $.post("../seminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
+				//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+						if(result == "0"){
+							$("#error").click();
+							
+						}else if(result == "1"){
+					
+							$("#success").click();
+						
+						}
+					
+					
+				}); /*fine ajax*/
+
+		  
+		 // $("#formSemina").submit();
+	});
 	 
 	$("#btnConfermaAnalisi").click(function(){
 		 
@@ -61,12 +83,17 @@ $(document).ready(function(){
 		  }  
 			
 			
-		})
+		});
+	  
+		
+		$("#fineOperazione").click(function(){
+			window.location.reload();
+		});
+
+
+
+
 });
-
-
-
-
 
 
 /*controllo radio button colture*/
@@ -128,31 +155,7 @@ function controlloCheckBox(){
     
     
 
-    $("#riconfermaSemina").click(function(){
-    	
-    	 // alert(colturaId);
-    	//  alert(robotId);
-    	  $.post("../seminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
-    			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
-    					if(result == "0"){
-    						$("#error").click();
-    						
-    					}else if(result == "1"){
-    				
-    						$("#success").click();
-    					
-    					}
-    				
-    				
-    			}); /*fine ajax*/
-
-    	  
-    	 // $("#formSemina").submit();
-    });
-
-    $("#fineOperazione").click(function(){
-    	window.location.reload();
-    });
+    
     
 }
 

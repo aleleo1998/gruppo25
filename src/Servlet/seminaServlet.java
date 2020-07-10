@@ -79,13 +79,13 @@ public class seminaServlet extends HttpServlet {
 		
 		if(ris==1 && ris2==1) {
 			risposta="1";
-			//response.sendRedirect("./jsp/visualizzaCampo.jsp");
+			
 		}
 		else {
 			risposta="0";
 		}
-		System.out.println("risposta " +risposta);
-		out.write(risposta);
+		System.out.println("risposta ****" +risposta);
+		response.sendRedirect("./jsp/i_miei_campi.jsp");
 	}
 
 	/**
