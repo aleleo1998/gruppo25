@@ -186,7 +186,14 @@ $(document).ready(function(){
 		});  /*fine funzione remove.click*/
 	  
 	  
-
+		$("#searchButton").click(function(){
+			
+			$("#searchForm").submit();
+		
+		});	
+		
+	
+		
   
 });
 
