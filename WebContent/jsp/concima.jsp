@@ -2,6 +2,10 @@
 <%@page import="java.sql.*"%>
 <%@page import ="java.util.*"%>
 <%@page import="Model.Inventario" %>
+<%@page import="Model.*"%>
+<%@page import="java.sql.*"%>
+<%@page import ="java.util.*"%>
+<%@page import="Model.Inventario" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +19,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/concima.js"></script>
+
+  <%! Dispositivo robotSelezionato =  new Dispositivo();
+ 	Item itemSelezionato = new Item();
+
+ %> 
+ 
+
+
+ <%
+ 	robotSelezionato = (Dispositivo) request.getSession().getAttribute("robot_selezionato");
+ 	itemSelezionato = (Item) request.getSession().getAttribute("item_selezionato");
+ %>
 
 
 <% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
@@ -42,7 +58,7 @@
 
 <%!int mod=0; %>
 <%!int numRobot=0; %>
-<title>Concima</title>
+<title>concima</title>
 </head>
 <body>
 
@@ -53,7 +69,7 @@
 <div id="container">
 	<div id="form-box" class="card">
 	  <div class="card-header">
-	    Seleziona il concime da utilizzare per l'attività di concimazione <p style = "text-decoration:line-through;"> </p>
+	    Seleziona la concime da concimare <p style = "text-decoration:line-through;"> </p>
 	  </div>
 	  <div class="card-body">
 	    <h5 class="card-title">Prodotti presenti nell'inventario</h5> <hr>
@@ -61,7 +77,7 @@
 	   <div class="container my-5">
 
 <!-- FORM -->
-<form action="../concimaServlet" name="formSemina" id="formSemina">
+<form action="../concimaServlet" name="formconcima" id="formconcima">
 </form>
 
   <!--Row COLTURE-->
@@ -87,38 +103,42 @@
   	<div id="row" class="rowInventario">
     
 	    <div class="media mb-4">
-			<input form="formSemina" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
-			
-	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
+	    
+	      		<%
+						Random rand = new Random();
+						int n = rand.nextInt(10000) + 1;
+						System.out.println(n);
+				  %>
+	    
+	    
+			<input form="formconcima" id="radio" type="radio" name="colture" value="<%=inv.getIdItem()%>">  
+		
+	      	<img class="rounded" src="../img/concime1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime disponibile nell'inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concime disponibile nell'inventario.</span>
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
 		          
-		          <%
-						Random rand = new Random();
-						int n = rand.nextInt(10000) + 1;
-						System.out.println(n);
-				  %>
+		        
 		          
-		          <strong>Quantità necessaria per la concimazione del campo: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concima del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
-		           	<strong><font color="green">Quantità sufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="green">Quantità sufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
-		           	<strong><font color="red">Quantità insufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="red">Quantità insufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		      </div>
 	    </div>
    
 	</div>
-	<%}
+	<%} j++;
     }
      %>
 
@@ -136,9 +156,9 @@
 	}
     Random r = new Random();
 	mod = 0;
-	
-     mod = (coltureList.size()/2);
- 
+	 System.out.println("Lista dim:" + coltureList.size());
+    mod = (coltureList.size()/2);
+    System.out.println("MOD" + mod);
     for(int i = 0;i<mod;i++){
     	Inventario inv = coltureList.get(r.nextInt(coltureList.size()));
     	
@@ -158,16 +178,16 @@
   	<div id="rowConsigliate" >
     
 	    <div class="media mb-4">
-			<input form="formSemina" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
+			<input form="formconcima" id="radio" type="radio"  name="colture" value="<%=inv.getIdItem()%>">  
 			
-	      	<img class="rounded" src="<%=path %>" alt="Generic placeholder image">
+	      	<img class="rounded" src="../img/concime1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è un concime disponibile nell'inventario.
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concime disponibile nell'inventario.
 		        <span> Hai a disposizione </span> <%=inv.getQuantita() %>
 		        <span>Kg di </span>
 		        <%=inv.getNome() %><span></span></p>
@@ -178,12 +198,12 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la concimazione del campo: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concima del campo: <%=n %>kg</strong> <br>
 		          <%if(Integer.parseInt(inv.getQuantita()) >= n){ %>
-		           	<strong><font color="green">Quantità sufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="green">Quantità sufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		           <%if(Integer.parseInt(inv.getQuantita()) < n){ %>
-		           	<strong><font color="red">Quantità insufficiente per la concimazione del campo: <%=inv.getQuantita() %></font></strong>
+		           	<strong><font color="red">Quantità insufficiente per la concima del campo: <%=inv.getQuantita() %></font></strong>
 		           <%} %>
 		      </div>
 	    </div>
@@ -215,6 +235,8 @@
 
 
   <!--Row Robot-->
+
+  
   
   <% numRobot=0;
   for(Dispositivo disp : dispositiviList){ %> 
@@ -225,7 +247,7 @@
   	<div id="row" >
     
 	    <div class="media mb-4">
-	    	<input type="checkbox" form="formSemina" class="checkbox"  id="checkbox<%=numRobot%>" name="robot" value="<%=disp.getId()%>">
+	    	<input type="checkbox" form="formconcima" class="checkbox"  id="checkbox<%=numRobot%>" name="robot" value="<%=disp.getId()%>">
 			
 			
 	      	<img class="rounded" src="../img/robot1.jpg" alt="Generic placeholder image">
@@ -263,14 +285,107 @@
 	
 	<div id="btnConferma">
 		<center> 
-			<button form="formSemina" id="confermaSemina" type="button" class="myButton" style="margin-right: 2em; width: 150px;">Conferma</button>
-	 		<button form="formSemina" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Annulla</button> 
+			<button type="button" class="myButton" id="confermaconcima" style="margin-right: 2em; width: 150px;">Conferma</button>
+	 		<button form="formconcima" type="reset" class="myButton" style="margin-right: 2em; width: 150px;">Annulla</button> 
 	 	</center>
 	 </div>
 	 
-	 
-	 
-	 
+	
+	 <!-- ALERT RIEPILOGO OPERAZIONE concima -->
+
+ 
+<button type="button" class="myButton" id="modalRiepilogo"  data-toggle="modal" data-target="#riepilogoconcima" style="margin-right: 2em; width: 150px; display: none">Conferma</button>
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="riepilogoconcima" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Riepilogo selezione</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div id="datiRiepilogo" class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+          
+          
+          
+            <img class="immagine" src="../img/concime1.jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <% if(itemSelezionato!=null){ %>
+            <p><strong><%=itemSelezionato.getNome() %></strong></p>
+            <%}else{%>
+				<p><strong>Prodotto</strong></p>
+			<%} %>
+          </div>
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        <hr>
+        
+        <!-- INIZIO SECONDA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="../img/robot1.jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+          <% if(robotSelezionato!=null){ %>
+            <p><strong><%=robotSelezionato.getNome() %></strong></p>
+        	<%} else{ %>    
+				 <p><strong>Robot</strong></p>
+			<%} %>
+          </div>
+        </div>
+        
+        <!-- FINE SECONDA RIGA -->
+        
+        <hr>
+        
+        <!-- INIZIO TERZA RIGA -->
+		
+        <div class="row">
+          <div class="col-5">
+            <img class="immagine" src="../img/campo1.jpg"
+              class="img-fluid" alt="">
+          </div>
+
+          <div class="col-7">
+            <p><strong>    <%=campo.getNome() %></strong></p>
+            
+
+          </div>
+        </div>
+        
+        <!-- FINE TERZA RIGA -->
+        
+        <hr>
+        
+        	<button type="submit" class="myButton"  id="riconfermaconcima" form="formconcima" style="margin-right: 2em">Conferma</button>
+            <button type="button"  data-dismiss="modal" class="myButton" >Annulla</button>
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--FINE RIEPILOGO OPERAZIONE concima-->
 	 
 	 
 	 
@@ -282,7 +397,7 @@
   		<div id="form-box" class="card">
 	  
 	  <div class="card-body">
-	    <h5 class="card-title">Altri concimi consigliati non presenti nell'inventario</h5> <hr>
+	    <h5 class="card-title">Altre colture consigliate non presenti nell'inventario</h5> <hr>
 	   
 	   <div class="container my-5">
 
@@ -302,7 +417,7 @@
 				path = "../img/concime1.jpg";
 			if(i%4 == 1)
 				path = "../img/concime2.jpg";
-			if (i%3 == 2)
+			if (i%4 == 2)
 				path = "../img/concime3.jpg";
 			if (i%4 == 3)
 				path = "../img/concime4.jpg";
@@ -315,15 +430,15 @@
 			 
 
 			
-	      	<img class="rounded" src="<%=path%>" alt="Generic placeholder image">
+	      	<img class="rounded" src="../img/concime1.jpg" alt="Generic placeholder image">
 		    
 		      <div class="media-body">
 		        <a>
 		          <h5 class="user-name font-weight-bold"><%=inv.getNome()%></h5>
 		        </a>
 		      
-		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concimazione consigliata per il campo <%=campo.getNome() %> non presente nel tuo inventario.
-		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questo concime per ottenere il meglio dal tuo terreno! </span> 
+		        <p class="dark-grey-text article"><%=inv.getNome() %> <span> è una concime consigliate per il campo <%=campo.getNome() %> non presente nel tuo inventario.
+		        <span> Ti consigliamo di prendere in considerazione l'acquisto di questa concime per ottenere il meglio dal tuo terreno! </span> 
 		        
 		        <span></span></p>
 		          
@@ -334,7 +449,7 @@
 						System.out.println(n);
 				  %>
 		          
-		          <strong>Quantità necessaria per la concimazione del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
+		          <strong>Quantità necessaria per la concima del campo <%=campo.getNome() %>: <%=n %>kg</strong> <br>
 		           <strong>Costo previsto: <%=costo %>&euro;</strong> <br>
 		        
 		      </div>
@@ -409,18 +524,18 @@
 
 
 
-<!--  ALERT BASE CONTROLLO COLTURA SELEZIONATA -->
-<button id="colturaError" type="button" class="myButton" data-toggle="modal" data-target="#errColtura"></button>
+<!--  ALERT BASE CONTROLLO concime SELEZIONATA -->
+<button id="concimeError" type="button" class="myButton" data-toggle="modal" data-target="#errconcime"></button>
 
 <!--Modal: modalRelatedContent-->
-<div class="modal fade right" id="errColtura" tabindex="-1" role="dialog"
+<div class="modal fade right" id="errconcime" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
-        <h5 class="heading">Seleziona Coltura</h5>
+        <h5 class="heading">Seleziona concime</h5>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="white-text">&times; </span>
@@ -433,7 +548,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>Seleziona un concime per poter proseguire nell'operazione di Concimazione</strong></p>
+            <p><strong>Seleziona una concime per poter proseguire nell'operazione di concima</strong></p>
             
 
           </div>
@@ -479,7 +594,7 @@
         <div class="row">
 
           <div class="col-7">
-            <p><strong>Seleziona un robot per poter proseguire nell'operazione di Concimazione</strong></p>
+            <p><strong>Seleziona un robot per poter proseguire nell'operazione di concima</strong></p>
             
 
           </div>
@@ -499,6 +614,104 @@
 </div>
 </div>
 <!--Modal: modalRelatedContent-->
+
+
+
+
+<!--  ALERT BASE concima COMPLETATA CON SUCCESSO -->
+<button id="success" type="button" class="myButton" data-toggle="modal" data-target="#successModal"></button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="successModal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Attività completata con successo</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>I robot provvederanno alla concima della concime.</strong></p>
+            
+  			<p><strong>Per ulteriori informazioni visitare la sezione "I miei campi". </strong></p>
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal" id="fineOperazione" aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+
+
+
+
+<!--  ALERT BASE concima ERRORE -->
+<button id="error" type="button" class="myButton" data-toggle="modal" data-target="#errorModal"></button>
+
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="errorModal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Attività Annullata</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times; </span>
+        </button>
+      </div>
+		 <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+
+          <div class="col-7">
+            <p><strong>Si è verificato un errore durante l'operazione di concima.</strong></p>
+                  <p><strong>La invitiamo a riprovare tra poco.</strong></p>
+  			<p><strong>Se il problema persiste contattare l'assistenza su acagreen.it. </strong></p>
+          </div>
+       <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        <hr>
+        
+        	<button data-dismiss="modal"  id="fineOperazione"  aria-label="Close" type="button" class="myButton" style="margin-left:43%">Ok</button>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>
+<!--Modal: modalRelatedContent-->
+
+
 
 <div id="footer">
 	<%@include file="../html/footer.html" %>

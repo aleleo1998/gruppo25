@@ -2,9 +2,33 @@
  * 
  */
 
-var risConcime = 0;
-var risRobot1 = 0;
+var risColture = 0;
+var risRobot = 0;
+var concimeId;
+var robotId;
 $(document).ready(function(){
+	 $("#riconfermaconcima2").click(function(){
+			
+		 // alert(concimeId);
+		//  alert(robotId);
+		 alert("sto qua")
+		 /* $.post("../concimaServlet",{colture : concimeId, robot : robotId}, function(result) {  
+				//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+						if(result == "0"){
+							$("#error").click();
+							
+						}else if(result == "1"){
+					
+							$("#success").click();
+						
+						}
+					
+					
+				}); /*fine ajax*/
+
+		  
+		 // $("#formconcima").submit();
+	});
 	 
 	$("#btnConfermaAnalisi").click(function(){
 		 
@@ -30,23 +54,45 @@ $(document).ready(function(){
 	  
 	  
 	  
-	  $("#confermaSemina").click(function(){
+	  $("#confermaconcima").click(function(){
 		   
-		  alert("dasDAS");
+		
 		  controlloRadioButton();
 		  
 		  controlloCheckBox();
-		  alert("Concime"+ risConcime);
-		  alert("robot" +risRobot1);
 		  
-		  if(risConcime == 1 && risRobot1 == 1){
-			  alert("CC");
-			  $("#formSemina").submit();
-		  }
-		  
+		   
+		  if(risColture == 1 && risRobot == 1){
+			  	$.post("../richiestaconcimaServlet",{colture : concimeId, robot : robotId}, function(result) {  
+	    			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
+	    					if(result == "0"){
+	    						$("#error").click();
+	    						
+	    					}else if(result == "1"){
+	    						alert("Oxx K richiesta");
+	    						//$("#datiRiepilogo ").load();
+	    						$("#datiRiepilogo").load(location.href + " #datiRiepilogo");
+	    						$("#modalRiepilogo").click();
+	    					
+	    					}
+	    				
+	    				
+	    			}); /*fine ajax*/
+			  //$("#modalRiepilogo").click();
+			  
+		  }  
 			
 			
-		})
+		});
+	  
+		
+		$("#fineOperazione").click(function(){
+			window.location.reload();
+		});
+
+
+
+
 });
 
 
@@ -61,21 +107,23 @@ function controlloRadioButton(){
         if(radiobutton[i].checked)
         {
             okay=true;
-            risConcime=1;
+         
+            concimeId=radiobutton[i].value;
+          //  alert("concime selezionata id : "+concimeId);
+            risColture=1;
            
         }
     }
 
-    if(risConcime==0){
-    	$("#colturaError").click();
+    if(risColture==0){
+    	$("#concimeError").click();
     }
 }
 
 
-
 /* Controllo checkbox robot*/
 function controlloCheckBox(){
- 
+	 
 	
 	var numRobot = document.getElementById("nRobot").value;
     alert("numRobot " + numRobot);
@@ -88,23 +136,26 @@ function controlloCheckBox(){
     
         if(document.getElementById("checkbox"+j).checked===true)
         {
-       
+        	robotId= document.getElementById("checkbox"+j).value;
+            //alert("robot selezionata id : "+robotId);
+
            okay=true;
          
         }
     }
     
     
-   alert("okay "+ okay);
+  // alert("okay "+ okay);
     if(okay){
-    	risRobot1=1;
+    	risRobot=1;
     }
     else{
     	$("#robotError").click();
     }
     
     
- 
+
+    
     
 }
 
