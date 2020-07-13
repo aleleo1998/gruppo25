@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
-
+<script src="../javascript/visualizzaCampo.js"></script>
 
 <% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
 <%! ArrayList<Dispositivo> dispositiviList; %>
@@ -106,7 +106,7 @@
 			   
 			        <th bgcolor="#3F565A"><span style="color:#ffffff">     <i class="fa fa-check-circle" aria-hidden="true"></i> Stima produzione </span></th>
 			        <th ><span style="color:#000000"> 90% </span>
-			       		 <button type="button" id="btnEsamina" class="myButtonDark" style="margin-right: 2em; height: 25px; width: 150px; margin-left:2em; padding: 2px 24px;">Esamina</button>
+			       		 <button type="button" id="btnEsamina" class="myButtonDark" data-toggle="modal" data-target="#esamina" style="margin-right: 2em; height: 25px; width: 150px; margin-left:2em; padding: 2px 24px;">Esamina</button>
 			        </th>
 			        
 			      </tr>
@@ -266,6 +266,63 @@
 	 		<a href="../jsp/IrrigazioneView.jsp" ><button type="button" class="myButton" style="margin-right: 2em; width: 150px;">Irrigazione</button></a>
 	 	</center>
 	 </div>
+
+
+<%!int esaminaInput; %>
+	      		<%
+						Random rand = new Random();
+						esaminaInput = rand.nextInt()%2;
+						 
+				  %>
+
+<!-- FORM -->
+<form action="../esaminaServlet" name="formEsamina" id="formEsamina">
+<input form="formEsamina" id="esaminaInput" type="hidden" name="esaminaInput" value="<%=esaminaInput%>">
+</form>
+
+<!-- ESAMINA Modal: modalRelatedContent-->
+<div class="modal fade right" id="esamina" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+    
+
+      <!--Body-->
+      <div class="modal-body">
+	        <h5 class="heading">Analisi terreno</h5><hr>
+		<!-- INIZIO PRIMA RIGA -->
+		
+        <div class="row">
+          <div id="bar" class="col-7">
+            <div id="myProgress" style=" width: 170%; background-color: grey;">
+             <div id="myBar" style=" width: 1%;height: 30px;background-color: green;color:whitesmoke">0%</div>
+             
+             
+            </div>
+            <button type="submit" form="formEsamina" id="btnConfermaAnalisi" class="myButton" style="margin-top:30px">Conferma</button>
+             </div>
+       
+            
+
+         
+        </div>
+        
+        <!-- FINE PRIMA RIGA -->
+        
+        
+  
+        
+      </div>
+    </div>
+    </div>
+    
+  
+    
+</div>
+    <!--/.Content-->
+<!--ESAMINA-->
+
 
 
 <div id="footer">
