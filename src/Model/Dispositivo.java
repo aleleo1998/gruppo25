@@ -5,7 +5,7 @@ public class Dispositivo {
 
 
 
-public Dispositivo(String id, String nome, String tipo, String campo, String stato, String utente) {
+public Dispositivo(String id, String nome, String tipo, String campo, String stato, String utente, String attivita) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -13,10 +13,19 @@ public Dispositivo(String id, String nome, String tipo, String campo, String sta
 		this.campo = campo;
 		this.stato = stato;
 		this.utente = utente;
+		this.attivita = attivita;
 	}
 
 public Dispositivo() {
 	super();
+}
+
+public String getAttivita() {
+	return attivita;
+}
+
+public void setAttivita(String attivita) {
+	this.attivita = attivita;
 }
 
 public String getId() {
@@ -73,4 +82,5 @@ private String tipo;
 private String campo;
 private String stato;
 private String utente;
+private String attivita;
 }

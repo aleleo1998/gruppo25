@@ -115,7 +115,7 @@
 			  </div>
 		
 		
-		 <button type="button" id="btnEsamina" class="myButtonDark" style="margin-right: 2em;  width: 200px; margin-left:1em; margin-top:1em;">Maggiori Informazioni</button>
+		 <button data-toggle="modal" data-target="#maggioriInfo" type="button" id="btnEsamina" class="myButtonDark" style="margin-right: 2em;  width: 200px; margin-left:1em; margin-top:1em;">Maggiori Informazioni</button>
 			
 			
 			
@@ -324,6 +324,65 @@
 <!--ESAMINA-->
 
 
+
+<!--Modal: MAGGIORI INFO-->
+<div class="modal fade right" id="maggioriInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h5 class="heading">Attività in corso</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+		<!-- INIZIO PRIMA RIGA -->
+		 <% for(Dispositivo disp : dispositiviList){ 
+		 	if(disp.getStato().equals("occupato") && disp.getCampo().equals(campo.getNome())){
+		 %> 
+        <div class="row">
+
+          <div>
+            <p>ATTIVITA': <strong><%=disp.getAttivita() %></strong> </p>
+            
+             <p>   <img src="../img/concime1.jpg" style="width:50px;height:50px;">  è in svolgimento l'attività di <%=disp.getAttivita() %> sul campo <%=campo.getNome() %> </p>
+             
+            
+			
+			
+			 <p> <img src="../img/robot1.jpg" style="width:50px;height:50px;">  <%= disp.getNome() %> </p>
+			  
+			</p>
+			
+			<center>
+			<button class="myButtonInterrompi" id="<%=disp.getId()%>"> Interrompi Attività </button>
+			</center>
+          </div>
+        </div>
+        
+         <hr>
+        <%}
+		 }%>
+        <!-- FINE PRIMA RIGA -->
+     
+        
+        <hr>
+        
+        	<button data-dismiss="modal" type="button" class="myButton" style="margin-left:43%">Ok</button>
+            
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: MAGGIORI INFO-->
 
 <div id="footer">
 	<%@include file="../html/footer.html" %>

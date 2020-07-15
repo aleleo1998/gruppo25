@@ -216,6 +216,7 @@ public class DispositivoModel
 				bean.setTipo(rs.getString("tipo"));
 				bean.setCampo(rs.getString("campo"));
 				bean.setStato(rs.getString("stato"));
+				bean.setAttivita(rs.getString("attivita"));
 
 				
 				
