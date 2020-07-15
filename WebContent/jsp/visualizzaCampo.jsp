@@ -351,7 +351,17 @@
           <div>
             <p>ATTIVITA': <strong><%=disp.getAttivita() %></strong> </p>
             
-             <p>   <img src="../img/concime1.jpg" style="width:50px;height:50px;">  è in svolgimento l'attività di <%=disp.getAttivita() %> sul campo <%=campo.getNome() %> </p>
+            <%!String pathfoto ="";
+            %>
+            
+            <% if(disp.getAttivita().equals("concima")){
+            	pathfoto="../img/concime1.jpg";
+            }
+            	else{
+            		pathfoto="../img/coltura1.jpg";
+            	}
+            	%>
+             <p>   <img src="<%=pathfoto %>" style="width:50px;height:50px;">  è in svolgimento l'attività di <%=disp.getAttivita() %> sul campo <%=campo.getNome() %> </p>
              
             
 			
