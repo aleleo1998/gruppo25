@@ -44,7 +44,7 @@ CREATE TABLE `dispositivo` (
 
 LOCK TABLES `dispositivo` WRITE;
 /*!40000 ALTER TABLE `dispositivo` DISABLE KEYS */;
-INSERT INTO `dispositivo` VALUES ('1','robot1','robot','Campo delle pietre','occupato','2','semina'),('2','robot 2','sensore','Campo Dexter','occupato','2','concima'),('3','sensore 1','sensore','Campo delle pietre','disponibile','2',NULL),('4','sensore 2','sensore','Campo delle pietre','disponibile','2',NULL),('5','robot 3','robot','Campo delle pietre','disponibile','2',NULL),('6','robot4','robot','Campo delle pietre','disponibile','2',NULL),('7','robot 4','robot','Campo Dexter','disponibile','2',NULL);
+INSERT INTO `dispositivo` VALUES ('1','robot1','robot','Campo delle pietre','occupato','2','semina'),('11','robot1','robot','Campo delle pietre','occupato','4','semina'),('2','robot 2','sensore','Campo Dexter','occupato','2','concima'),('21','robot 2','sensore','Campo Dexter','occupato','4','concima'),('3','sensore 1','sensore','Campo delle pietre','disponibile','2',NULL),('31','sensore 1','sensore','Campo delle pietre','disponibile','4',NULL),('4','sensore 2','sensore','Campo delle pietre','disponibile','2',NULL),('41','sensore 2','sensore','Campo delle pietre','disponibile','4',NULL),('5','robot 3','robot','Campo delle pietre','disponibile','2',NULL),('51','robot 3','robot','Campo delle pietre','disponibile','4',NULL),('6','robot4','robot','Campo delle pietre','disponibile','2',NULL),('61','robot4','robot','Campo delle pietre','disponibile','4',NULL),('7','robot 4','robot','Campo Dexter','disponibile','2',NULL),('71','robot 4','robot','Campo Dexter','disponibile','4',NULL);
 /*!40000 ALTER TABLE `dispositivo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-17 17:34:34
+-- Dump completed on 2020-07-17 17:39:49
