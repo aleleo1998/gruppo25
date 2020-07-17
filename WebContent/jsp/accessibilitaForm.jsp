@@ -8,7 +8,7 @@
 <meta http-equiv="Cache-control" content="no-cache" />
 <meta name="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
-<META HTTP-EQUIV="Refresh" CONTENT="5;" url="accessibilitaForm.jsp">
+<META HTTP-EQUIV="Refresh" url="accessibilitaForm.jsp">
 
 <meta charset="UTF-8">
 <title>AcaGreen: accessibilità</title>
