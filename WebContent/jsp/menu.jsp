@@ -55,6 +55,9 @@
        	<a class="nav-link" href="#"> Accessibilità </a>
       </li>
       <li class="nav-item active" id="profilotext" style="display: none">
+       	<a class="nav-link" href="aiuto.html"> Aiuto </a>
+      </li>
+      <li class="nav-item active" id="profilotext" style="display: none">
        	<a class="nav-link" href="../logoutServlet"> Esci </a>
       </li>
       <li class="nav-item active" id="instagram">
@@ -76,6 +79,7 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="profilo.jsp"><i class="fas fa-house-user"></i></i> Profilo</a>
           <a class="dropdown-item" href="accessibilitaForm.jsp"><i class="fas fa-low-vision"></i> Accessibilità</a>
+          <a class="dropdown-item" href="aiuto.html"><i class="far fa-question-circle"></i> Aiuto</a>
           <a class="dropdown-item" href="../logoutServlet"><i class="fas fa-sign-out-alt"></i> Esci</a>
           
         </div>
