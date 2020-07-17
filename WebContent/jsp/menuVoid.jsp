@@ -38,7 +38,7 @@
         <a class="nav-link" href="accessibilitaForm.jsp"> <i class="fas fa-low-vision"></i> Accessibilità </a>
       </li>
       <li class="nav-item active" id="profilotext">
-        <a class="nav-link" href="aiuto.html"><i class="far fa-question-circle"></i> Aiuto </a>
+        <a class="nav-link" href="manualeUtente/aiuto.htm"><i class="far fa-question-circle"></i> Aiuto </a>
       </li>
     </ul>
   </div>

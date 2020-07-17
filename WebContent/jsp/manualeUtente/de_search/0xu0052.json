@@ -1,0 +1,17 @@
+[
+	{ "s": "REGISTRATI", "p": [3] },
+	{ "s": "REGISTRATO", "p": [3] },
+	{ "s": "REGISTRAZIONE", "p": [3] },
+	{ "s": "REINDERIZZATI", "p": [3] },
+	{ "s": "REINDIRIZZATO", "p": [4] },
+	{ "s": "RICERCA", "p": [10, 12] },
+	{ "s": "RICEVE", "p": [8, 7] },
+	{ "s": "RICHIEDE", "p": [9, 8, 7] },
+	{ "s": "RILEVA", "p": [5] },
+	{ "s": "RILEVAIZONE", "p": [5] },
+	{ "s": "RIMUOVERE", "p": [10] },
+	{ "s": "RIMUOVI", "p": [10] },
+	{ "s": "RISORSE", "p": [12] },
+	{ "s": "ROBOT", "p": [11, 5, 8, 7, 6] },
+	{ "s": "RUOLO", "p": [3] }
+]

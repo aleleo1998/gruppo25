@@ -1,0 +1,14 @@
+{
+	"1": ["Tit... E' richiesta la licenza Advanced!", "index.htm", []],
+	"2": ["1. Ac... E' richiesta la licenza Advanced!", "acagreen.htm", []],
+	"3": ["2. Registraz... E' richiesta la licenza Advanced!", "registrazione_e_login.htm", []],
+	"4": ["3 Pr... E' richiesta la licenza Advanced!", "3_profilo.htm", []],
+	"5": ["4. At... E' richiesta la licenza Advanced!", "4__attivita.htm", []],
+	"6": ["Prepar... E' richiesta la licenza Advanced!", "preparazione.htm", [4]],
+	"7": ["Sem... E' richiesta la licenza Advanced!", "semina.htm", [4]],
+	"8": ["Con... E' richiesta la licenza Advanced!", "concima.htm", [4]],
+	"9": ["Irrig... E' richiesta la licenza Advanced!", "irrigazione.htm", [4]],
+	"10": ["5. Inv... E' richiesta la licenza Advanced!", "5__inventario.htm", []],
+	"11": ["6. Sensor... E' richiesta la licenza Advanced!", "6__sensori_e_robot.htm", []],
+	"12": ["7. Risor... E' richiesta la licenza Advanced!", "7__risorse_umane.htm", []]
+}

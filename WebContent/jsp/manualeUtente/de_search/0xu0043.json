@@ -1,0 +1,21 @@
+[
+	{ "s": "CAMPI", "p": [5, 4] },
+	{ "s": "CAMPO", "p": [5, 11, 4] },
+	{ "s": "CHE", "p": [11, 10, 2] },
+	{ "s": "CLICCANDO", "p": [5, 10, 11, 8, 7] },
+	{ "s": "CLICCANTO", "p": [11] },
+	{ "s": "CLICCARE", "p": [10] },
+	{ "s": "COLTURA", "p": [7] },
+	{ "s": "COLTURE", "p": [10, 7, 2] },
+	{ "s": "COMPILANDO", "p": [5] },
+	{ "s": "CON", "p": [6, 12, 3] },
+	{ "s": "CONCIMA", "p": [8, 5] },
+	{ "s": "CONCIMAZIONE", "p": [8] },
+	{ "s": "CONCIME", "p": [8] },
+	{ "s": "CONCIMI", "p": [10, 8] },
+	{ "s": "CONFERMA", "p": [10] },
+	{ "s": "CONFERMANDO", "p": [11, 10] },
+	{ "s": "CONSENTITE", "p": [5] },
+	{ "s": "CONSIGLIARTI", "p": [2] },
+	{ "s": "CUI", "p": [11, 3, 6] }
+]

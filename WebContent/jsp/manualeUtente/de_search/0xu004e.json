@@ -1,0 +1,11 @@
+[
+	{ "s": "NECESSARIO", "p": [6, 3] },
+	{ "s": "NEL", "p": [10] },
+	{ "s": "NELL", "p": [10, 8, 7] },
+	{ "s": "NELL'INVENTARIO", "p": [10] },
+	{ "s": "NELL'OPERAZIONE", "p": [8, 7] },
+	{ "s": "NELLA", "p": [5] },
+	{ "s": "NOME", "p": [11] },
+	{ "s": "NON", "p": [3] },
+	{ "s": "NUOVO", "p": [11, 10, 5] }
+]
