@@ -80,7 +80,7 @@
 <!-- FORM -->
 <form action="../concimaServlet" name="formconcima" id="formconcima">
 </form>
-
+<div id="divscroll" style="padding: 2em; width:auto; height: 200px; overflow-x:hidden; overflow-y:scroll">
   <!--Row COLTURE-->
   <%!int j = 0;
   	String path="";
@@ -143,7 +143,7 @@
     }
      %>
 
-
+</div>
 
 	<!--Row COLTURE CONSIGLIATE DOPO ANALIZZA TERRENO (Da visualizzare dopo analisi terreno)-->
 	
@@ -237,7 +237,7 @@
 
   <!--Row Robot-->
 
-  
+  <div style="padding: 2em; width:auto; height: 200px; overflow-x:hidden; overflow-y:scroll">
   
   <% numRobot=0;
   for(Dispositivo disp : dispositiviList){ %> 
@@ -273,7 +273,7 @@
     }%>
 	
 	
-	
+</div>	
 	
 
 </div>

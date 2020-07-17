@@ -33,6 +33,7 @@ $(document).ready(function(){
 	$("#btnConfermaAnalisi").click(function(){
 		 
 		$(".rowInventario").css({display:'none'});
+		$("#divscroll").css({display:'none'});
 		$("#rowConsigliate").css({display:'block'});
 		$("#altreColture").css({display:'block'});
 		$("#rowAltreColture").css({display:'block'});

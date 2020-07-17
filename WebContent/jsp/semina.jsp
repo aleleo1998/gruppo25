@@ -63,6 +63,9 @@
 </div>
 
 <div id="container">
+
+
+
 	<div id="form-box" class="card">
 	  <div class="card-header">
 	    Seleziona la coltura da seminare <p style = "text-decoration:line-through;"> </p>
@@ -72,6 +75,8 @@
 	   
 	   <div class="container my-5">
 
+
+<div id="divscroll" style="padding: 2em; width:auto; height: 200px; overflow-x:hidden; overflow-y:scroll">
 <!-- FORM -->
 <form action="../seminaServlet" name="formSemina" id="formSemina">
 </form>
@@ -138,7 +143,7 @@
     }
      %>
 
-
+</div>
 
 	<!--Row COLTURE CONSIGLIATE DOPO ANALIZZA TERRENO (Da visualizzare dopo analisi terreno)-->
 	
@@ -233,6 +238,7 @@
   <!--Row Robot-->
 
   
+  <div style="padding: 2em; width:auto; height: 200px; overflow-x:hidden; overflow-y:scroll">
   
   <% numRobot=0;
   for(Dispositivo disp : dispositiviList){ %> 
@@ -267,7 +273,7 @@
 	<%}
     }%>
 	
-	
+</div>
 	
 	
 
