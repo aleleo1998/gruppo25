@@ -13,9 +13,9 @@ $(document).ready(function(){
 			  	$.post("../interrompiAttivitaServlet",{idRobot : idRobot}, function(result) {  
 	    			//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 	    					if(result == "0"){
-	    						alert("error");
+	    						//alert("error");
 	    					}else if(result == "1"){
-	    						alert("ok");
+	    						//alert("ok");
 	    					
 	    					}
 	    				

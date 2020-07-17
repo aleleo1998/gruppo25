@@ -11,7 +11,7 @@ $(document).ready(function(){
 			
 		 // alert(concimeId);
 		//  alert(robotId);
-		 alert("sto qua")
+		 
 		 /* $.post("../concimaServlet",{colture : concimeId, robot : robotId}, function(result) {  
 				//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 						if(result == "0"){
@@ -70,7 +70,7 @@ $(document).ready(function(){
 	    						$("#error").click();
 	    						
 	    					}else if(result == "1"){
-	    						alert("Oxx K richiesta");
+	    						 
 	    						//$("#datiRiepilogo ").load();
 	    						$("#datiRiepilogo").load(location.href + " #datiRiepilogo");
 	    						$("#modalRiepilogo").click();
@@ -127,7 +127,7 @@ function controlloCheckBox(){
 	 
 	
 	var numRobot = document.getElementById("nRobot").value;
-    alert("numRobot " + numRobot);
+   
    
     var okay=false;
 
@@ -146,7 +146,7 @@ function controlloCheckBox(){
     }
     
     
-  // alert("okay "+ okay);
+ 
     if(okay){
     	risRobot=1;
     }

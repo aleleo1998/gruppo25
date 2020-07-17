@@ -11,8 +11,7 @@ $(document).ready(function(){
 			
 		 // alert(colturaId);
 		//  alert(robotId);
-		 alert("sto qua")
-		 /* $.post("../seminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
+ 		 /* $.post("../seminaServlet",{colture : colturaId, robot : robotId}, function(result) {  
 				//FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 						if(result == "0"){
 							$("#error").click();
@@ -70,8 +69,7 @@ $(document).ready(function(){
 	    						$("#error").click();
 	    						
 	    					}else if(result == "1"){
-	    						alert("Oxx K richiesta");
-	    						//$("#datiRiepilogo ").load();
+ 	    						//$("#datiRiepilogo ").load();
 	    						$("#datiRiepilogo").load(location.href + " #datiRiepilogo");
 	    						$("#modalRiepilogo").click();
 	    					
@@ -127,12 +125,11 @@ function controlloCheckBox(){
 	 
 	
 	var numRobot = document.getElementById("nRobot").value;
-    alert("numRobot " + numRobot);
+    //alert("numRobot " + numRobot);
    
     var okay=false;
 
-    alert("prima for");
-    for(var j=1;j<=numRobot;j++)
+     for(var j=1;j<=numRobot;j++)
     {    	
     
         if(document.getElementById("checkbox"+j).checked===true)

@@ -150,7 +150,7 @@ $(document).ready(function(){
 	  
 	  //Per modificare un item
 	  $(".myButtonConfermaModifica").click(function(){
-			alert("modifica..");
+			 
 			var id = idDaMod;
 			var nomeMod = $("#nomeMod").val();
 			var tipoMod = $("#tipoMod").val();
@@ -166,13 +166,12 @@ $(document).ready(function(){
 					url : '../modificaItemServlet',  //SERVLET DA RICHIAMARE IN MANIERA ASINCRONA
 					success : function(result) {  //FUNZIONE DA ESEGUIRE IN CASO DI SUCCESSO
 						
-						alert(result);
 						if(result == "1"){
-							alert("Item aggiornato correttamente dall'inventario");
+							//alert("Item aggiornato correttamente dall'inventario");
 							$("#refForm").submit();
 							
 						}else{
-							alert("Errore: item non aggiornato, riprova!");
+							//alert("Errore: item non aggiornato, riprova!");
 							$("#refForm").submit();
 						}
 				

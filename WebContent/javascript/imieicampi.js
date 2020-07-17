@@ -12,7 +12,7 @@ $(document).ready(function(){
 		var tot = x.length+1;
 		var nomecampo = x.substr(6,tot); // estrae il nome del campo dall'id del bottone "id: buttonNOMECAMPO"
 		
-		alert(nomecampo);
+		//alert(nomecampo);
 		
 		$.post("../rimuoviCampoServlet",{nomecampo : nomecampo}, function(result) {  
 			
