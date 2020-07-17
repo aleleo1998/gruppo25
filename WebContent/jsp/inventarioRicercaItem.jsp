@@ -23,7 +23,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="../javascript/inventario.js"></script>
 
-
+<link rel="stylesheet" href="../css/myStyle.css">
 
  
 

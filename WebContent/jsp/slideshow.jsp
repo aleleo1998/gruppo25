@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../css/myStyle.css">
 <meta charset="UTF-8">
 <title>AcaGreen</title>
 

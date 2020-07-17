@@ -16,7 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/visualizzaCampo.js"></script>
-
+<link rel="stylesheet" href="../css/myStyle.css">
 <% Model.Campo campo = (Campo) request.getSession().getAttribute("campo_selezionato"); %>
 <%! ArrayList<Dispositivo> dispositiviList; %>
 <% dispositiviList = (ArrayList<Dispositivo>) request.getSession().getAttribute("lista_dispositivi"); %>

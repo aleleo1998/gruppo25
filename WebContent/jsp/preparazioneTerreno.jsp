@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../css/myStyle.css">
 <meta charset="ISO-8859-1">
 
 <%! Dispositivo robotSelezionato =  new Dispositivo();

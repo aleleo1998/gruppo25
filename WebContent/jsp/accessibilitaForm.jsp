@@ -3,6 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta http-equiv="Cache-control" content="no-cache" />
+<meta name="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<META HTTP-EQUIV=”Refresh” CONTENT=”5; url=http://TUOSITO.altervista.org/TUAPAGINA.htm”>
+
 <meta charset="UTF-8">
 <title>AcaGreen: accessibilità</title>
 
@@ -13,11 +19,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7606041806.js" crossorigin="anonymous"></script>
 <script src="../javascript/accessibilita.js" defer></script>
+<link rel="stylesheet" href="../css/risorseumane.css">
 
 </head>
 <body>
 
-<div>
+<div id="menu">
 	<%@include file="menuVoid.jsp"%>
 </div>
 
@@ -115,35 +122,35 @@
 		  	</thead>
 		    <tr>
 		      <th scope="row">1</th>
-		      <td>Colore principale menù</td>
+		      <td>Testo in evidenza</td>
 		      	<td>
-		      		<input type="color" name="menuColor">
-		      	</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Colore principale footer</td>
-		      	<td>
-		      		<input type="color" name="footerColor">
+		      		<select class="mdb-select md-form" name="weight">
+		      		  <option value="500">Normale</option>
+					  <option value="600">Leggermente in evidenza</option>
+					  <option value="700">Bold</option>
+					  <option value="800">Bold+</option>
+					  <option value="900">Strong</option>
+		      		</select>
 		      	</td>
 		    </tr>
 		    <tr>
 		      <th scope="row">3</th>
 		      <td>Background della pagina</td>
 		      <td>
-		      	<input type="color" name="sfondoPagina">
+		      	<input type="color" name="sfondoPagina" value="#ffffff">
 		      </td>
 		    </tr>
 		   </tbody>
 		 </table>
 		 <div style="text-align:right">
 		   	<p class="myButton" id="button" style="text-align:right; margin-top:3em">Conferma</p>
+		   	<p class="buttonAssegna" id="button2" style="text-align:right; margin-top:3em">Ripristina il foglio di stile originale</p>
 		 </div>
 	</form>
 
 </div>
 
-<div>
+<div id="footer">
 <%@include file="../html/footer.html"%>
 </div>
 

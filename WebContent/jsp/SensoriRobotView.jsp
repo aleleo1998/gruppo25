@@ -10,6 +10,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <link rel="stylesheet" href="../css/drago.css">
 <link rel="stylesheet" href="../css/SensoriRobot.css">
+<link rel="stylesheet" href="../css/myStyle.css">
 <meta charset="ISO-8859-1">
 
 <title>AcaGreen</title>
