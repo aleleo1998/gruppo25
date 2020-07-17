@@ -75,7 +75,7 @@
         
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="profilo.jsp"><i class="fas fa-house-user"></i></i> Profilo</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-low-vision"></i> Accessibilità</a>
+          <a class="dropdown-item" href="accessibilitaForm.jsp"><i class="fas fa-low-vision"></i> Accessibilità</a>
           <a class="dropdown-item" href="../logoutServlet"><i class="fas fa-sign-out-alt"></i> Esci</a>
           
         </div>

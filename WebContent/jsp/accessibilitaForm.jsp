@@ -1,3 +1,4 @@
+<%@page import="Model.Utente"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 <meta http-equiv="Cache-control" content="no-cache" />
 <meta name="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
-<META HTTP-EQUIV=”Refresh” CONTENT=”5; url=http://TUOSITO.altervista.org/TUAPAGINA.htm”>
+<META HTTP-EQUIV="Refresh" CONTENT="5;" url="accessibilitaForm.jsp">
 
 <meta charset="UTF-8">
 <title>AcaGreen: accessibilità</title>
@@ -21,11 +22,17 @@
 <script src="../javascript/accessibilita.js" defer></script>
 <link rel="stylesheet" href="../css/risorseumane.css">
 
+<% Model.Utente utente = (Utente) request.getSession().getAttribute("utente"); %>
+
 </head>
 <body>
 
 <div id="menu">
-	<%@include file="menuVoid.jsp"%>
+	<% if(utente == null){ %>
+		<%@include file="menuVoid.jsp"%>
+	<% } else{ %>
+		<%@include file="menu.jsp"%>
+	<% } %>
 </div>
 
 <div id="container">

@@ -37,11 +37,10 @@ $(document).ready(function(){
 					console.log(body);
 					body.style.fontFamily = fontFamily;
 					body.style.fontSize = fontSize;
-					body.css('color','blue');
+					body.style.color = color;
 					body.style.backgroundColor = background;
 					let menu = document.querySelector('#menu');
 					console.log(menu);
-					//menu.backgroundColor = menuColor; 
 					
 					//window.location.href=window.location.href;
 				}
